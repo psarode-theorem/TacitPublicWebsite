@@ -148,11 +148,11 @@ footer{border-top:1px solid var(--rule);font:13px/1.6 var(--sans);color:var(--mu
         <g fill="none" stroke="currentColor" style="color:var(--rule)" stroke-width="1"><rect x="44" y="8" width="432" height="332"/><line x1="260" y1="8" x2="260" y2="340"/><line x1="44" y1="174" x2="476" y2="174"/></g>
         <!-- top-left: where it lives today -->
         <text x="56" y="30" font-size="9" style="fill:var(--muted);font-family:var(--mono);letter-spacing:.08em">WHERE IT LIVES TODAY</text>
-        <text x="56" y="62" font-size="14" font-weight="600">Email · chat · file shares</text>
-        <text x="56" y="82" font-size="14" font-weight="600">Virtual data rooms</text>
-        <text x="56" y="108" font-size="12" style="fill:var(--muted)">They cross the boundary, but only</text>
-        <text x="56" y="123" font-size="12" style="fill:var(--muted)">store and swap files. No interviews,</text>
-        <text x="56" y="138" font-size="12" style="fill:var(--muted)">drafts, scores or named sign-off.</text>
+        <text x="56" y="62" font-size="14" font-weight="600">Meetings · calls · chat</text>
+        <text x="56" y="82" font-size="14" font-weight="600">Email · files · data rooms</text>
+        <text x="56" y="108" font-size="12" style="fill:var(--muted)">They cross the boundary, but they</text>
+        <text x="56" y="123" font-size="12" style="fill:var(--muted)">only carry talk and files. No drafts,</text>
+        <text x="56" y="138" font-size="12" style="fill:var(--muted)">scores or named sign-off.</text>
         <!-- top-right: the gap / the workspace -->
         <g class="sa">
           <rect x="272" y="20" width="192" height="142" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="6 5"/>
@@ -191,8 +191,8 @@ footer{border-top:1px solid var(--rule);font:13px/1.6 var(--sans);color:var(--mu
     </figure>
   </div>
   <div class="pitch">
-    <div><div class="lab">The problem</div><b>Nobody can say who decided.</b><p>What matters in an engagement was never written down. Weeks later no one can say which interview a conclusion came from, who confirmed it, or where the client's material sits. Agents draft in minutes, so the gap grows.</p></div>
-    <div><div class="lab">Our hypothesis</div><b>A room, not a channel.</b><p>One client, one mission, a start and an end. Inside, the Judgment Work pattern runs: agents draft, a named Lead confirms, and the mission commits. The client's context and the provider's method stay on separate shelves. We hypothesise both sides will trust it more than chat and file shares.</p></div>
+    <div><div class="lab">The problem</div><b>Nobody can say who decided.</b><p>Engagements run on meetings, live and recorded, by web or phone, one-to-one or in groups, and on the slides and diagrams that follow. What matters is said in them and never recorded as a decision. Weeks later no one can say which conversation a conclusion came from, who confirmed it, or where the client's material sits. Agents draft in minutes, so the gap grows.</p></div>
+    <div><div class="lab">Our hypothesis</div><b>A room, not a channel.</b><p>One client, one mission, a start and an end. Inside, the Judgment Work pattern runs: agents draft, a named Lead confirms, and the mission commits. The client's context and the provider's method stay on separate shelves. We hypothesise both sides will trust it more than meetings, chat and file shares.</p></div>
   </div>
   <p class="test"><b>From paper to open source.</b> The Mission Room ideas in the paper are being built as open-source software under Apache-2.0, free to fork for your own kind of work. The paper sets out seven hypotheses we want to test with partners. We are looking for <a href="#contact" data-pick="tools">academic feedback</a>, <a href="#contact" data-pick="platforms">industry collaboration</a> and <a href="#contact" data-pick="providers">design partners</a>.</p>
 </header>
@@ -322,7 +322,7 @@ pick(currentKey);
 
 initCheck();
 (function(){const svg=$('quadsvg'),cap=$('qcap'),btns=document.querySelectorAll('.seg button');
- const T={a:'<b>Judgment work</b> is what a provider is paid to draw out of a client\'s people and then stand behind: a due-diligence finding, an AI-adoption assessment, a migration plan, a go-live readiness verdict. Design and engineering teams got workspaces built for their work. This work still runs on email, chat, file shares and slides.',b:'<b>A collaboration workspace across the provider\'s and the client\'s legal entities</b>, built for the work itself: interviews, drafts, scores and a named confirmation, with each side\'s knowledge kept its own. Far more than a data room, which only stores and swaps files.'};
+ const T={a:'<b>Judgment work</b> is what a provider is paid to draw out of a client\'s people and then stand behind: a due-diligence finding, an AI-adoption assessment, a migration plan, a go-live readiness verdict. Design and engineering teams got workspaces built for their work. Even as offices refill, this work still runs on digital meetings and the slides and diagrams that follow.',b:'<b>A collaboration workspace across the provider\'s and the client\'s legal entities</b>, built for the work itself: interviews, drafts, scores and a named confirmation, with each side\'s knowledge kept its own. Far more than a data room, which only stores and swaps files.'};
  let touched=false,timer=null;
  function set(k,user){if(user){touched=true;clearTimeout(timer)}svg.dataset.s=k;cap.innerHTML=T[k];btns.forEach(b=>b.setAttribute('aria-pressed',b.dataset.s===k))}
  btns.forEach(b=>b.onclick=()=>set(b.dataset.s,true));
