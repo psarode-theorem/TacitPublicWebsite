@@ -1,4 +1,4 @@
-# Deploys ./site to GitHub Pages on every push to main.
+# Deploys ./site to GitHub Pages on every push to main that changes site/ or this file.
 # One-time setup: repo Settings > Pages > Build and deployment > Source: GitHub Actions.
 name: Deploy to GitHub Pages
 
