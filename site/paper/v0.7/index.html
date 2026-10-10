@@ -1,0 +1,797 @@
+<meta charset="utf-8">
+<title>Tacit Work Needs a Mission Room</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Courier+Prime&family=Lora:wght@600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: a single printed-page column in the manner of a LaTeX working paper. Figures use one geometric vocabulary: filled and outlined squares, circles and triangles, sans labels with quiet sublabels, spaced mono captions, dashed dividers, one tinted region. */
+:root{
+  --desk:#efefed; --paper:#ffffff; --ink:#111111; --ink-2:#4a4a4a; --mute:#7a7a7a; --rule:#111111; --tint:#efefef; --shadow:rgba(0,0,0,.08);
+  --serif:"STIX Two Text","Times New Roman",Times,serif;
+  --tw:"Courier Prime","Courier New",Courier,monospace;
+  --fsans:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --fmono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --fserif:"Lora",Georgia,serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --desk:#121212; --paper:#1b1b1b; --ink:#ececec; --ink-2:#b4b4b4; --mute:#858585; --rule:#d8d8d8; --tint:#262626; --shadow:rgba(0,0,0,.4); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --desk:#121212; --paper:#1b1b1b; --ink:#ececec; --ink-2:#b4b4b4; --mute:#858585; --rule:#d8d8d8; --tint:#262626; --shadow:rgba(0,0,0,.4); color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--desk);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.55;padding-inline:16px;padding-block:32px 64px}
+.page{max-width:840px;margin:0 auto;background:var(--paper);padding:72px clamp(20px,7vw,92px) 80px;box-shadow:0 1px 3px var(--shadow)}
+p{margin:0 0 .9em;text-align:justify;hyphens:auto}
+a{color:var(--ink)}
+
+.title{text-align:center;margin:0 0 28px}
+h1{font-size:clamp(1.65rem,4vw,2.05rem);font-weight:700;line-height:1.2;margin:0 0 8px;text-wrap:balance}
+.subtitle{font-size:clamp(1.12rem,2.6vw,1.32rem);font-weight:600;margin:0 0 30px;text-wrap:balance;text-align:center}
+.authors{display:flex;justify-content:center;margin:0 0 22px}
+.authors div{text-align:center}
+.authors p.au{margin:0 0 4px;text-align:center;hyphens:manual;font-size:15px}
+.authors p.au i{font-style:italic}
+.authors p.aff{margin:6px 0 0;text-align:center;hyphens:manual;font-size:13px;color:var(--ink-2)}
+.authors span{font-family:var(--tw);font-size:15.5px}
+.date{text-align:center;margin:0 0 6px}
+.contact{text-align:center;font-family:var(--tw);font-size:15px;margin:0 0 24px}
+.contact a{text-decoration:underline;text-underline-offset:3px}
+.notice a{font-style:normal}
+.epigraph{max-width:610px;margin:0 auto;font-style:italic;font-size:15.5px;line-height:1.5;padding-bottom:18px;border-bottom:1px solid var(--rule)}
+.epigraph p{text-align:center;hyphens:manual}
+.abstract{margin:26px clamp(0px,4vw,36px) 34px;font-size:16px}
+.abstract p{margin:0}
+.abstract p.kw{margin-top:10px;font-size:14.5px;text-align:left;hyphens:manual}
+.notice{font-size:12.5px;line-height:1.45;font-style:italic;margin:0 0 30px}
+
+h2{font-size:1.13rem;font-weight:700;margin:2.1em 0 .7em}
+h3{font-size:1rem;font-weight:700;margin:1.6em 0 .5em}
+ol.plain,ul.plain{margin:0 0 1em;padding-left:1.6em}
+ol.plain li,ul.plain li{margin:0 0 .45em;text-align:justify;hyphens:auto}
+.def{margin:1em clamp(0px,4vw,32px);font-size:16.5px}
+.def p{margin:0}
+
+.tw{overflow-x:auto;margin:1.4em 0 1.6em}
+.tcap{text-align:center;font-size:14.5px;margin:0 0 8px}
+table{border-collapse:collapse;width:100%;min-width:580px;font-size:14.5px;line-height:1.35}
+th,td{border:1px solid var(--rule);padding:5px 7px;text-align:left;vertical-align:top}
+th{font-weight:700;text-align:center}
+td.c{text-align:center}
+td.id{font-family:var(--tw);white-space:nowrap;text-align:center}
+tr.grp td{font-weight:700;background:var(--tint)}
+
+figure{margin:1.8em 0 1.9em}
+figure .fw{overflow-x:auto}
+figure svg{display:block;width:100%;height:auto;min-width:580px;margin:0 auto}
+figcaption{font-size:14.5px;margin-top:12px}
+figcaption i{font-style:italic}
+
+/* figure vocabulary */
+svg .lbl{font-family:var(--fsans);font-weight:600;font-size:15px;fill:var(--ink)}
+svg .sub{font-family:var(--fsans);font-weight:400;font-size:13px;fill:var(--ink-2)}
+svg .cap{font-family:var(--fmono);font-weight:500;font-size:11px;letter-spacing:.14em;fill:var(--mute)}
+svg .hero{font-family:var(--fserif);font-weight:600;font-size:18px;fill:var(--ink)}
+svg .fill{fill:var(--ink)}
+svg .line{fill:none;stroke:var(--ink);stroke-width:1.6}
+svg .dline{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-dasharray:4 3}
+svg .ax{fill:none;stroke:var(--ink);stroke-width:1.6}
+svg .div{fill:none;stroke:var(--mute);stroke-width:1;stroke-dasharray:3 5}
+svg .tint{fill:var(--tint)}
+svg .thin{fill:none;stroke:var(--ink);stroke-width:1}
+
+.refs{font-size:14.5px}
+.refs p{text-align:left;padding-left:1.8em;text-indent:-1.8em;margin:0 0 .5em;hyphens:manual}
+.hr{border:0;border-top:1px solid var(--rule);margin:2.2em 0 1.4em}
+.small{font-size:14.5px}
+/* Print: US Letter, light ink on white, and figures, tables and headings kept whole */
+@page{size:Letter;margin:0.85in 0.9in 0.9in;@bottom-center{content:counter(page);font-family:"STIX Two Text","Times New Roman",serif;font-size:10pt;color:#444}}
+@media print{
+  :root,:root[data-theme="dark"],:root:not([data-theme="light"]){
+    --desk:#ffffff; --paper:#ffffff; --ink:#111111; --ink-2:#4a4a4a; --mute:#7a7a7a; --rule:#111111; --tint:#efefef; --shadow:transparent; color-scheme:light}
+  body{background:#fff;padding:0;font-size:10.5pt;line-height:1.45}
+  .page{max-width:none;padding:0;box-shadow:none}
+  .title{margin-bottom:18pt}
+  figure,.tw,table,thead,tbody,tr,td,.def,.epigraph,.refs p,ol.plain li,ul.plain li{break-inside:avoid;page-break-inside:avoid}
+  figure,.tw{margin:12pt 0 14pt}
+  h2,h3,.tcap{break-after:avoid;page-break-after:avoid}
+  h2{margin-top:18pt}
+  p{orphans:3;widows:3}
+  figure .fw,.tw{overflow:visible}
+  figure svg,table{min-width:0}
+  table{font-size:8.8pt;line-height:1.3}
+  th,td{padding:3px 5px}
+  figcaption,.tcap{font-size:9.5pt}
+  .notice{font-size:8.5pt}
+  a{text-decoration:none}
+}
+*{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--ink)"/></marker>
+  </defs>
+</svg>
+
+<article class="page">
+
+<header class="title">
+  <h1>Tacit Work Needs a Mission Room</h1>
+  <p class="subtitle">Accountability, Ownership and Data Sovereignty in Agent-Assisted Professional Services</p>
+  <div class="authors"><div><p class="au"><span>P. Sarode</span></p><p class="au"><span>R. Nair</span></p><p class="aff"><i>Adjunct Researchers-in-Residence | Future of Ways of Working | Theoremlabs.io</i></p></div></div>
+  <p class="date">October 2026 · Working paper, draft for comment</p>
+  <p class="contact"><a href="https://tacit.theoremlabs.io">tacit.theoremlabs.io</a> · Comments: research@theoremlabs.io</p>
+  <div class="epigraph">
+    <p>Expertise engagements between providers and their clients depend on knowledge that has never been written down. They run on tools built for conversation and file sharing, which record neither who knows what, who owns what, where it resides, nor who decided. AI agents can now elicit, draft and score at scale, which makes those gaps more consequential. This paper describes the Mission Room: a workspace organized around a bounded mission, in which the client's context remains the client's and stays where the parties agree, the provider's expertise remains the provider's, agents draft, and a named person confirms.</p>
+  </div>
+</header>
+
+<div class="abstract">
+  <p><b>Abstract.</b> A large share of professional work is tacit. It lives in expert judgment and in what a client's people know but have never documented. This work crosses an organizational boundary, depends on eliciting knowledge from people, ends in judgments, carries accountability, and is bounded in time. Collaboration software has specialized for design and for engineering, but expertise engagements between providers and clients still run on general-purpose chat, file shares and data rooms. We argue that AI agents make a purpose-built workspace both feasible and necessary, and that such a workspace will not be taken seriously by either party unless two preconditions hold: a clear and enforced separation between the client's context, which belongs to the client, and the provider's expertise, which is the provider's intellectual property; and answers to the problems of data sovereignty, security and privacy that arise when agents interview a client's people and apply a provider's method, demonstrable under the assurance standards clients already require, such as SOC 2. We specify the Mission Room through these preconditions, a governance pattern called Draft, Confirm, Commit, a consolidated set of invariants, an operating model in which a Lead and Operator pair works with an agent roster in place of the traditional pyramid, and an open-source reference implementation, Tacit Chassis, which is designed to provide these properties. We close with testable hypotheses and the limitations of a design proposal that does not yet report field data.</p>
+  <p class="kw"><b>Keywords:</b> tacit knowledge; human-AI collaboration; agentic AI; professional services; consulting; accountability; data sovereignty; computer-supported cooperative work</p>
+</div>
+
+<p class="notice"><b>Disclosure.</b> This research paper and the experimental builds it describes are supported by Theoremlabs.io (<a href="https://tacit.theoremlabs.io">tacit.theoremlabs.io</a>). It is a working paper: it has not been peer reviewed and reports no empirical results. Each author is an Adjunct Researcher-in-Residence, Future of Ways of Working, at Theoremlabs.io, which develops Tacit Chassis, the reference implementation described in Section 10. We invite comments, critique and collaboration from researchers and practitioners at <b style="font-style:normal">research@theoremlabs.io</b>.</p>
+
+<!-- 1 -->
+<h2>1. Introduction</h2>
+<p>Consider a familiar engagement. A senior advisor and a small team are asked to assess how a client organization actually works: where decisions stall, which controls exist only on paper, which risks or opportunities are real. Over several weeks they interview dozens of people, read what documentation exists, and form a view. The result is a report or a slide deck. Weeks later, few people can say which interview a given conclusion came from, which conclusions the senior advisor examined personally, or where the client's confidential material now resides.</p>
+<p>This kind of work is old and economically significant. Advisory, due diligence, implementation readiness, integration planning and many forms of assessment share its shape. Yet the software it runs on was built for other purposes: email and chat for conversation, shared drives for files, data rooms for controlled document exchange, slide software for the final product. None of these tools knows what a mission is, who must confirm what, how a finding relates to its evidence, or which knowledge belongs to which party.</p>
+<p>Other kinds of team work have acquired purpose-built environments. Design and product teams work in tools such as Figma and Miro. Engineering teams work in issue trackers and wikis such as Jira and Confluence. In each case the tool encodes the structure of the work. Expertise engagements between a provider and its client have no equivalent.</p>
+<p>AI agents change the urgency of this gap. Agents can now conduct structured interviews, transcribe and summarize them, draft findings and propose scores. That removes much of the labor that justified large engagement teams. It also creates three problems. The first is accountability: when an agent drafts a finding and a person forwards it, it is no longer clear who decided. The second is ownership: a system that interviews a client's people and applies a provider's method holds both parties' most sensitive knowledge at once, and an agent system that learns from one engagement may carry it into the next. The third is sovereignty, security and privacy: client content, including recordings of named individuals, flows through agents and model services whose location, retention and access the client may not control.</p>
+<p>This paper makes four contributions. First, it characterizes tacit work and argues that it constitutes a distinct category of collaboration (Sections 2 to 4). Second, it specifies the Mission Room and two preconditions without which neither providers nor clients will adopt one: separation of ownership between client context and provider expertise, and solutions to data sovereignty, security and privacy that can be demonstrated under assurance standards such as SOC 2 (Sections 5 and 6). Third, it defines a governance pattern, Draft, Confirm, Commit, and consolidates the invariants that any Mission Room must hold (Sections 7 and 8). Fourth, it proposes an operating model that replaces the staffing pyramid (Section 9) and describes an open-source reference implementation (Sections 10 and 11). Section 12 states hypotheses, and Section 13 sets out limitations. We regard the first two contributions as the paper's main ones. The governance pattern and the operating model build on active lines of work, which we cite where they apply.</p>
+
+<!-- 2 -->
+<h2>2. What Makes Work Tacit</h2>
+<p>Polanyi's observation that "we can know more than we can tell" (Polanyi, 1966) is the usual starting point for discussions of tacit knowledge. Nonaka and Takeuchi (1995) described how organizations convert tacit knowledge into explicit form and back. Collins (2010) distinguished kinds of tacitness, from knowledge that simply has not been written down to knowledge that is embodied or collective and resists articulation. The naturalistic decision-making tradition showed how experts decide under uncertainty (Klein, 1998) and developed interview methods, known as cognitive task analysis, for eliciting that expertise (Crandall, Klein and Hoffman, 2006). Leonard and Swap (2005) described the experience-based judgment of senior practitioners as "deep smarts" and examined how it is, and is not, transferred.</p>
+<p>This literature is mostly concerned with knowledge inside one organization. We are concerned with a narrower unit: a piece of work in which one party is engaged to draw out and judge knowledge held by another. We call this <i>tacit work</i> and propose that it has five properties (Table 1).</p>
+
+<div class="tw">
+  <p class="tcap"><b>Table 1:</b> <i>Five properties of tacit work.</i></p>
+  <table>
+    <thead><tr><th style="width:22%">Property</th><th>Description</th><th style="width:31%">Consequence for tooling</th></tr></thead>
+    <tbody>
+      <tr><td>Crosses a boundary</td><td>A provider works with and on behalf of a client. Two organizations, with different interests, confidentiality duties and intellectual property, share one piece of work.</td><td>Isolation per provider and client pair; explicit ownership of each kind of knowledge.</td></tr>
+      <tr><td>Depends on elicitation</td><td>The most important inputs are in people's heads. Documents are partial, out of date, or describe intent rather than practice.</td><td>Interviews are first-class inputs, kept and linked to what they produce.</td></tr>
+      <tr><td>Ends in judgment</td><td>The output is a set of assessed findings, judged against the provider's method.</td><td>Findings carry structured fields and scores against a stated rubric.</td></tr>
+      <tr><td>Carries accountability</td><td>A named professional stands behind the findings, often with reputational or contractual exposure.</td><td>Confirmation by a named person is recorded and cannot be bypassed.</td></tr>
+      <tr><td>Is time-boxed</td><td>The work has a defined scope, stages and an end.</td><td>The workspace is organized around a mission with stages, not an open-ended channel.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<p>Examples span industries: commercial due diligence, operating-model discovery, go-live and implementation readiness, post-merger integration planning, market-entry assessment, AI adoption assessment, and site assessment for economic development. Each involves a provider eliciting knowledge from a client's people, judging it against its own method, and standing behind the result.</p>
+
+<!-- 3 -->
+<h2>3. The Collaboration Landscape</h2>
+<p>Collaboration software has long been studied as a support for articulation work, the effort of coordinating distributed activity (Schmidt and Bannon, 1992). Commercial tools have since divided along two lines that matter here. The first is orientation: whether a tool is general purpose or built around the artifacts and stages of a particular kind of work. The second is boundary: whether a tool is designed for work inside one organization or between organizations with distinct interests. Figure 1 places common tool classes on these two axes.</p>
+
+<figure>
+  <div class="fw">
+  <svg viewBox="0 0 720 480" role="img" aria-labelledby="f1">
+    <title id="f1">Tool classes placed by orientation and boundary. The quadrant for work-specific tools between provider and client holds only the Mission Room.</title>
+    <rect x="400" y="30" width="290" height="200" class="tint"/>
+    <line x1="400" y1="30" x2="400" y2="430" class="div"/>
+    <line x1="112" y1="230" x2="690" y2="230" class="div"/>
+    <line x1="112" y1="430" x2="112" y2="18" class="ax" marker-end="url(#arw)"/>
+    <line x1="112" y1="430" x2="702" y2="430" class="ax" marker-end="url(#arw)"/>
+    <text x="112" y="464" class="cap">GENERAL PURPOSE</text>
+    <text x="690" y="464" class="cap" text-anchor="end">BUILT FOR A KIND OF WORK</text>
+    <text x="60" y="130" class="cap" text-anchor="middle" transform="rotate(-90 60 130)">PROVIDER AND CLIENT</text>
+    <text x="60" y="330" class="cap" text-anchor="middle" transform="rotate(-90 60 330)">INSIDE ONE ORGANIZATION</text>
+
+    <rect x="146" y="70" width="18" height="18" class="line"/>
+    <text x="180" y="85" class="lbl">Virtual data rooms</text>
+    <text x="180" y="105" class="sub">Exchange documents, not work</text>
+    <rect x="146" y="144" width="18" height="18" class="line"/>
+    <text x="180" y="159" class="lbl">Shared channels</text>
+    <text x="180" y="179" class="sub">Talk across firms, no mission</text>
+
+    <rect x="426" y="62" width="44" height="44" class="fill"/>
+    <text x="490" y="80" class="hero">Mission Room</text>
+    <text x="490" y="101" class="sub">Expertise work between</text>
+    <text x="490" y="119" class="sub">a provider and its client</text>
+    <text x="426" y="204" class="cap">NO ESTABLISHED TOOL CLASS</text>
+
+    <circle cx="155" cy="265" r="7" class="line"/>
+    <text x="180" y="270" class="lbl">NotebookLM</text>
+    <text x="180" y="290" class="sub">One person, own documents</text>
+    <circle cx="155" cy="328" r="10" class="fill"/>
+    <text x="180" y="333" class="lbl">Slack · Teams</text>
+    <text x="180" y="353" class="sub">Conversation, any topic</text>
+    <circle cx="155" cy="391" r="10" class="line"/>
+    <text x="180" y="396" class="lbl">SharePoint · Drives</text>
+    <text x="180" y="416" class="sub">Files, any topic</text>
+
+    <path d="M437 316 L448 334 L426 334 Z" class="fill"/>
+    <text x="466" y="330" class="lbl">Figma · Miro</text>
+    <text x="466" y="350" class="sub">Design and product teams</text>
+    <path d="M437 380 L448 398 L426 398 Z" class="fill"/>
+    <text x="466" y="394" class="lbl">Jira · Confluence</text>
+    <text x="466" y="414" class="sub">Engineering teams</text>
+  </svg>
+  </div>
+  <figcaption><b>Figure 1:</b> <i>Collaboration tool classes by orientation and boundary. Placement is indicative. Shared channels and data rooms cross the boundary but are general purpose; design and engineering tools are work-specific but mostly internal.</i></figcaption>
+</figure>
+
+<p>Three tool classes sit near the empty quadrant and are worth distinguishing from it. A virtual data room crosses the boundary between parties and is controlled and audited, but it holds what parties exchange rather than the work itself. Shared chat channels across firms carry conversation between organizations but impose no structure on it. Personal research assistants such as NotebookLM help one person reason over documents they already have; they do not elicit knowledge from other people or record who confirmed what. Products have also begun to apply agents to parts of this work: AI-led expert calls and knowledge-capture tools now conduct interviews and synthesize the results. They cover elicitation, but not the mission structure, the confirmation gate or the separation of ownership that this paper argues for. Table 2 compares these classes against the properties in Table 1.</p>
+
+<div class="tw">
+  <p class="tcap"><b>Table 2:</b> <i>Support for the properties of tacit work, by tool class.</i></p>
+  <table>
+    <thead><tr><th>Property</th><th>Chat and file shares</th><th>Virtual data room</th><th>Work-specific internal tools</th><th>Mission Room</th></tr></thead>
+    <tbody>
+      <tr><td>Isolation per provider and client</td><td>Partial, by configuration</td><td>Yes</td><td>No</td><td>Yes, by design</td></tr>
+      <tr><td>Client context kept apart from provider method</td><td>No</td><td>No</td><td>No</td><td>Yes, enforced</td></tr>
+      <tr><td>Interviews as first-class inputs</td><td>No</td><td>No</td><td>No</td><td>Yes</td></tr>
+      <tr><td>Structured, scored findings</td><td>No</td><td>No</td><td>Yes, for their own artifacts</td><td>Yes</td></tr>
+      <tr><td>Recorded confirmation by a named person</td><td>No</td><td>Access logs only</td><td>Review and approval steps</td><td>Yes, mandatory</td></tr>
+      <tr><td>Organized around a staged mission</td><td>No</td><td>No</td><td>Yes, for their own workflows</td><td>Yes</td></tr>
+      <tr><td>Finding traceable to source conversation</td><td>No</td><td>No</td><td>No</td><td>Yes</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 4 -->
+<h2>4. What AI Agents Change</h2>
+<p>Two field experiments frame the opportunity and the risk. In a study of 758 consultants, Dell'Acqua et al. (2023) found that access to a large language model improved the quantity, speed and quality of work on tasks within the model's capability, while consultants using the model were less likely to reach the correct answer on a task just outside it. The authors describe this as a "jagged technological frontier": the boundary of what the model does well is uneven and not visible to the user. In a later field experiment with 776 professionals, Dell'Acqua et al. (2025) found that individuals working with AI performed at the level of two-person teams without it.</p>
+<p>For tacit work, the implication is double. Agents can now do much of the elicitation and first drafting that once required layers of junior staff. Recent studies support this. An LLM agent interviewing employees recovered undocumented organizational knowledge in simulated settings (Zuin et al., 2025), and LLMs articulated experts' tacit knowledge from their behavior well enough to move novices toward expert performance (Cho et al., 2026). At the same time, their errors are hard to see, and research on automation shows that people supervising capable automated systems tend toward complacency and over-reliance (Bainbridge, 1983; Parasuraman and Manzey, 2010). Calls for human-centered AI emphasize high automation combined with high human control, rather than a trade-off between the two (Shneiderman, 2020).</p>
+<p>Agents also change the stakes of ownership. Recent industry analysis argues that the differentiator in agentic AI is the tacit knowledge of an organization's people, which must be captured and codified for agents to act well (Tung and Roussière, 2026; Gartner, 2026). In tacit work, two bodies of tacit knowledge meet: the client's knowledge of itself, and the provider's knowledge of how to assess it. Once either is captured in a form agents can use, it becomes portable, and therefore easy to leak, reuse without permission, or absorb into a model. A workspace for agent-assisted tacit work must therefore treat ownership as part of its architecture, not as a clause in a contract.</p>
+<p>A further concern is apprenticeship. Expertise has historically passed from senior to junior practitioners through repeated, supervised work on real problems (Leonard and Swap, 2005). If agents absorb the junior tasks, that path narrows. Section 9 returns to this.</p>
+
+<!-- 5 -->
+<h2>5. The Mission Room</h2>
+<div class="def"><p><b>Definition.</b> A <i>Mission Room</i> is a bounded, staged workspace in which a provider and its client, together with a roster of AI agents, work toward a set of findings that a named person on the provider's side confirms, with the client's context and the provider's expertise held separately and under the control of their respective owners.</p></div>
+<p>A Mission Room has seven components (Table 3, Figure 2).</p>
+
+<div class="tw">
+  <p class="tcap"><b>Table 3:</b> <i>Components of a Mission Room.</i></p>
+  <table>
+    <thead><tr><th style="width:22%">Component</th><th>Role in the work</th></tr></thead>
+    <tbody>
+      <tr><td>Mission</td><td>The unit of work: a defined scope, for one client, with a beginning and an end.</td></tr>
+      <tr><td>Stages</td><td>An ordered sequence. Every mission has exactly one setup stage and exactly one Commit stage.</td></tr>
+      <tr><td>Roles</td><td>A Lead, who is accountable and is the only role that confirms; an optional Operator, who runs the room and its agents; and the Client, whose people are interviewed and who receives the result.</td></tr>
+      <tr><td>Agent roster</td><td>The agents assigned to the mission, such as an interviewing agent and agents that build documents from the findings.</td></tr>
+      <tr><td>Playbooks</td><td>Codified knowledge in two layers with two owners: a Base playbook holding the provider's expertise for the kind of work, and a Client playbook holding what is known about this client.</td></tr>
+      <tr><td>Register</td><td>The set of records, or findings, each with structured fields, a score, its source, and its confirmation state.</td></tr>
+      <tr><td>Tenant</td><td>The isolated home of all mission content for one provider and client pair.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<figure>
+  <div class="fw">
+  <svg viewBox="0 0 760 370" role="img" aria-labelledby="f2">
+    <title id="f2">A tenant for one provider and client holds the Lead, an optional Operator, the agent roster, the playbooks and the Register. A read-only client view and an optional control plane sit outside it.</title>
+    <rect x="20" y="40" width="470" height="300" class="tint"/>
+    <text x="42" y="68" class="cap">TENANT · ONE PROVIDER × ONE CLIENT</text>
+
+    <rect x="44" y="94" width="18" height="18" class="fill"/>
+    <text x="80" y="108" class="lbl">Lead</text>
+    <text x="80" y="128" class="sub">Accountable; the only role that confirms</text>
+    <rect x="44" y="150" width="18" height="18" class="line"/>
+    <text x="80" y="164" class="lbl">Operator</text>
+    <text x="80" y="184" class="sub">Optional; runs the room, never confirms</text>
+    <circle cx="48" cy="215" r="4.5" class="fill"/><circle cx="60" cy="215" r="4.5" class="fill"/><circle cx="54" cy="226" r="4.5" class="fill"/>
+    <text x="80" y="220" class="lbl">Agent roster</text>
+    <text x="80" y="240" class="sub">Interviewing agent, artifact agents</text>
+    <path d="M53 262 L63 279 L43 279 Z" class="fill"/>
+    <text x="80" y="276" class="lbl">Playbooks</text>
+    <text x="80" y="296" class="sub">Provider's Base at a recorded version; Client</text>
+    <rect x="320" y="94" width="18" height="18" class="line"/>
+    <rect x="324" y="98" width="10" height="10" class="fill"/>
+    <text x="356" y="108" class="lbl">Register</text>
+    <text x="356" y="128" class="sub">Records: fields, score,</text>
+    <text x="356" y="146" class="sub">source, confirmation</text>
+
+    <line x1="490" y1="120" x2="540" y2="120" class="ax" marker-end="url(#arw)"/>
+    <rect x="556" y="111" width="18" height="18" class="line"/>
+    <text x="592" y="125" class="lbl">Client view</text>
+    <text x="592" y="145" class="sub">Read-only, after Commit</text>
+
+    <line x1="490" y1="250" x2="548" y2="250" class="div"/>
+    <rect x="556" y="241" width="18" height="18" class="dline"/>
+    <text x="592" y="255" class="lbl">Control plane</text>
+    <text x="592" y="275" class="sub">Optional; metadata only</text>
+  </svg>
+  </div>
+  <figcaption><b>Figure 2:</b> <i>Anatomy of a Mission Room. All mission content stays inside the tenant. An optional control plane, if connected, sees metadata only.</i></figcaption>
+</figure>
+
+<p>Eight design principles follow from the properties of tacit work.</p>
+<ol class="plain">
+  <li><b>Missions before agents.</b> The workspace is organized around the mission and its stages. Agents serve the mission; they are not the organizing unit.</li>
+  <li><b>A confirmation gate that cannot be removed.</b> No finding becomes authoritative until the Lead confirms it (Section 7).</li>
+  <li><b>Provenance from conversation to record.</b> Every record can be traced to the elicitation session that produced it.</li>
+  <li><b>Expertise as versioned playbooks.</b> What the agents elicit and how findings are scored is written down, versioned and recorded against each mission.</li>
+  <li><b>Isolation per provider and client.</b> Each provider and client pair is a separate tenant, which aligns the technical boundary with the contractual one.</li>
+  <li><b>Ownership follows the knowledge.</b> The client's context belongs to the client and the provider's expertise belongs to the provider, and the system keeps the two apart (Section 6).</li>
+  <li><b>Sovereignty, security and privacy by construction.</b> Where content resides, who can reach it and how personal data is handled are properties of the system, not procedures layered on afterwards (Section 6).</li>
+  <li><b>Explicit client visibility.</b> The client sees the confirmed result in a read-only view at the end, not drafts in progress.</li>
+</ol>
+
+<!-- 6 -->
+<h2>6. Preconditions for Trust: Ownership, Sovereignty, Security and Privacy</h2>
+<p>A Mission Room asks a great deal of both parties. The client is asked to let an agent interview its people and to place its internal knowledge in a system run by someone else. The provider is asked to encode its method, which is the substance of its professional value, in a form that software and agents can apply. Each party will reasonably ask three questions before it agrees: who owns what, where does it reside and who can reach it, and how can that be proved? Unless the answers are clear and enforced by the system, a Mission Room will not be taken seriously, however capable its agents. We treat these as preconditions, and Section 8 states them as invariants.</p>
+
+<h3>6.1 Two kinds of knowledge, two owners</h3>
+<p>Every Mission Room holds two kinds of knowledge. <i>Client context</i> is what the client knows about itself: its documents, what its people said in interviews, the Client playbook, and the client-specific facts recorded in findings. <i>Provider expertise</i> is how the provider knows to assess such a client: its Base playbook, including what to elicit, which fields a finding carries and the rubric for scoring, and its agent configuration for that kind of work. Table 4 assigns each asset an owner.</p>
+
+<div class="tw">
+  <p class="tcap"><b>Table 4:</b> <i>Ownership of the assets in a Mission Room.</i></p>
+  <table>
+    <thead><tr><th style="width:26%">Asset</th><th style="width:15%">Owner</th><th style="width:22%">Where it lives</th><th>Rule</th></tr></thead>
+    <tbody>
+      <tr><td>Client documents and context</td><td>Client</td><td>The tenant</td><td>Never leaves the tenant except by the client's export.</td></tr>
+      <tr><td>Interview recordings and transcripts</td><td>Client</td><td>The tenant</td><td>Retained, exported and deleted on the client's terms.</td></tr>
+      <tr><td>Client playbook</td><td>Client</td><td>One mission in the tenant</td><td>Not visible to any other mission, even of the same provider.</td></tr>
+      <tr><td>Client facts in records</td><td>Client</td><td>The tenant</td><td>Never written into a Base playbook.</td></tr>
+      <tr><td>Base playbook</td><td>Provider</td><td>Provider's library; a read-only copy at a recorded version in each mission</td><td>The client receives outputs judged against it, not the playbook itself, unless the provider chooses to share it.</td></tr>
+      <tr><td>Agent configuration for the kind of work</td><td>Provider</td><td>Provider's library</td><td>Portable to any deployment the provider chooses.</td></tr>
+      <tr><td>Confirmed register and deliverables</td><td>As the engagement contract states</td><td>The tenant; client view</td><td>The system records who confirmed each record and makes the result exportable to both parties as the contract allows.</td></tr>
+      <tr><td>Tenant metadata</td><td>Operator of the deployment</td><td>Optional control plane</td><td>Metadata only: which tenants exist, provisioning and usage. Never content.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<figure>
+  <div class="fw">
+  <svg viewBox="0 0 760 390" role="img" aria-labelledby="f3">
+    <title id="f3">The provider's library holds Base playbooks and agent setup. A Base playbook is read into the tenant at a recorded version. Client facts in the tenant never flow back into the library. Below the tenant sit the read-only client view and a metadata-only control plane.</title>
+    <text x="20" y="34" class="cap">PROVIDER'S LIBRARY</text>
+    <rect x="20" y="48" width="220" height="232" class="thin"/>
+    <path d="M51 76 L62 94 L40 94 Z" class="fill"/>
+    <text x="76" y="90" class="lbl">Base playbooks</text>
+    <text x="76" y="110" class="sub">Method, rubric, versions</text>
+    <path d="M51 146 L62 164 L40 164 Z" class="fill"/>
+    <text x="76" y="160" class="lbl">Agent setup</text>
+    <text x="76" y="180" class="sub">For its kind of work</text>
+    <text x="40" y="258" class="cap">PROVIDER'S IP</text>
+
+    <line x1="240" y1="90" x2="350" y2="90" class="ax" marker-end="url(#arw)"/>
+    <text x="295" y="78" class="sub" text-anchor="middle">read in at vN</text>
+    <line x1="350" y1="160" x2="244" y2="160" class="dline" marker-end="url(#arw)"/>
+    <path d="M288 152 L302 168 M302 152 L288 168" style="stroke:var(--ink);stroke-width:2"/>
+    <text x="295" y="190" class="sub" text-anchor="middle">client facts</text>
+    <text x="295" y="207" class="sub" text-anchor="middle">never flow back</text>
+
+    <text x="360" y="34" class="cap">TENANT · PROVIDER × CLIENT</text>
+    <rect x="360" y="48" width="380" height="232" class="tint"/>
+    <path d="M391 76 L402 94 L380 94 Z" class="line"/>
+    <text x="416" y="90" class="lbl">Base playbook vN</text>
+    <text x="416" y="110" class="sub">Read-only copy for this mission</text>
+    <circle cx="391" cy="155" r="10" class="fill"/>
+    <text x="416" y="160" class="lbl">Client context</text>
+    <text x="416" y="180" class="sub">Documents, transcripts, Client playbook</text>
+    <rect x="382" y="212" width="18" height="18" class="fill"/>
+    <text x="416" y="226" class="lbl">Register</text>
+    <text x="416" y="246" class="sub">Client facts, confirmed by the Lead</text>
+    <text x="380" y="270" class="cap">CLIENT'S DATA</text>
+
+    <rect x="382" y="314" width="18" height="18" class="line"/>
+    <text x="416" y="328" class="lbl">Client view</text>
+    <text x="416" y="348" class="sub">Read-only, after Commit</text>
+    <rect x="582" y="314" width="18" height="18" class="dline"/>
+    <text x="614" y="328" class="lbl">Control plane</text>
+    <text x="614" y="348" class="sub">Metadata only</text>
+  </svg>
+  </div>
+  <figcaption><b>Figure 3:</b> <i>Ownership boundaries. Provider expertise enters a mission as a read-only copy at a recorded version. Client context stays in the tenant and never flows back into the provider's library.</i></figcaption>
+</figure>
+
+<h3>6.2 Learning without leakage</h3>
+<p>Providers will want their method to improve with use, and the research agenda in Section 12 assumes it does. This creates a tension with client ownership: the natural way for an agent system to improve is to learn from the content it processes. A Mission Room resolves the tension by design. The Base playbook improves only when the provider authors a new version, drawing on its own professional judgment. Client facts are recorded in the Client playbook and never written back into the Base playbook. Mission content is not used to train models, whether by the operator of the deployment or by the model providers the agents call. Any reuse of one client's content for another purpose requires that client's explicit consent.</p>
+
+<h3>6.3 Exit in both directions</h3>
+<p>Ownership is only real if each party can leave with what is theirs. A client must be able to export its context and the confirmed results of its missions, and to have its content deleted at the end of the engagement or on request, subject to agreed retention. A provider must be able to export its Base playbooks and agent configuration and take them to another deployment. An open playbook format, and an open-source implementation that any party may run, make the second form of exit credible.</p>
+
+<h3>6.4 Data sovereignty</h3>
+<p>Data sovereignty is the question of who controls data and under which jurisdiction and rules it is held and processed. In tacit work it has three dimensions. The first is location: a client may require that its content, including recordings of its people, remain in a particular country or region, or inside its own environment. The second is control of deployment: a provider or a client may need to run the system itself rather than entrust content to a third-party host. The third is control of processing: every agent call sends content to a model service, and the parties need to know which services receive it, where they run, and on what terms they retain it. A Mission Room must therefore let each deployment choose where content resides and which processing services may receive it, record those choices for each tenant, and ensure that no component, including an optional control plane, moves content outside them.</p>
+
+<h3>6.5 Security</h3>
+<p>Agent-assisted tacit work faces threats that ordinary collaboration tools do not face in the same form.</p>
+<ul class="plain">
+  <li><b>Leakage across clients.</b> A provider that serves competing clients must never let one client's context reach another's mission, including through shared agent memory, caches or search indexes.</li>
+  <li><b>Privileged access by those who run the system.</b> An operator or host should not be able to read mission content except through recorded, justified and limited access.</li>
+  <li><b>Manipulation of agents.</b> Documents and interview answers that agents read can carry instructions intended to make an agent disclose data or take unintended actions, a class of attack known as prompt injection (Greshake et al., 2023). Agents must act only within one tenant's context and only through approved tools, and must treat what they read as data, not as instructions.</li>
+  <li><b>Retention by model services.</b> Content sent to a model provider may be logged or retained unless terms and configuration prevent it.</li>
+  <li><b>Compromised accounts.</b> Leads and Operators can reach sensitive material across a mission and need strong authentication.</li>
+</ul>
+<p>The response is defense in depth: isolation enforced on every data access and tested continuously, least-privilege roles, encryption in transit and at rest, an append-only audit log, and agents whose context and tools are confined to one tenant.</p>
+
+<h3>6.6 Privacy</h3>
+<p>Interviews are conversations with identifiable individuals, often about their work, their colleagues and what is not going well, and voice interviews produce recordings of their voices. Interviewees are data subjects with interests of their own, distinct from those of the provider and of the client organization. A Mission Room must tell interviewees what the agent is, what will be recorded, who will see it and for what purpose, and obtain their consent before the interview begins. It must keep recordings and transcripts only as long as agreed, allow personal data to be found, exported, corrected and deleted, and allow findings to attribute statements to roles rather than names where names are not needed. Data-protection law, such as the EU General Data Protection Regulation (European Union, 2016), adds obligations that depend on where the data subjects and the data are, which is one reason privacy and sovereignty cannot be designed separately.</p>
+
+<h3>6.7 Demonstrating it: SOC 2 and related standards</h3>
+<p>Solving these problems is necessary but not sufficient: the parties must be able to verify the solutions. Clients already require their service providers to demonstrate controls over the data they hold, and the most widely requested demonstration in the United States is a SOC 2 report. A SOC 2 examination, defined by the American Institute of Certified Public Accountants, reports on a service organization's controls against the Trust Services Criteria: security, availability, processing integrity, confidentiality and privacy (AICPA, 2017). A Type I report concerns the design of controls at a point in time; a Type II report also tests their operating effectiveness over a period.</p>
+<p>Two consequences follow. First, it is an organization that is examined, not software. A provider that runs its own Mission Rooms, or a host that runs them on providers' behalf, is the party whose controls are examined; software cannot be "SOC 2 compliant" on its own. Second, software can make those controls straightforward to operate and to evidence, or nearly impossible. A Mission Room should therefore implement the relevant controls as properties of the system and produce the evidence an auditor needs as a by-product of normal operation. Outside the United States, ISO/IEC 27001 certification (ISO/IEC, 2022) and data-protection obligations play a similar role. Table 5 maps each SOC 2 criterion to the capabilities a Mission Room must provide.</p>
+
+<div class="tw">
+  <p class="tcap"><b>Table 5:</b> <i>SOC 2 Trust Services Criteria and the Mission Room capabilities that support them.</i></p>
+  <table>
+    <thead><tr><th style="width:20%">Criterion</th><th>Required capabilities</th></tr></thead>
+    <tbody>
+      <tr><td>Security</td><td>Tenant isolation enforced on every data access and tested continuously; role-based access with least privilege; strong authentication; encryption in transit and at rest; an append-only audit log of access and changes.</td></tr>
+      <tr><td>Availability</td><td>Backups per tenant, tested restoration, and defined recovery objectives that an operator can state and evidence.</td></tr>
+      <tr><td>Processing integrity</td><td>The confirmation gate; provenance from every record to its source session; the playbook version recorded for every mission; a complete trail of drafts, proposed scores, confirmations and overrides.</td></tr>
+      <tr><td>Confidentiality</td><td>Separation of client context from provider expertise; no training on mission content; a control plane limited to metadata; deletion per tenant on request or at the end of retention.</td></tr>
+      <tr><td>Privacy</td><td>Notice and consent for interviewees before an agent interview; retention and deletion rules for recordings and transcripts; export of a tenant's personal data on request.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 7 -->
+<h2>7. Draft, Confirm, Commit</h2>
+<p>"Human in the loop" is too loose a phrase to govern anything. It does not say which human, at which point, with what authority, or what happens if they are absent. We propose a precise pattern for agent-assisted expertise work, which we call Draft, Confirm, Commit.</p>
+
+<h3>7.1 The pattern</h3>
+<p>A mission moves through ordered stages. In the reference configuration these are Discover, Baseline and Commit (Figure 4). In Discover, an interviewing agent conducts one-to-one conversations with the client's people, by voice or text, and stores complete transcripts. From these it drafts candidate records and proposes a score for each against the rubric in the Base playbook. In Baseline, agents assemble the records into a register document, which the Lead reviews. In Commit, the Lead confirms each record, either keeping or overriding the proposed score. Commit ends only when every record is confirmed. The client then receives a read-only view, and the mission produces an audit trail covering every record's source session, proposed score, confirmed score and time of confirmation.</p>
+
+<figure>
+  <div class="fw">
+  <svg viewBox="0 0 760 250" role="img" aria-labelledby="f4">
+    <title id="f4">Discover and Baseline stages in which agents draft, a confirmation gate, and a Commit stage in which the Lead confirms every record, followed by a read-only client view.</title>
+    <text x="20" y="28" class="cap">DRAFT</text>
+    <rect x="20" y="58" width="18" height="18" class="line"/>
+    <text x="52" y="72" class="lbl">Discover</text>
+    <text x="52" y="92" class="sub">Agents interview and draft</text>
+    <line x1="236" y1="67" x2="262" y2="67" class="ax" marker-end="url(#arw)"/>
+    <rect x="276" y="58" width="18" height="18" class="line"/>
+    <text x="308" y="72" class="lbl">Baseline</text>
+    <text x="308" y="92" class="sub">Agents build the register</text>
+    <line x1="484" y1="67" x2="510" y2="67" class="ax"/>
+    <rect x="512" y="30" width="7" height="84" class="fill"/>
+    <text x="516" y="24" class="cap" text-anchor="middle">CONFIRMATION GATE</text>
+    <text x="500" y="140" class="sub" text-anchor="end">May be renamed, never removed</text>
+    <line x1="519" y1="67" x2="540" y2="67" class="ax" marker-end="url(#arw)"/>
+    <rect x="552" y="58" width="18" height="18" class="fill"/>
+    <text x="584" y="72" class="lbl">Commit</text>
+    <text x="584" y="92" class="sub">Lead confirms every record</text>
+    <line x1="561" y1="80" x2="561" y2="182" class="ax" marker-end="url(#arw)"/>
+    <rect x="552" y="194" width="18" height="18" class="line"/>
+    <text x="584" y="208" class="lbl">Client view</text>
+    <text x="584" y="228" class="sub">Read-only, with audit trail</text>
+  </svg>
+  </div>
+  <figcaption><b>Figure 4:</b> <i>The Draft, Confirm, Commit pattern in its reference configuration. Stage names and number vary by kind of work; the gate before Commit does not.</i></figcaption>
+</figure>
+
+<p>The governance invariants of this pattern are stated with the ownership, sovereignty, security and privacy invariants in Section 8. Table 6 summarizes rights by role.</p>
+
+<div class="tw">
+  <p class="tcap"><b>Table 6:</b> <i>Rights by role in a Mission Room.</i></p>
+  <table>
+    <thead><tr><th style="width:34%">Action</th><th>Lead</th><th>Operator</th><th>Agents</th><th>Client</th></tr></thead>
+    <tbody>
+      <tr><td>Run the room and direct agents</td><td class="c">Yes</td><td class="c">Yes, under the Lead</td><td class="c">No</td><td class="c">No</td></tr>
+      <tr><td>Supply client knowledge at setup</td><td class="c">Yes</td><td class="c">Only from what the Lead collected</td><td class="c">No</td><td class="c">Provides it</td></tr>
+      <tr><td>Conduct interviews</td><td class="c">May</td><td class="c">May</td><td class="c">Yes</td><td class="c">Takes part</td></tr>
+      <tr><td>Draft records and propose scores</td><td class="c">Reviews</td><td class="c">Reviews</td><td class="c">Yes</td><td class="c">No</td></tr>
+      <tr><td>Set gate thresholds</td><td class="c">Yes</td><td class="c">No</td><td class="c">No</td><td class="c">No</td></tr>
+      <tr><td>Confirm a record</td><td class="c"><b>Only role</b></td><td class="c">No</td><td class="c">No</td><td class="c">No</td></tr>
+      <tr><td>See confirmed results</td><td class="c">Yes</td><td class="c">Yes</td><td class="c">n/a</td><td class="c">Read-only, after Commit</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>7.2 Provenance</h3>
+<p>Accountability requires that a reader of any confirmed finding can see where it came from and where a person changed the agent's view. Figure 5 shows the chain.</p>
+
+<figure>
+  <div class="fw">
+  <svg viewBox="0 0 760 170" role="img" aria-labelledby="f5">
+    <title id="f5">Interview session, transcript, draft record with proposed score, confirmed record, client view.</title>
+    <circle cx="76" cy="40" r="10" class="line"/>
+    <text x="76" y="84" class="lbl" text-anchor="middle">Interview</text>
+    <text x="76" y="104" class="sub" text-anchor="middle">One-to-one session</text>
+    <line x1="100" y1="40" x2="202" y2="40" class="ax" marker-end="url(#arw)"/>
+    <rect x="219" y="31" width="18" height="18" class="line"/>
+    <text x="228" y="84" class="lbl" text-anchor="middle">Transcript</text>
+    <text x="228" y="104" class="sub" text-anchor="middle">Stored in full</text>
+    <line x1="252" y1="40" x2="354" y2="40" class="ax" marker-end="url(#arw)"/>
+    <rect x="371" y="31" width="18" height="18" class="dline"/>
+    <text x="380" y="84" class="lbl" text-anchor="middle">Draft record</text>
+    <text x="380" y="104" class="sub" text-anchor="middle">Proposed score</text>
+    <line x1="404" y1="40" x2="506" y2="40" class="ax" marker-end="url(#arw)"/>
+    <rect x="523" y="31" width="18" height="18" class="fill"/>
+    <text x="532" y="84" class="lbl" text-anchor="middle">Confirmed record</text>
+    <text x="532" y="104" class="sub" text-anchor="middle">Kept or overridden</text>
+    <line x1="556" y1="40" x2="658" y2="40" class="ax" marker-end="url(#arw)"/>
+    <rect x="675" y="31" width="18" height="18" class="line"/>
+    <text x="684" y="84" class="lbl" text-anchor="middle">Client view</text>
+    <text x="684" y="104" class="sub" text-anchor="middle">Read-only</text>
+    <text x="380" y="146" class="cap" text-anchor="middle">BY AN AGENT</text>
+    <text x="532" y="146" class="cap" text-anchor="middle">BY THE LEAD, NAMED</text>
+  </svg>
+  </div>
+  <figcaption><b>Figure 5:</b> <i>Provenance from conversation to record. Dashed: agent output, not yet authoritative. Filled: confirmed by a named person.</i></figcaption>
+</figure>
+
+<h3>7.3 Gates and rank</h3>
+<p>Scoring in tacit work answers two different questions: does a finding matter enough to act on, and in what order should findings be addressed? The pattern separates them. <i>Gate</i> dimensions decide whether a record passes a threshold set by the Lead. <i>Rank</i> dimensions order the records that pass. The reference configuration uses Risk and Impact as gates, and Evidence and Reach as rank. Each kind of work substitutes its own dimensions in its Base playbook; the separation of gate from rank is what persists.</p>
+
+<h3>7.4 Expertise as versioned playbooks</h3>
+<p>A Base playbook holds the provider's expertise for a kind of work, written before any client engagement: what the interviewing agent should elicit, which fields a finding carries, and the rubric against which it is scored. Every mission of that kind starts from the same Base playbook, at a recorded version. A Client playbook holds what is known about one client, assembled at setup and extended during Discover, and is visible only inside that mission. Treating codified expertise this way makes it reviewable and improvable in the way source code is, makes it possible to ask which version of the expertise a given finding was judged against, and keeps the provider's intellectual property distinct from the client's information.</p>
+
+<h3>7.5 Related patterns</h3>
+<p>Draft, Confirm, Commit has close relatives. Software teams require review before a change is merged. Banks apply the four-eyes principle, in which a second person approves a transaction prepared by a first. Clinical documentation requires sign-off by a responsible clinician. Editorial work separates the writer from the editor. Each separates preparation from authorization and records who authorized. What is different here is that the preparer is often an agent, that the volume of prepared items can be high, and that the preparer can make errors that are fluent and plausible. Recent work on agent oversight proposes tiers of human involvement calibrated to stakes and reversibility (Bahidika, 2026), and shows formally that accountability cannot be preserved once agent autonomy passes a threshold (Tibebu and Shemtaga, 2026). Draft, Confirm, Commit is a domain-specific choice within that space: it keeps judgments about findings below that threshold by construction.</p>
+
+<h3>7.6 Failure modes</h3>
+<p>The principal risk is that confirmation decays into rubber-stamping. Automation bias and complacency are well documented when people supervise reliable automated systems (Parasuraman and Manzey, 2010), and a gate that is always passed provides little assurance. Bainbridge (1983) observed that the more capable automation becomes, the harder the remaining human role. Passi and Singh (2026) argue that human-in-the-loop review is on its own an insufficient form of oversight for agents, and that auditing, monitoring and steering are also needed. We agree: the gate is necessary but not sufficient. Override rates per field, time spent per record, and periodic re-examination of a sample of confirmed records against their sources are all observable within the pattern and are proposed as hypotheses in Section 12.</p>
+
+<!-- 8 -->
+<h2>8. Invariants of a Mission Room</h2>
+<p>We define a Mission Room by what may not change. A system that lacks any invariant in Table 7 may be a useful tool, but it is not a Mission Room in the sense of this paper, and we argue it will not earn the trust of both parties to tacit work. The invariants fall into four groups. Governance invariants make accountability explicit. Ownership invariants keep the client's context and the provider's expertise apart and under their owners' control. Sovereignty invariants keep content where the parties have agreed and in the hands of services they have approved. Security and privacy invariants protect content and the people it describes, and make that protection demonstrable.</p>
+
+<div class="tw">
+  <p class="tcap"><b>Table 7:</b> <i>Invariants of a Mission Room. Every configuration, and every fork of an implementation, must hold all of them.</i></p>
+  <table>
+    <thead><tr><th style="width:8%">ID</th><th>Invariant</th></tr></thead>
+    <tbody>
+      <tr class="grp"><td colspan="2">Governance</td></tr>
+      <tr><td class="id">G1</td><td>Every mission has exactly one setup stage and exactly one Commit stage. Stages may be renamed or added; the Commit stage may not be removed.</td></tr>
+      <tr><td class="id">G2</td><td>Only the Lead confirms records and sets the thresholds used for gating.</td></tr>
+      <tr><td class="id">G3</td><td>A confirmed record names who confirmed it, when, and whether the proposed score was kept or overridden.</td></tr>
+      <tr><td class="id">G4</td><td>Commit cannot end while any record is unconfirmed.</td></tr>
+      <tr><td class="id">G5</td><td>Every record keeps a link to the elicitation session it came from.</td></tr>
+      <tr class="grp"><td colspan="2">Ownership</td></tr>
+      <tr><td class="id">O1</td><td>Client context, including documents, transcripts, the Client playbook and client facts in records, lives only in that provider and client's tenant and is controlled by the client.</td></tr>
+      <tr><td class="id">O2</td><td>The Base playbook is the provider's. It enters a mission as a read-only copy at a recorded version, and the client receives outputs judged against it rather than the playbook itself, unless the provider chooses otherwise.</td></tr>
+      <tr><td class="id">O3</td><td>Client facts are never written into a Base playbook. A Base playbook changes only when the provider authors a new version.</td></tr>
+      <tr><td class="id">O4</td><td>Mission content is not used to train models, by the operator of the deployment or by any model provider the agents call.</td></tr>
+      <tr><td class="id">O5</td><td>A client can export and delete its content; a provider can export its playbooks and agent configuration.</td></tr>
+      <tr><td class="id">O6</td><td>A control plane, if connected, sees metadata only, never mission content.</td></tr>
+      <tr class="grp"><td colspan="2">Sovereignty</td></tr>
+      <tr><td class="id">V1</td><td>Each deployment chooses where tenant content resides, the choice is recorded for each tenant, and no component moves content outside it.</td></tr>
+      <tr><td class="id">V2</td><td>Content is sent only to processing services, including model providers, approved for that tenant.</td></tr>
+      <tr><td class="id">V3</td><td>A provider or a client can run the complete system in an environment it controls.</td></tr>
+      <tr class="grp"><td colspan="2">Security and privacy</td></tr>
+      <tr><td class="id">S1</td><td>Tenant isolation is enforced on every data access, including agent memory, caches and indexes, and verified by tests that run continuously.</td></tr>
+      <tr><td class="id">S2</td><td>Access is role-based and least-privilege, with strong authentication; access by those who run the system is recorded and limited.</td></tr>
+      <tr><td class="id">S3</td><td>An append-only audit log records access, drafts, confirmations, overrides, exports and deletions.</td></tr>
+      <tr><td class="id">S4</td><td>Content is encrypted in transit and at rest.</td></tr>
+      <tr><td class="id">S5</td><td>Agents act only within one tenant's context and through approved tools, and treat content they read as data, not instructions.</td></tr>
+      <tr><td class="id">S6</td><td>Interviewees receive notice and give consent before an agent interview; their personal data can be found, exported, corrected and deleted.</td></tr>
+      <tr><td class="id">S7</td><td>Retention and deletion rules are defined per tenant and enforced by the system.</td></tr>
+      <tr><td class="id">S8</td><td>The evidence an auditor needs, such as access logs, isolation test results and deletion records, can be produced from the system.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<p>The governance invariants concern the work. The ownership, sovereignty, security and privacy invariants concern the parties and the people whose knowledge the mission holds. We place them on equal footing deliberately: a Mission Room with a sound confirmation gate but a porous boundary between client context and provider method fails the parties as surely as one with no gate at all.</p>
+
+<!-- 9 -->
+<h2>9. After the Pyramid</h2>
+<p>Professional service firms have long been organized as pyramids: a few senior partners, more managers, and many junior staff. Maister (1982) described how the ratio between levels, or leverage, drives the economics of such firms. The pyramid does two jobs. It produces leverage, letting scarce senior judgment be applied across many engagements. And it produces the next generation of seniors, through years of supervised work on real problems.</p>
+<p>Others have described how AI reshapes this structure. Duncan, Anderson and Saviano (2025) argue that consulting firms are moving from a pyramid to an "obelisk" with fewer layers, organized around AI facilitators, engagement architects and client leaders. We do not claim the move away from the pyramid as our contribution. Our contribution is narrower: a mission-level form of that structure, with a fixed pair of people, confirmation rights held by one of them, and a specific mechanism for apprenticeship.</p>
+
+<figure>
+  <div class="fw">
+  <svg viewBox="0 0 760 310" role="img" aria-labelledby="f6">
+    <title id="f6">Left, a pyramid of partner, managers, consultants and analysts. Right, a Lead and an Operator with a row of agents below.</title>
+    <path d="M180 20 L320 240 H40 Z" class="line"/>
+    <line x1="148" y1="70" x2="212" y2="70" class="thin"/>
+    <line x1="116" y1="120" x2="244" y2="120" class="thin"/>
+    <line x1="84" y1="172" x2="276" y2="172" class="thin"/>
+    <text x="180" y="58" class="sub" text-anchor="middle">Partner</text>
+    <text x="180" y="102" class="sub" text-anchor="middle">Managers</text>
+    <text x="180" y="152" class="sub" text-anchor="middle">Consultants</text>
+    <text x="180" y="212" class="sub" text-anchor="middle">Analysts</text>
+    <text x="180" y="288" class="cap" text-anchor="middle">LEVERAGE THROUGH HEADCOUNT</text>
+
+    <line x1="380" y1="20" x2="380" y2="270" class="div"/>
+
+    <rect x="470" y="48" width="44" height="44" class="fill"/>
+    <text x="532" y="66" class="lbl">Lead</text>
+    <text x="532" y="86" class="sub">Accountable; confirms</text>
+    <rect x="470" y="112" width="44" height="44" class="line"/>
+    <text x="532" y="130" class="lbl">Operator</text>
+    <text x="532" y="150" class="sub">Runs the room and agents</text>
+    <circle cx="460" cy="206" r="9" class="fill"/>
+    <circle cx="492" cy="206" r="9" class="fill"/>
+    <circle cx="524" cy="206" r="9" class="fill"/>
+    <circle cx="556" cy="206" r="9" class="fill"/>
+    <circle cx="588" cy="206" r="9" class="fill"/>
+    <circle cx="620" cy="206" r="9" class="fill"/>
+    <text x="540" y="244" class="sub" text-anchor="middle">Agent roster</text>
+    <text x="540" y="288" class="cap" text-anchor="middle">LEVERAGE THROUGH AGENTS</text>
+  </svg>
+  </div>
+  <figcaption><b>Figure 6:</b> <i>Two shapes of delivery. On the right, the human side is a fixed pair whose capacity grows with the capability of the agent roster rather than with headcount.</i></figcaption>
+</figure>
+
+<h3>9.1 The Lead and Operator model</h3>
+<p>We propose that a Mission Room is staffed by a fixed pair. The <i>Lead</i> is accountable for the mission end to end: scoping it, holding the client relationship, setting gate thresholds and confirming every record. The <i>Operator</i> is optional. The Operator runs the room and its agents under the Lead's direction and never confirms. Without an Operator, the Lead does this work. Around the pair sits the agent roster, which does the elicitation, transcription, first drafting, first-pass scoring and document assembly that once occupied the lower levels of the pyramid.</p>
+<p>The design premise is that as agents improve, the senior time a mission needs should fall, and the human side of delivery should stay a fixed pair rather than grow with scope. Whether this holds is an empirical question (Section 12). If it does, the model favors small senior practices, independent advisors and in-house expert teams, which can offer senior attention on engagements that a pyramid could not staff economically. The ownership invariants matter particularly to such practices, whose method is often their principal asset.</p>
+
+<h3>9.2 The Operator as apprentice</h3>
+<p>The concern that AI removes the junior work through which expertise is learned is serious. We suggest the Operator role can partly answer it. An Operator works inside every stage of a mission: configuring and tuning the agents, reading the transcripts, seeing each draft, and observing every confirmation and every override the Lead makes. This is close to the conditions that the expertise literature associates with learning judgment: repeated exposure to real cases, with feedback from an expert, on the decisions that matter (Klein, 1998; Leonard and Swap, 2005). A career path from Operator to Lead is a natural consequence. A recent workflow-level framework for human-agent collaboration likewise treats learning and career advancement as conditions for genuine augmentation (CIVIC-AI Collaboration, 2026). Whether Operators in fact acquire judgment faster than juniors in a pyramid is testable (H5 in Section 12).</p>
+
+<h3>9.3 Risks</h3>
+<p>The model has three evident risks. The Lead can become a bottleneck, since only the Lead confirms. Operators may learn to operate tools without learning to judge. And clients may trust a result produced by fewer people less, even if it is better evidenced. Each can be observed: time to Commit, agreement between Operator predictions and Lead decisions over time, and client acceptance of confirmed findings.</p>
+
+<!-- 10 -->
+<h2>10. Reference Implementation: Tacit Chassis</h2>
+<p>Tacit Chassis is an open-source implementation of the Mission Room, intended to be specialized for different kinds of tacit work. It is to be released under the Apache License 2.0. At the time of writing it is under active development and not yet public. Its first public release, version 0.1, is defined as the point at which the reference mission configuration runs end to end: Discover, Baseline and Commit, with the Lead confirming every record and the client receiving a read-only view. Project information and experimental builds are published at <a href="https://tacit.theoremlabs.io">tacit.theoremlabs.io</a>.</p>
+
+<h3>10.1 Structure</h3>
+<p>The implementation has two layers. A set of core packages holds the mission and stage state machine, the Register, the scoring engine and the confirmation rules. A reference application, the Studio, is a deployable workspace built on those packages. Adopters may deploy the application, fork it, or use the packages directly. The domain package is pure, with no input, output or framework dependencies, so the governance invariants can be enforced in code that is tested in isolation. Every external vendor, including model providers, storage and voice services, sits behind a port with interchangeable adapters, so that no vendor is built into the core and a deployment can choose storage, voice and model providers whose location and terms satisfy invariants O4 and V2. Open-source platforms for AI-led qualitative interviews already exist for research use (Geiecke and Jaravel, 2025). The Chassis differs in applying interviewing inside commercial missions, under the invariants of Section 8.</p>
+
+<h3>10.2 How Tacit Chassis addresses ownership, sovereignty, security and privacy</h3>
+<p>Section 6 set out problems that any Mission Room must solve. Tacit Chassis is our proposed solution to them. Table 8 maps each problem to the approach the Chassis takes and the invariants it serves, with the state of each at the time of writing.</p>
+
+<div class="tw">
+  <p class="tcap"><b>Table 8:</b> <i>How Tacit Chassis addresses the preconditions of Section 6.</i></p>
+  <table>
+    <thead><tr><th style="width:20%">Problem</th><th>Tacit Chassis approach</th><th style="width:12%">Invariants</th><th style="width:17%">State</th></tr></thead>
+    <tbody>
+      <tr><td>Client context versus provider expertise</td><td>Two playbook types; the Base playbook is never altered by client details; the Client playbook is scoped to one mission; one tenant per provider and client pair</td><td class="c">O1 to O3</td><td>Specified</td></tr>
+      <tr><td>Isolation between clients</td><td>A tenant context on every repository call; an isolation test suite that runs on every change</td><td class="c">S1</td><td>Implemented</td></tr>
+      <tr><td>Location and deployment</td><td>Self-hostable under the Apache License 2.0, so a provider or client can run it in its own environment and region; an optional control plane that sees metadata only</td><td class="c">V1, V3, O6</td><td>Specified</td></tr>
+      <tr><td>Control of processing</td><td>Every vendor behind a port, so each deployment chooses its storage, voice and model providers and their terms</td><td class="c">V2, O4</td><td>Architecture decided</td></tr>
+      <tr><td>Accountability and audit</td><td>Only the Lead confirms; an audit trail of every record's source session, proposed score, confirmed score and confirmation time</td><td class="c">G2, G3, S3</td><td>Specified</td></tr>
+      <tr><td>Exit</td><td>An open playbook format; client export and deletion per tenant</td><td class="c">O5, S7</td><td>Format specified; export and deletion in development</td></tr>
+      <tr><td>Protection of content</td><td>Encryption in transit and at rest; strong authentication; recorded access by operators</td><td class="c">S2, S4</td><td>In development</td></tr>
+      <tr><td>Agent safety</td><td>Agents confined to one tenant's context and approved tools</td><td class="c">S5</td><td>In development</td></tr>
+      <tr><td>Interviewee privacy</td><td>Notice and consent before interviews; retention, access and deletion of personal data</td><td class="c">S6</td><td>In development</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<p>The Chassis is designed so that an organization operating it, whether a provider running it itself or a host running it for providers, can meet the SOC 2 Trust Services Criteria and produce the evidence an examination requires. No examination has yet been performed, and, as Section 6.7 explains, one would be of that operating organization rather than of the software.</p>
+
+<h3>10.3 Extension points</h3>
+<p>A specialization of the Chassis for a kind of work is called a fork. Table 9 lists what a fork may change and what it may not. The right-hand column restates the invariants of Section 8 in terms of what a fork could otherwise be tempted to alter.</p>
+
+<div class="tw">
+  <p class="tcap"><b>Table 9:</b> <i>Extension points and invariants for forks of the reference implementation.</i></p>
+  <table>
+    <thead><tr><th>Aspect</th><th>A fork may</th><th>A fork may not</th></tr></thead>
+    <tbody>
+      <tr><td>Stages</td><td>Rename stages; add stages</td><td>Remove the Commit stage, or have other than one setup and one Commit stage (G1)</td></tr>
+      <tr><td>Roles</td><td>Rename Lead and Operator; define qualifications</td><td>Let any role other than the Lead confirm records or set thresholds (G2)</td></tr>
+      <tr><td>Register</td><td>Define the fields a record carries</td><td>Drop a record's source link or confirmation details (G3, G5)</td></tr>
+      <tr><td>Scoring</td><td>Replace gate and rank dimensions and rubrics</td><td>Remove the Lead's ability to override a proposed score (G3)</td></tr>
+      <tr><td>Agents</td><td>Add, replace or tune agents</td><td>Let agent output become authoritative without confirmation, or send mission content for model training (G4, O4, S5)</td></tr>
+      <tr><td>Playbooks</td><td>Supply its own Base playbooks</td><td>Write client facts into a Base playbook, or run a mission without recording the playbook version (O2, O3)</td></tr>
+      <tr><td>Tenancy and hosting</td><td>Choose its hosting, region, control plane and model providers</td><td>Share content across tenants or with a control plane; send content to services not approved for the tenant; weaken isolation tests (O1, O6, V1, V2, S1)</td></tr>
+      <tr><td>Data rights</td><td>Set retention periods that its contracts require</td><td>Remove client export and deletion, interviewee consent, or provider playbook export (O5, S6, S7)</td></tr>
+      <tr><td>Controls</td><td>Add controls</td><td>Disable audit logging, encryption, role-based access or audit evidence (S2 to S4, S8)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 11 -->
+<h2>11. Generality Across Industries</h2>
+<p>The claim that the Mission Room is a category, rather than a tool for one engagement type, rests on whether one base serves tacit work in different industries by changing only what a fork may change (Table 9): stage names, record fields, scoring dimensions, agents and playbooks. The pattern recurs wherever a provider must understand how a client actually operates before it can deliver: a fintech onboarding a bank, a RegTech vendor taking a regulated firm live, an IT services firm planning a migration, a management consultant redesigning an operating model. In each case the decisive knowledge sits with the client's people, the provider brings a method, and a named professional must stand behind the result.</p>
+<p>Figure 7 and Table 10 give examples. Only the advisory configuration, for AI adoption, has been specified in detail. The others are illustrations that have not been built.</p>
+
+<figure>
+  <div class="fw">
+  <svg viewBox="0 0 760 360" role="img" aria-labelledby="f7">
+    <title id="f7">Tacit Chassis at the center, with Mission Rooms for advisory firms, management consulting, transaction advisory, fintech, RegTech, IT services and economic development around it.</title>
+    <line x1="232" y1="72" x2="340" y2="150" class="div"/>
+    <line x1="232" y1="162" x2="340" y2="162" class="div"/>
+    <line x1="232" y1="252" x2="340" y2="174" class="div"/>
+    <line x1="420" y1="150" x2="476" y2="72" class="div"/>
+    <line x1="420" y1="162" x2="476" y2="162" class="div"/>
+    <line x1="420" y1="174" x2="476" y2="252" class="div"/>
+    <line x1="380" y1="252" x2="380" y2="290" class="div"/>
+
+    <rect x="340" y="130" width="80" height="64" class="fill"/>
+    <text x="380" y="218" class="lbl" text-anchor="middle">Tacit Chassis</text>
+
+    <rect x="22" y="58" width="18" height="18" class="line"/>
+    <text x="54" y="72" class="lbl">Fintech</text>
+    <text x="54" y="92" class="sub">Bank onboarding discovery</text>
+    <rect x="22" y="148" width="18" height="18" class="line"/>
+    <text x="54" y="162" class="lbl">RegTech</text>
+    <text x="54" y="182" class="sub">Third-party risk go-live</text>
+    <rect x="22" y="238" width="18" height="18" class="line"/>
+    <text x="54" y="252" class="lbl">IT services</text>
+    <text x="54" y="272" class="sub">Migration discovery</text>
+
+    <rect x="486" y="58" width="18" height="18" class="fill"/>
+    <text x="518" y="72" class="lbl">Advisory firms</text>
+    <text x="518" y="92" class="sub">AI adoption assessment</text>
+    <rect x="486" y="148" width="18" height="18" class="line"/>
+    <text x="518" y="162" class="lbl">Management consulting</text>
+    <text x="518" y="182" class="sub">Operating-model discovery</text>
+    <rect x="486" y="238" width="18" height="18" class="line"/>
+    <text x="518" y="252" class="lbl">Transaction advisory</text>
+    <text x="518" y="272" class="sub">Commercial due diligence</text>
+
+    <rect x="292" y="296" width="18" height="18" class="line"/>
+    <text x="324" y="310" class="lbl">Economic development</text>
+    <text x="324" y="330" class="sub">Site assessment</text>
+
+    <rect x="22" y="320" width="12" height="12" class="fill"/>
+    <text x="42" y="331" class="cap">SPECIFIED</text>
+    <rect x="132" y="320" width="12" height="12" class="line"/>
+    <text x="152" y="331" class="cap">ILLUSTRATIVE</text>
+  </svg>
+  </div>
+  <figcaption><b>Figure 7:</b> <i>One Chassis, many Mission Rooms. Each industry fork changes the playbook, record fields, scoring and stage names, and keeps the invariants of Section 8.</i></figcaption>
+</figure>
+
+<div class="tw">
+  <p class="tcap"><b>Table 10:</b> <i>Mission Rooms by industry. Only the first row has been specified in detail; the others are illustrative.</i></p>
+  <table>
+    <thead><tr><th style="width:15%">Industry</th><th style="width:19%">Provider and client</th><th style="width:17%">Example mission</th><th>Tacit knowledge to draw out</th><th>What the Lead confirms</th></tr></thead>
+    <tbody>
+      <tr><td>Advisory firms</td><td>Advisory firm; enterprise</td><td>AI adoption assessment</td><td>Which AI tools staff actually use, for what, and with what safeguards</td><td>Each AI tool or use case, with its owner, controls and score</td></tr>
+      <tr><td>Management consulting</td><td>Strategy or operations consultant; mid-size firm</td><td>Operating-model discovery</td><td>How work really flows and where decisions stall</td><td>Each process as practiced, set against how it is documented</td></tr>
+      <tr><td>IT services</td><td>Systems integrator; enterprise IT department</td><td>Application migration discovery</td><td>Dependencies and workarounds known only to the people who run the systems</td><td>Each system, with its real dependencies, owner and migration risk</td></tr>
+      <tr><td>Fintech</td><td>Fintech platform's implementation team; bank or credit union</td><td>Customer onboarding and integration discovery</td><td>How the client's operations and exceptions actually run</td><td>Each process step or control gap, with its owner and severity, before go-live</td></tr>
+      <tr><td>RegTech</td><td>RegTech vendor or implementation partner; regulated firm</td><td>Third-party risk program go-live; examination readiness</td><td>Which vendors matter, who owns each relationship, and what evidence exists</td><td>Each third-party relationship or control, with its owner, evidence and readiness</td></tr>
+      <tr><td>Transaction advisory</td><td>Advisory boutique; acquirer or investor</td><td>Commercial and operational due diligence</td><td>What the target's managers know but have not written down</td><td>Each finding, with its evidence and materiality</td></tr>
+      <tr><td>Economic development</td><td>Development organization; prospective employer</td><td>Site assessment</td><td>Local constraints known to officials, utilities and employers</td><td>Each site factor or constraint, with local expert evidence</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<p>Across these examples the stages change little. Most use Setup, Discover, Baseline and Commit, and a fork may rename a stage to suit its work, such as a Readiness review in a go-live mission. What changes is the Base playbook: what the interviewing agent asks, which fields a record carries, and how it is scored. That is where each industry's expertise lives, and where the provider's intellectual property sits.</p>
+
+<!-- 12 -->
+<h2>12. Research Agenda</h2>
+<p>The Mission Room produces structured traces of tacit work: transcripts, drafts, proposed scores, confirmations and overrides, all tied to playbook versions. With consent and aggregation, and consistent with the ownership invariants, these traces support studies that are difficult to run on engagements conducted with general tools. We state seven hypotheses.</p>
+<ol class="plain">
+  <li><b>H1.</b> Leads override a stable and measurable share of agent-proposed scores, and that share differs by kind of work and by record field. <i>Measure:</i> override rate per field and per mission type.</li>
+  <li><b>H2.</b> Missions reach Commit faster than comparable engagements run with general tools, without lower quality of confirmed findings. <i>Measure:</i> time to Commit; blind expert rating of confirmed registers against matched engagements.</li>
+  <li><b>H3.</b> Evidence elicited in interviews changes conclusions that document-based analysis alone would reach. <i>Measure:</i> share of confirmed records with no documentary source.</li>
+  <li><b>H4.</b> On some topics, people disclose more operational detail to an agent interviewer than to a human one. <i>Measure:</i> matched interview designs, building on prior work showing greater disclosure to virtual interviewers (Lucas et al., 2014) and on randomized comparisons of AI and human interviewers (Wuttke et al., 2024).</li>
+  <li><b>H5.</b> Operators converge toward Lead-level judgment faster than junior staff in a traditional pyramid. <i>Measure:</i> agreement between Operator predictions and Lead confirmations over successive missions.</li>
+  <li><b>H6.</b> Base playbooks improve with use through provider-authored versions, and most of a playbook carries over from one mission to the next. <i>Measure:</i> differences between playbook versions; reuse across missions.</li>
+  <li><b>H7.</b> Explicit ownership terms enforced by the system increase clients' willingness to take part. <i>Measure:</i> interview consent and completion rates, and time to client approval, with and without explicit ownership terms.</li>
+</ol>
+<p>Tests of H1 and H6 are possible with data from routine use. H2, H4, H5 and H7 require comparison groups and are better suited to designed studies with academic partners.</p>
+
+<!-- 13 -->
+<h2>13. Limitations</h2>
+<p>This paper is a design proposal. It reports no field data, and its central claims are hypotheses. The authors develop the reference implementation and have an interest in its adoption; independent evaluation is needed. Agent interviewers may change what people say, in either direction, and the effect may vary by culture, profession and topic. The pattern assumes that a single accountable Lead is appropriate; some engagements distribute accountability across several people. Ownership of deliverables is ultimately settled by contract and law; software can enforce boundaries but does not determine legal title. Sovereignty and privacy obligations differ by jurisdiction. SOC 2 is a United States standard, and providers elsewhere will face other regimes, such as ISO/IEC 27001 and data-protection law, which the invariants support but do not by themselves satisfy. Finally, the boundary between tacit and explicit knowledge is not sharp (Collins, 2010), and some work we describe as tacit may be better served by improving documentation than by structured elicitation.</p>
+
+<!-- 14 -->
+<h2>14. Conclusion</h2>
+<p>Expertise engagements between providers and their clients are a distinct kind of collaboration. They cross an organizational boundary, rest on knowledge drawn out of people, end in judgments, carry accountability, and are bounded in time. General-purpose tools serve their conversation and their files but not their structure. AI agents now make it practical to do much of the elicitation and drafting by machine, which makes the absence of structure more costly: without it, provenance, accountability and ownership erode.</p>
+<p>We have proposed the Mission Room as the missing category, with two preconditions for trust: the client's context remains the client's and the provider's expertise remains the provider's, and the system solves for data sovereignty, security and privacy in ways an operator can demonstrate under standards such as SOC 2. We have proposed Draft, Confirm, Commit as its governing pattern, a consolidated set of invariants, and the Lead and Operator pair as an operating model that follows the pyramid. The central commitments are simple. Agents draft, a named person confirms, and each party keeps what is theirs. Whether these commitments improve the speed, quality and transmission of expert judgment is an empirical question, and Section 12 sets out how it can be answered. We welcome comments, critique and collaboration at research@theoremlabs.io, and project information is at tacit.theoremlabs.io.</p>
+
+<hr class="hr">
+<h2 style="margin-top:0">References</h2>
+<div class="refs">
+  <p>AICPA (2017). <i>2017 Trust Services Criteria for Security, Availability, Processing Integrity, Confidentiality, and Privacy</i> (with revised points of focus, 2022). American Institute of Certified Public Accountants.</p>
+  <p>Bahidika, O. (2026). Agentic accountability: "The buck stops where?" Ethical frameworks for human oversight of autonomous AI systems. <i>International Journal of Advanced Computer Science and Applications</i>, 17(5).</p>
+  <p>Bainbridge, L. (1983). Ironies of automation. <i>Automatica</i>, 19(6), 775–779.</p>
+  <p>Cho, M., Funk, R. J., Gupta, A., and Yang, M. (2026). Large language models explain experts better than experts themselves. arXiv:2608.07488.</p>
+  <p>CIVIC-AI Collaboration (2026). When does AI augment work? A workflow-level framework for human-agent collaboration. arXiv:2609.12482.</p>
+  <p>Collins, H. (2010). <i>Tacit and Explicit Knowledge</i>. University of Chicago Press.</p>
+  <p>Crandall, B., Klein, G., and Hoffman, R. R. (2006). <i>Working Minds: A Practitioner's Guide to Cognitive Task Analysis</i>. MIT Press.</p>
+  <p>Dell'Acqua, F., McFowland, E., Mollick, E. R., Lifshitz-Assaf, H., Kellogg, K., Rajendran, S., Krayer, L., Candelon, F., and Lakhani, K. R. (2023). Navigating the jagged technological frontier: Field experimental evidence of the effects of AI on knowledge worker productivity and quality. Harvard Business School Working Paper 24-013.</p>
+  <p>Dell'Acqua, F., Ayoubi, C., Lifshitz-Assaf, H., Sadun, R., Mollick, E. R., Mollick, L., Han, Y., Goldman, J., Nair, H., Taub, S., and Lakhani, K. R. (2025). The cybernetic teammate: A field experiment on generative AI reshaping teamwork and expertise. NBER Working Paper 33641.</p>
+  <p>Duncan, D., Anderson, T., and Saviano, J. (2025). AI is changing the structure of consulting firms. <i>Harvard Business Review</i>.</p>
+  <p>European Union (2016). Regulation (EU) 2016/679 of the European Parliament and of the Council (General Data Protection Regulation). <i>Official Journal of the European Union</i>, L 119, 1–88.</p>
+  <p>Gartner (2026). Execute continuous knowledge engineering to improve agentic AI. Gartner Research, July 2026.</p>
+  <p>Geiecke, F., and Jaravel, X. (2025). Conversations at scale: Robust AI-led interviews with a simple open-source platform. Working paper, London School of Economics.</p>
+  <p>Greshake, K., Abdelnabi, S., Mishra, S., Endres, C., Holz, T., and Fritz, M. (2023). Not what you've signed up for: Compromising real-world LLM-integrated applications with indirect prompt injection. In <i>Proceedings of the 16th ACM Workshop on Artificial Intelligence and Security</i>, 79–90.</p>
+  <p>ISO/IEC (2022). <i>ISO/IEC 27001:2022 Information security, cybersecurity and privacy protection: Information security management systems: Requirements</i>. International Organization for Standardization.</p>
+  <p>Klein, G. (1998). <i>Sources of Power: How People Make Decisions</i>. MIT Press.</p>
+  <p>Leonard, D., and Swap, W. (2005). <i>Deep Smarts: How to Cultivate and Transfer Enduring Business Wisdom</i>. Harvard Business School Press.</p>
+  <p>Lucas, G. M., Gratch, J., King, A., and Morency, L.-P. (2014). It's only a computer: Virtual humans increase willingness to disclose. <i>Computers in Human Behavior</i>, 37, 94–100.</p>
+  <p>Maister, D. H. (1982). Balancing the professional service firm. <i>Sloan Management Review</i>, 24(1), 15–29.</p>
+  <p>Mollick, E. (2024). <i>Co-Intelligence: Living and Working with AI</i>. Portfolio.</p>
+  <p>Nonaka, I., and Takeuchi, H. (1995). <i>The Knowledge-Creating Company</i>. Oxford University Press.</p>
+  <p>Parasuraman, R., and Manzey, D. H. (2010). Complacency and bias in human use of automation: An attentional integration. <i>Human Factors</i>, 52(3), 381–410.</p>
+  <p>Passi, S., and Singh, R. (2026). <i>The Oversight Fallacy: Why AI Agents Require More than Humans-in-the-Loop</i>. Data &amp; Society.</p>
+  <p>Polanyi, M. (1966). <i>The Tacit Dimension</i>. University of Chicago Press.</p>
+  <p>Schmidt, K., and Bannon, L. (1992). Taking CSCW seriously: Supporting articulation work. <i>Computer Supported Cooperative Work</i>, 1(1–2), 7–40.</p>
+  <p>Shneiderman, B. (2020). Human-centered artificial intelligence: Reliable, safe and trustworthy. <i>International Journal of Human–Computer Interaction</i>, 36(6), 495–504.</p>
+  <p>Tibebu, H., and Shemtaga, H. (2026). The accountability horizon: An impossibility theorem for governing human-agent collectives. arXiv:2604.07778.</p>
+  <p>Tung, T., and Roussière, P. (2026). Tacit knowledge is your next competitive moat. <i>California Management Review</i> Insights, March 2026.</p>
+  <p>Wuttke, A., Aßenmacher, M., Klamm, C., Lang, M. M., Würschinger, Q., and Kreuter, F. (2024). AI conversational interviewing: Transforming surveys with LLMs as adaptive interviewers. arXiv:2410.01824.</p>
+  <p>Zuin, G., Mastelini, S., Loures, T., and Veloso, A. (2025). Leveraging large language models for tacit knowledge discovery in organizational contexts. In <i>Proceedings of the International Joint Conference on Neural Networks (IJCNN)</i>. arXiv:2507.03811.</p>
+</div>
+
+<hr class="hr">
+<p class="small"><b>Disclosure.</b> This research and the experimental builds of Tacit Chassis are supported by Theoremlabs.io. P. Sarode and R. Nair are each an Adjunct Researcher-in-Residence, Future of Ways of Working, at Theoremlabs.io, which develops Tacit Chassis. Product and tool names in Figure 1 and Table 2 are used descriptively to identify tool classes; their placement reflects the authors' assessment and implies no endorsement. Section 11 describes illustrative configurations, of which only one has been specified in detail. Nothing in this paper is a representation that any deployment has been examined under SOC 2.</p>
+<p class="small"><b>Draft status.</b> Version 0.7, October 2026. Project information and builds: <a href="https://tacit.theoremlabs.io">tacit.theoremlabs.io</a>. Comments, critique and collaboration: research@theoremlabs.io.</p>
+</article>

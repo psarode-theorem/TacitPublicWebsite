@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.env*
+.DS_Store
+
+# Local working files: this repo publishes only site/ (plus the Pages deploy workflow)
+mocks/
+docs/
+scripts/
+README.md
+CLAUDE.md

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A five-minute essay for practitioners: why expert engagements need a workspace of their own, and what Draft, Confirm, Commit means for your work.">
+<link rel="canonical" href="https://tacit.theoremlabs.io/essay/">
+<meta property="og:title" content="Your judgment is the product. Where does it live? | Tacit">
+<meta property="og:description" content="A five-minute essay for practitioners: why expert engagements need a workspace of their own, and what Draft, Confirm, Commit means for your work.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tacit.theoremlabs.io/essay/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20fill%3D%27%231c1c1c%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2723%27%20font-size%3D%2720%27%20text-anchor%3D%27middle%27%20fill%3D%27%23fbfaf7%27%20font-family%3D%27Georgia%2Cserif%27%20font-weight%3D%27600%27%3ET%3C/text%3E%3C/svg%3E">
+<title>Your judgment is the product. Where does it live? | Tacit</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--bg:#fbfaf7;--ink:#1c1c1c;--muted:#66665f;--rule:#d9d7d0;--panel:#f2f0ea;--ok:#2f5a4c;--serif:"STIX Two Text","Times New Roman",serif;--sans:"Public Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:20px/1.65 var(--serif)}
+.ribbon{background:var(--ink);color:var(--bg);font:12px var(--mono);text-align:center;padding:6px}
+nav{font:14px var(--sans);border-bottom:1px solid var(--rule)}
+nav div{max-width:1040px;margin:0 auto;padding:14px 20px;display:flex;gap:22px;flex-wrap:wrap}
+nav b{font:600 19px var(--serif);margin-right:auto}nav a{color:var(--muted);text-decoration:none}
+.layout{max-width:1040px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:200px 1fr;gap:48px}
+aside{position:sticky;top:20px;align-self:start;padding-top:56px;font:13px/1.5 var(--sans)}
+aside a{display:block;color:var(--muted);text-decoration:none;padding:5px 0;border-left:2px solid var(--rule);padding-left:12px}
+aside a:hover{color:var(--ink);border-color:var(--ink)}
+article{max-width:660px;padding:50px 0 60px}
+.kick{font:12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font:600 clamp(32px,4.6vw,46px)/1.12 var(--serif);margin:.25em 0 .3em;letter-spacing:-.01em}
+.by{font:14px var(--sans);color:var(--muted);margin-bottom:28px}
+.tldr{background:var(--panel);border-left:3px solid var(--ink);padding:14px 20px;font:16px/1.55 var(--sans);margin:0 0 30px}
+h2{font:600 26px/1.2 var(--serif);margin:1.7em 0 .3em}
+p{margin:.7em 0}
+blockquote{margin:1.2em 0;padding-left:20px;border-left:3px solid var(--ink);font-size:24px;line-height:1.35;font-style:italic}
+.rec{border:1px solid var(--ink);margin:22px 0;font:14px/1.5 var(--sans)}
+.rec header{background:var(--ink);color:var(--bg);padding:7px 14px;font:12px var(--mono);display:flex;justify-content:space-between}
+.rec .row{padding:10px 14px;border-top:1px solid var(--rule);display:grid;grid-template-columns:120px 1fr;gap:10px}
+.rec .row:first-of-type{border-top:0}
+.rec label{font:11px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding-top:2px}
+.rec .act{padding:12px 14px;border-top:1px solid var(--rule);background:var(--panel);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.rec button{font:500 13px var(--sans);padding:7px 14px;border:1px solid var(--ink);background:none;color:var(--ink);cursor:pointer}
+.rec button.p{background:var(--ink);color:var(--bg)}
+.stamp{display:none;font:500 13px var(--mono);color:var(--ok)}.stamp.on{display:inline}
+.cta{margin-top:40px;border:1px solid var(--ink);padding:24px 26px;font:16px/1.55 var(--sans)}
+.cta h3{font:600 24px var(--serif);margin:0 0 .3em}
+.btn{display:inline-block;font:500 14px var(--sans);padding:10px 16px;border:1px solid var(--ink);text-decoration:none;color:var(--ink);margin:8px 8px 0 0}
+.btn.p{background:var(--ink);color:var(--bg)}
+.note{font:13px/1.5 var(--sans);color:var(--muted);margin-top:30px;border-top:1px solid var(--rule);padding-top:14px}
+@media(max-width:860px){.layout{grid-template-columns:1fr}aside{display:none}body{font-size:18px}}
+.draftbar{background:#fff3b8;color:#1c1c1c;font:12px "IBM Plex Mono",monospace;text-align:center;padding:6px 10px}
+</style>
+</head>
+<body>
+<div class="draftbar">Draft · feedback welcome at research@theoremlabs.io</div>
+<nav><div><b><a href="/" style="text-decoration:none;color:inherit">Tacit</a></b><a href="/paper/">Paper</a><a href="/essay/">Essay</a><a href="/investors/">Investor memo</a><a href="/#partner">Design partners</a></div></nav>
+<div class="layout">
+<aside aria-label="Contents"><a href="#a">The engagement you run</a><a href="#b">What agents change</a><a href="#c">Three client questions</a><a href="#d">Draft, Confirm, Commit</a><a href="#e">After the pyramid</a><a href="#f">What we don't know</a><a href="#g">Run one with us</a></aside>
+<article>
+  <div class="kick">Draft essay for practitioners · from the working paper</div>
+  <h1>Your judgment is the product. Where does it live?</h1>
+  <div class="by">P. Sarode and R. Nair · Future of Ways of Working, Theoremlabs.io · 5 min read</div>
+  <p class="tldr"><b>In short.</b> Expert engagements run on chat, file shares and slides, none of which know who confirmed what. Agents now draft findings in minutes, so "who decided" gets blurrier. We propose a workspace per engagement where agents draft and one named person confirms, and we want to test whether you and your clients would trust it.</p>
+
+  <h2 id="a">The engagement you already run</h2>
+  <p>You interview a dozen people at a client. You read what documentation exists. You form a view and write it up. Weeks later, someone asks which interview a conclusion came from, which findings you examined yourself, and where the client's confidential material is now. Most firms can't answer quickly.</p>
+  <blockquote>The most valuable part of the work is the part no tool records.</blockquote>
+
+  <h2 id="b">What agents change</h2>
+  <p>Agents can interview, transcribe and draft. In a field study of 758 consultants, access to a model improved speed and quality on tasks inside its ability, and made people less likely to get the right answer on a task just outside it. The edge of the model's ability isn't visible to the person using it.</p>
+  <p>That removes much of the junior work, and it raises a harder question than speed: when an agent drafts a finding and a person forwards it, who decided?</p>
+
+  <h2 id="c">Three questions your client will ask</h2>
+  <p><b>Who owns what?</b> What the client's people said belongs to the client. Your method belongs to you. <b>Where does it live, and who can reach it?</b> Including which model services see it. <b>How can you prove it?</b> In the language their security team already uses.</p>
+  <p>If a workspace can't answer these in the system itself, not just in a contract, a careful client won't let an agent interview its people.</p>
+
+  <h2 id="d">Draft, Confirm, Commit</h2>
+  <p>Our proposal is a simple pattern. Agents draft. You confirm, or change, every record. When you commit, the client sees the result read-only, with each finding traceable to its source interview. Here is one record, with invented content, as it would look:</p>
+  <div class="rec" id="rec">
+    <header><span>REC-014 · fictional example</span><span id="state">DRAFT</span></header>
+    <div class="row"><label>Finding</label><span>Contract reviews for AI vendors happen by email; no one owns the checklist.</span></div>
+    <div class="row"><label>Source</label><span>Interview 7, 00:14:32</span></div>
+    <div class="row"><label>Agent score</label><span>Risk 4 of 5</span></div>
+    <div class="row"><label>Lead score</label><span id="lead">not yet confirmed</span></div>
+    <div class="act"><button id="ov">Override to 3</button><button class="p" id="cf">Confirm</button><span class="stamp" id="st">Confirmed by the Lead, with source retained</span></div>
+  </div>
+  <p>Nothing becomes authoritative until a named person confirms it, and no fork of the software can remove that step.</p>
+
+  <h2 id="e">After the pyramid</h2>
+  <p>If agents absorb the junior tasks, the staffing pyramid thins. We describe a smaller team: a Lead who is accountable and the only one who confirms, and an Operator who runs the room. The open worry is apprenticeship. Juniors used to learn judgment by doing the work the agents now do.</p>
+
+  <h2 id="f">What we don't know</h2>
+  <p>This is a position paper. We have no field data. We state seven hypotheses, for instance how often leads override an agent's score, and whether interviews change conclusions that documents alone would reach. If the answers are "rarely" and "no", the idea is weaker than we think, and we will say so.</p>
+
+  <div class="cta" id="g"><h3>Run one real mission with us</h3>
+    <p>We are looking for five to eight practitioners to run a single engagement in a Mission Room. In return: a co-authored case study and a say in what gets built. Writing a playbook needs your expertise, not code.</p>
+    <a class="btn p" href="mailto:research@theoremlabs.io?subject=[Design partner] My mission">Describe your mission</a><a class="btn" href="/paper/">Read the full paper</a></div>
+  <p class="note">Research supported by Theoremlabs.io, which also develops the open-source Tacit Chassis (in development, not yet public).</p>
+</article></div>
+<script>
+const $=id=>document.getElementById(id);
+$('ov').onclick=()=>{$('lead').textContent='Risk 3 of 5 (overrode agent)';$('state').textContent='LEAD EDITED'};
+$('cf').onclick=()=>{if($('lead').textContent.startsWith('not'))$('lead').textContent='Risk 4 of 5 (agreed)';$('state').textContent='COMMITTED';$('st').classList.add('on');$('ov').disabled=$('cf').disabled=true};
+</script>
+</body>
+</html>
