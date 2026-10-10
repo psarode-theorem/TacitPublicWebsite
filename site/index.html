@@ -279,9 +279,9 @@ tools:{k:'I build process or knowledge AI',s:'Context graphs, process intelligen
  mission:'Research collaboration on H3 · open record format',
  hook:()=>'',cta:['Critique the landscape','[Researcher] Peer review: landscape and H3'],ext:['Read the paper','/paper/']},
 investors:{k:'I invest',s:'Early-stage, B2B, infrastructure',
- h:'The system of record for work sold on judgment. Unproven, and said so.',
- b:['Category forming now: analysts and funded startups moved in during 2026. Our window is quarters.','Wedge: the provider-and-client boundary, not a memory layer inside one company.','No customers, no field data. Next: Chassis v0.1, five to eight design partners, about ten missions.'],
- mission:'Milestones and risks in the one-page memo',
+ h:'Knowledge management stored documents. Nobody built the system for judgment.',
+ b:['The missing system: we have systems of record for customers, money and code, and none for what experts know, decide and stand behind.','Why now: agents can interview, draft and score, and a named person can confirm. Most others capture knowledge inside one enterprise; the provider-and-client version is open for a few quarters.','The plan: an open-source Chassis (Apache-2.0, in development), five to eight design partners, about ten completed missions. Seven public hypotheses show what would change our mind.'],
+ mission:'',
  hook:()=>'',cta:['Book 30 minutes','[Investor] 30-minute conversation'],ext:['Read the one-page memo (draft)','/investors/']}
 };
 const $=id=>document.getElementById(id);
@@ -298,7 +298,7 @@ function initCheck(){const Q=['You work with and on behalf of a client, and both
   y.onclick=()=>set(true,y,n);n.onclick=()=>set(false,n,y)})}
 function show(key){const d=L[key];currentKey=key;const fw=document.getElementById('who');if(fw&&fw.options.length&&fw.value!==key)pick(key);
  [...$('choices').children].forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===key));
- const hk=d.hook();$('panel').className='panel'+(hk?'':' one');$('panel').innerHTML='<div><h3>'+d.h+'</h3><ul>'+d.b.map(x=>'<li>'+x+'</li>').join('')+'</ul><p style="font:13px var(--sans);color:var(--muted)">Relevant missions: '+d.mission+'</p><a class="btn p" href="#contact" data-pick="'+key+'">'+d.cta[0]+'</a><a class="btn" href="'+d.ext[1]+'">'+d.ext[0]+'</a></div>'+(hk?'<div>'+hk+'</div>':'');
+ const hk=d.hook();$('panel').className='panel'+(hk?'':' one');$('panel').innerHTML='<div><h3>'+d.h+'</h3><ul>'+d.b.map(x=>'<li>'+x+'</li>').join('')+'</ul>'+(d.mission?'<p style="font:13px var(--sans);color:var(--muted)">Relevant missions: '+d.mission+'</p>':'')+'<a class="btn p" href="#contact" data-pick="'+key+'">'+d.cta[0]+'</a><a class="btn" href="'+d.ext[1]+'">'+d.ext[0]+'</a></div>'+(hk?'<div>'+hk+'</div>':'');
  if(location.hash!=='#'+key&&!location.hash.startsWith('#contact'))history.replaceState(null,'','#'+key)}
 Object.entries(L).forEach(([k,d])=>{const b=document.createElement('button');b.dataset.k=k;b.setAttribute('aria-pressed','false');b.innerHTML=d.k+'<small>'+d.s+'</small>';b.onclick=()=>show(k);$('choices').appendChild(b)});
 let currentKey=L[location.hash.slice(1)]?location.hash.slice(1):'providers';
