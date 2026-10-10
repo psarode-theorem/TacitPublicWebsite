@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="color-scheme" content="light">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="A five-minute essay for practitioners: why expert engagements need a workspace of their own, and what Draft, Confirm, Commit means for your work.">
+<meta name="description" content="A five-minute essay for practitioners: why expert engagements need a workspace of their own, and the Judgment Work pattern (Draft, Confirm, Commit) in practice.">
 <link rel="canonical" href="https://tacit.theoremlabs.io/essay/">
 <meta property="og:title" content="Your judgment is the product. Where does it live? | Tacit">
-<meta property="og:description" content="A five-minute essay for practitioners: why expert engagements need a workspace of their own, and what Draft, Confirm, Commit means for your work.">
+<meta property="og:description" content="A five-minute essay for practitioners: why expert engagements need a workspace of their own, and the Judgment Work pattern (Draft, Confirm, Commit) in practice.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tacit.theoremlabs.io/essay/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20fill%3D%27%231c1c1c%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2723%27%20font-size%3D%2720%27%20text-anchor%3D%27middle%27%20fill%3D%27%23fbfaf7%27%20font-family%3D%27Georgia%2Cserif%27%20font-weight%3D%27600%27%3ET%3C/text%3E%3C/svg%3E">
@@ -49,6 +49,9 @@ blockquote{margin:1.2em 0;padding-left:20px;border-left:3px solid var(--ink);fon
 .note{font:13px/1.5 var(--sans);color:var(--muted);margin-top:30px;border-top:1px solid var(--rule);padding-top:14px}
 @media(max-width:860px){.layout{grid-template-columns:1fr}aside{display:none}body{font-size:18px}}
 .draftbar{background:#fff3b8;color:#1c1c1c;font:12px "IBM Plex Mono",monospace;text-align:center;padding:6px 10px}
+.moves{list-style:none;padding:0;margin:1.1em 0;display:grid;gap:10px;font:16px/1.5 var(--sans)}
+.moves li{border-left:3px solid var(--ink);padding:2px 0 2px 16px}
+.moves b{font:600 18px var(--serif)}
 </style>
 <link rel="stylesheet" href="/assets/nav.css">
 </head>
@@ -56,7 +59,7 @@ blockquote{margin:1.2em 0;padding-left:20px;border-left:3px solid var(--ink);fon
 <div class="draftbar">Draft · feedback welcome at research@theoremlabs.io</div>
 <div class="sn"><div class="sn-in"><a class="sn-brand" href="/"><b>Tacit</b><span class="sn-def"><b>tacit knowledge</b> <i>noun</i>: what an expert knows and uses, but cannot easily put into words.</span></a><nav class="sn-links" aria-label="Main"><a href="/#check">Check your work</a><a href="/#partner">Design partners</a><a href="/paper/">Paper</a><a href="/essay/" aria-current="page">Essay</a><a href="/investors/">Investor memo</a><a class="sn-cta" href="/#contact">Start a conversation</a></nav></div></div>
 <div class="layout">
-<aside aria-label="Contents"><a href="#a">The engagement you run</a><a href="#b">What agents change</a><a href="#c">Three client questions</a><a href="#d">Draft, Confirm, Commit</a><a href="#e">After the pyramid</a><a href="#f">What we don't know</a><a href="#g">Run one with us</a></aside>
+<aside aria-label="Contents"><a href="#a">The engagement you run</a><a href="#b">What agents change</a><a href="#c">Three client questions</a><a href="#d">The Judgment Work pattern</a><a href="#e">After the pyramid</a><a href="#f">What we don't know</a><a href="#g">Run one with us</a></aside>
 <article>
   <div class="kick">Draft essay for practitioners · from the working paper</div>
   <h1>Your judgment is the product. Where does it live?</h1>
@@ -75,8 +78,14 @@ blockquote{margin:1.2em 0;padding-left:20px;border-left:3px solid var(--ink);fon
   <p><b>Who owns what?</b> What the client's people said belongs to the client. Your method belongs to you. <b>Where does it live, and who can reach it?</b> Including which model services see it. <b>How can you prove it?</b> In the language their security team already uses.</p>
   <p>If a workspace can't answer these in the system itself, not just in a contract, a careful client won't let an agent interview its people.</p>
 
-  <h2 id="d">Draft, Confirm, Commit</h2>
-  <p>Our proposal is a simple pattern. Agents draft. You confirm, or change, every record. When you commit, the client sees the result read-only, with each finding traceable to its source interview. Here is one record, with invented content, as it would look:</p>
+  <h2 id="d">The &ldquo;Judgment Work&rdquo; pattern</h2>
+  <p>Judgment work is work where you are paid to draw out what other people know and then put your name to a verdict: a due-diligence finding, a readiness assessment, a migration plan. It has the same shape every time, and agents make that shape worth writing down. We call it the Judgment Work pattern. It has three moves, which the paper names Draft, Confirm and Commit.</p>
+  <ol class="moves">
+    <li><b>Draft.</b> Agents interview the client's people and draft each finding, with a proposed score and a link to the interview it came from.</li>
+    <li><b>Confirm.</b> You, as the named Lead, confirm or change every record. No one else can, and nothing is authoritative until you do.</li>
+    <li><b>Commit.</b> The mission closes. The client sees the result read-only, and every finding traces back to its source.</li>
+  </ol>
+  <p>Here is one record, with invented content, moving through the pattern:</p>
   <div class="rec" id="rec">
     <header><span>REC-014 · fictional example</span><span id="state">DRAFT</span></header>
     <div class="row"><label>Finding</label><span>Contract reviews for AI vendors happen by email; no one owns the checklist.</span></div>
@@ -85,7 +94,7 @@ blockquote{margin:1.2em 0;padding-left:20px;border-left:3px solid var(--ink);fon
     <div class="row"><label>Lead score</label><span id="lead">not yet confirmed</span></div>
     <div class="act"><button id="ov">Override to 3</button><button class="p" id="cf">Confirm</button><span class="stamp" id="st">Confirmed by the Lead, with source retained</span></div>
   </div>
-  <p>Nothing becomes authoritative until a named person confirms it, and no fork of the software can remove that step.</p>
+  <p>The agent proposes; the person decides. No fork of the software can remove the Confirm step.</p>
 
   <h2 id="e">After the pyramid</h2>
   <p>If agents absorb the junior tasks, the staffing pyramid thins. We describe a smaller team: a Lead who is accountable and the only one who confirms, and an Operator who runs the room. The open worry is apprenticeship. Juniors used to learn judgment by doing the work the agents now do.</p>
