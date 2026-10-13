@@ -1,23 +1,86 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="A bounded workspace for expert engagements between a provider and its client. Agents draft; one named person stands behind every finding. Working paper and open-source Chassis.">
 <link rel="canonical" href="https://tacit.theoremlabs.io/">
-<meta property="og:title" content="Tacit: give judgment work a workspace of its own">
-<meta property="og:description" content="A bounded workspace for expert engagements between a provider and its client. Agents draft; one named person stands behind every finding. Working paper and open-source Chassis.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20fill%3D%27%231c1c1c%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2723%27%20font-size%3D%2720%27%20text-anchor%3D%27middle%27%20fill%3D%27%23fbfaf7%27%20font-family%3D%27Georgia%2Cserif%27%20font-weight%3D%27600%27%3ET%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Tacit — Agentic Mission Rooms for outcome-driven services">
+<meta property="og:description" content="From signed client to implementation-ready. Tacit Mission Rooms help IT services and fintech teams turn discovery into evidence-backed commitments, with agents drafting and humans deciding.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tacit.theoremlabs.io/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20fill%3D%27%231c1c1c%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2723%27%20font-size%3D%2720%27%20text-anchor%3D%27middle%27%20fill%3D%27%23fbfaf7%27%20font-family%3D%27Georgia%2Cserif%27%20font-weight%3D%27600%27%3ET%3C/text%3E%3C/svg%3E">
-<title>Tacit: give judgment work a workspace of its own</title>
+<title>Tacit — Agentic Mission Rooms for outcome-driven services</title>
+<meta name="description" content="From signed client to implementation-ready. Tacit Mission Rooms help IT services and fintech teams turn discovery into evidence-backed commitments, with agents drafting and humans deciding.">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<style>
-:root{color-scheme:light;--bg:#fbfaf7;--ink:#1c1c1c;--muted:#66665f;--rule:#d9d7d0;--panel:#f2f0ea;--hi:#fff3b8;--tbc:#8a3b27;
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>:root{--paper:var(--color-background,#f5f3ed);--white:var(--color-surface,#fffefa);--ink:var(--color-text,#212521);--muted:var(--color-text-muted,#676c64);--line:var(--color-border,#dcded6);--forest:var(--color-primary,#285e50);--forest-deep:#194436;--mint:#d8e9df;--warm:#f4ead2;--red:#963e2b;--red-soft:#f5e6e0;--shadow:0 25px 60px rgba(26,36,30,.09)}
+@scope (body) to (.sheet){
+
+
+*{box-sizing:border-box}:scope{scroll-behavior:smooth}:scope{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;line-height:1.55;font-size:16px}button,input,select,textarea{font:inherit}button,a{ -webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #6eae92;outline-offset:3px}h1,h2,h3,h4,p{margin-top:0}h1,h2,h3,h4{font-family:'Outfit',system-ui,sans-serif;letter-spacing:-.035em;line-height:1.08}h1{font-size:clamp(3.15rem,5.9vw,6rem);font-weight:700;margin-bottom:28px}h2{font-size:clamp(2.3rem,4vw,4.1rem);font-weight:650;margin-bottom:18px}h3{font-size:1.35rem}p{color:var(--muted)}.mono{font-family:'IBM Plex Mono',monospace;letter-spacing:.04em}.tiny{font-size:11px}.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--forest);margin-bottom:19px}.container{width:min(1210px,calc(100% - 56px));margin:auto}.narrow{max-width:760px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:7px;padding:13px 19px;font-weight:700;font-size:14px;border:1px solid var(--forest);background:var(--forest);color:white;transition:.2s}.btn:hover{background:var(--forest-deep);transform:translateY(-1px)}.btn.alt{color:var(--forest);background:transparent;border-color:#aac3b8}.btn.alt:hover{background:#e3ece6}.btn.small{padding:10px 14px;font-size:13px}.pill{font:500 11px 'IBM Plex Mono',monospace;border:1px solid var(--line);padding:7px 11px;border-radius:99px;display:inline-flex;gap:7px;align-items:center}.dot{width:7px;height:7px;background:#7db59d;display:inline-block;border-radius:100%}.rule{border-top:1px solid var(--line)}
+
+/* Subtitle treatment: supporting text under headings reads in brand green, a step heavier, so it draws the eye */
+.subtitle{color:var(--forest-deep);font-weight:500;font-size:18px;line-height:1.6}
+.dark .subtitle{color:#bfe6d0}
+.subtitle strong{color:var(--forest);font-weight:700}
+
+nav{height:80px;position:sticky;top:0;background:rgba(245,243,237,.96);backdrop-filter:blur(16px);z-index:50;border-bottom:1px solid var(--line)}.navinner{height:100%;display:flex;align-items:center;gap:30px}.brand{font-family:'Outfit',sans-serif;font-size:26px;font-weight:700;letter-spacing:-.055em;margin-right:auto}.brandmark{color:var(--forest);margin-right:8px}.links{display:flex;gap:26px;align-items:center;font-size:13px;font-weight:600;color:#556159}.links a:hover{color:var(--forest)}
+.hero{padding:86px 0 88px;position:relative;overflow:hidden}.hero:before{content:'';width:500px;height:500px;border:1px solid #d2e0d5;border-radius:50%;position:absolute;right:-235px;top:30px;box-shadow:0 0 0 90px rgba(220,232,220,.25),0 0 0 180px rgba(220,232,220,.14);pointer-events:none}.hero-grid{display:grid;grid-template-columns:1.17fr .83fr;align-items:center;gap:76px;position:relative}.hero h1{max-width:760px}.hero h1 em{font-style:normal;color:var(--forest)}.hero .eyebrow{display:inline-flex;align-items:flex-start;gap:9px;max-width:600px;line-height:1.6;letter-spacing:.1em;padding:9px 14px;border:1px solid #b9d1c5;background:#e6efe9;border-radius:99px}.hero .eyebrow .dot{margin-top:5px;flex:none}.lede{font-size:19px;line-height:1.65;max-width:590px}
+/* Hero tagline: the three-line promise, made the visual anchor under the lede */
+.hero-main{position:relative}.hero-main h1{max-width:900px}.hero-main .lede{max-width:700px}.hero-actions{margin:28px 0 0}.promise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px}.promise{padding:24px 26px;background:var(--white);border:1px solid var(--line);border-top:4px solid #3c735f;border-radius:9px}.promise .num{font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:var(--forest);margin-bottom:18px}.promise h3{font-size:22px;margin-bottom:8px}.promise p{font-size:14.5px;margin:0}
+.hero-side{display:grid;gap:22px}.flow{background:#e8e8e0;border:1px solid #d4d9ce;border-radius:12px;padding:14px;box-shadow:var(--shadow);display:grid;gap:8px}.lane{background:var(--white);border:1px solid #d9dbd1;border-radius:9px;padding:20px 20px 18px}.lane.after{border-color:#9dbcae;background:#f4f9f6}.lane-tag{font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}.lane-tag.instead{color:var(--red)}.lane-tag.toward{color:var(--forest)}.lane-title{font:600 18px 'Outfit',sans-serif;letter-spacing:-.02em;margin-bottom:16px}.ic{width:30px;height:30px;flex:none}.actors{display:flex;align-items:flex-end;gap:6px}.people{color:#8b8f86;flex-wrap:wrap}.people .ic:nth-child(3n){color:#a9604f}.agents{color:var(--forest)}.lead{color:var(--forest-deep);flex-direction:column;align-items:center;gap:3px}.lead .ic{width:34px;height:34px}.lead small{font:600 9.5px 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}.steps{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.arr{color:#6a8f7e;font-size:18px}.doc{border:1px solid #b9d1c5;background:#fff;border-radius:6px;padding:10px 12px;font:600 12px 'DM Sans',sans-serif;line-height:1.25;max-width:110px;color:var(--forest-deep)}.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}.chips span{font:500 11px 'IBM Plex Mono',monospace;padding:5px 9px;border-radius:99px;background:#f2e1db;color:#8e3e26}.lane.after .chips span{background:#dde9e1;color:#25513f}.flow-arrow{text-align:center;color:var(--forest);font-size:20px;line-height:1}.hero-cta{display:grid;gap:10px;justify-items:start}
+.pyramid{display:grid;justify-items:center;gap:0;color:#d9822b;margin:2px 0 4px}.prow{display:flex;align-items:center;gap:6px}.prow .ic{width:28px;height:28px}.bf{font-size:13px;color:#e3a468}.vf{font-size:13px;line-height:1;color:#e3a468;margin:2px 0}
+.duo{display:grid;grid-template-columns:1fr 58px 1fr;align-items:center;gap:6px}.team{display:grid;justify-items:center;gap:8px}.tl{font:600 10.5px 'IBM Plex Mono',monospace;letter-spacing:.05em;text-transform:uppercase;text-align:center;color:#6d7067}.pyr{display:grid;gap:3px;justify-items:center}.pyr .prow{display:flex;gap:3px}.pyr .ic{width:24px;height:24px}.team.prov{color:#d9822b}.team.client{color:#6f8aa3}.team.prov.small{color:var(--forest)}.lf{display:flex;gap:12px}.who{display:grid;justify-items:center;gap:1px;color:var(--forest-deep)}.who .ic{width:30px;height:30px}.who small{font:600 9.5px 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase}.agrow{display:flex;gap:4px;color:var(--forest)}.agrow .ic{width:22px;height:22px}.link{display:grid;gap:5px;justify-items:center;color:#e3a468;font-size:17px;line-height:1}.link.par{color:var(--forest);font-size:15px}.lane.after .team.prov .tl{color:#3d6a58}
+.mission-note{max-width:500px;font-size:14px;line-height:1.55}.mission-note p{margin:0 0 5px;color:var(--muted)}.mission-note strong{color:var(--ink);font-weight:600}
+.stepper{display:grid;gap:9px;justify-items:end}.step-hint{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--muted)}.step-hint b{color:var(--forest-deep);font-weight:600}.step-hint .go{font:600 10.5px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;background:var(--forest);color:#fff;border-radius:99px;padding:4px 11px}.tabbar button:not(:last-child):after{content:'›';margin-left:14px;color:#a3b0a6;font-weight:400}.tabbar button.active:not(:last-child):after{color:var(--forest)}.tabbar button.next{animation:nudge 1.9s ease-in-out infinite}.trail{width:100%;height:4px;border-radius:4px;background:#d4d8ce;overflow:hidden}.trail .fill{height:100%;width:25%;background:var(--forest);border-radius:4px;transition:width .35s ease}.trail-label{width:100%;display:flex;justify-content:space-between;font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#7b8479}.trail-label span:last-child{color:var(--forest)}@media(prefers-reduced-motion:reduce){.tabbar button.next{animation:none}}
+.funnel{margin-top:52px}.boxed{grid-column:1/4;display:grid;grid-template-columns:repeat(3,1fr);gap:7px;position:relative;padding:20px 12px 12px;border:2px solid var(--forest);border-radius:12px;background:rgba(40,94,80,.04)}.box-label{position:absolute;top:-14px;left:18px;background:var(--forest);color:#fff;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:99px;white-space:nowrap}.boxed .funnel-step{min-height:150px}
+.hero-promise{margin:30px 0 0;max-width:600px;padding:4px 0 4px 20px;border-left:3px solid #9dbcae}.hero-promise .headline{font-family:'Outfit',system-ui,sans-serif;font-size:1.05rem;font-weight:600;line-height:1.4;letter-spacing:-.01em;color:var(--ink);margin:0 0 14px}.hero-promise .headline em{font-style:normal;color:var(--forest)}.hero-promise ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}.hero-promise li{font-size:15px;line-height:1.5;color:var(--muted)}.hero-promise li b{color:var(--forest-deep);font-weight:700}.hero-promise li:first-child b{color:var(--forest)}
+.hero-side{display:grid;gap:22px}.hero-cta{display:grid;gap:10px;justify-items:start}.hero-cta .btn{text-align:left;line-height:1.35;padding:14px 18px}.hero-cta small{font-size:12px;color:var(--muted)}
+.hero-visual{background:#e8e8e0;border:1px solid #d4d9ce;border-radius:12px;padding:14px;box-shadow:var(--shadow);transform:rotate(1deg)}.hero-visual .visual-top{display:flex;justify-content:space-between;padding:4px 7px 12px;align-items:center}.mock{background:#f8f7f2;border:1px solid #d9dbd1;border-radius:9px;overflow:hidden}.mock-heading{padding:15px 17px;border-bottom:1px solid #dddcd5;display:flex;justify-content:space-between;align-items:center}.mock-title{font:650 17px 'Outfit',sans-serif}.mock-main{display:grid;grid-template-columns:96px 1fr;min-height:288px}.mock-sidebar{background:#242520;color:#deddd3;padding:20px 9px;font-size:9px}.mock-sidebar div{margin-bottom:14px}.mock-sidebar .active{padding:7px;background:#373b33;border-radius:3px}.mock-body{padding:17px}.mock-bars{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:12px}.mock-num{background:#fff;border:1px solid #e1e0da;padding:10px;border-radius:4px;font:700 17px 'Outfit',sans-serif}.mock-num span{display:block;font:500 8px 'IBM Plex Mono',monospace;color:#6d7067;margin-bottom:6px}.mock-alert{background:#f5e8e3;border:1px solid #e7b9ae;border-radius:4px;padding:11px;font-size:10px;margin-bottom:11px}.mock-table{background:white;border:1px solid #e1e0da;border-radius:4px;padding:7px 11px}.mock-row{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:7px;padding:9px 0;border-bottom:1px solid #efeee8;font-size:10px}.mock-row:last-child{border:0}.mock-tag{font-size:9px;background:#dde9e1;color:#315d4b;padding:2px 6px;width:fit-content;border-radius:2px}.mock-tag.warn{background:#f4ddd3;color:#8e3e26}
+.section{padding:93px 0}.section.altbg{background:#eaece5}.section.dark{background:#202b27;color:#fff}.dark p{color:#c0cdc4}.dark .eyebrow{color:#a5d6bb}.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:32px;margin-bottom:34px}.sectionhead p{max-width:500px}.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+
+/* Section pill: "Who it's for | Current Focus" */
+.eyebrow.pilled{display:inline-flex;align-items:center;gap:10px;padding:8px 15px;border:1px solid #b9d1c5;background:#e6efe9;border-radius:99px}.eyebrow.pilled .sep{width:1px;height:12px;background:#9dbcae}.eyebrow.pilled .focus{color:var(--forest-deep)}
+
+.audience-card{border:1px solid var(--line);border-radius:11px;padding:33px;background:var(--white);display:flex;flex-direction:column;align-items:start;min-height:340px;transition:.2s}.audience-card:hover{border-color:#80a491;transform:translateY(-2px)}
+/* Card pills: filled, high contrast */
+.audience-card .aud-label{display:inline-block;background:var(--forest);color:#fff;font-weight:600;font-size:12.5px;letter-spacing:.07em;padding:9px 16px;border-radius:99px;margin-bottom:24px;box-shadow:0 6px 14px rgba(40,94,80,.22)}
+.audience-card:nth-child(2) .aud-label{background:#a8651b;box-shadow:0 6px 14px rgba(168,101,27,.25)}.audience-card h3{font-size:30px;max-width:425px;margin-bottom:12px}.audience-card p{font-size:15px;max-width:435px}
+/* Instead of / Move toward: the part a buyer should remember */
+.pain{margin-top:auto;padding-top:22px;border-top:1px solid var(--line);width:100%;display:grid;gap:12px;font-size:16px;line-height:1.5;color:var(--ink);font-weight:500}.pain>div{display:grid;gap:3px}.pain .tag{font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase}.pain .instead .tag{color:var(--red)}.pain .toward .tag{color:var(--forest)}.pain .toward{font-weight:700;color:var(--forest-deep)}
+.audience-card p{margin-bottom:22px}
+
+.funnel{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin:30px 0 20px}.funnel-step{padding:21px 16px;border-radius:7px;background:#dce9df;border-top:4px solid #3c735f;min-height:150px}.funnel-step.out{background:#eeeae2;border-top-color:#c0c4b9}.funnel-step .n{font:500 11px 'IBM Plex Mono',monospace;display:block;margin-bottom:27px;color:var(--forest)}.funnel-step.out .n{color:#777a70}.funnel-step h3{font-size:22px;margin-bottom:8px}.funnel-step p{font-size:12px;line-height:1.5}.scope{display:flex;gap:18px;align-items:center;font-size:13px}.scope .line{flex:3;height:3px;background:var(--forest);position:relative}.scope .line:after{content:'AGENTIFIED MISSION ROOM';color:var(--forest);position:absolute;top:10px;font:600 10px 'IBM Plex Mono',monospace}.scope .after{flex:2;height:3px;background:#bbc0b7;position:relative}.scope .after:after{content:'YOUR TEAM + YOUR SYSTEM';color:#777a70;position:absolute;top:10px;font:600 10px 'IBM Plex Mono',monospace}
+.demo-top{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:20px}.tabbar{display:flex;flex-wrap:wrap;gap:7px;padding:5px;border:1px solid #d4d8ce;background:#e9ece5;border-radius:9px}.tabbar button{border:0;background:transparent;border-radius:5px;padding:10px 14px;color:#6d766d;font:600 12px 'IBM Plex Mono',monospace}.tabbar button.active{background:var(--white);color:var(--forest);box-shadow:0 2px 7px #1c291510}.demo-shell{border-radius:13px;box-shadow:var(--shadow);border:1px solid #d7d9ce;background:#fbfaf6;display:grid;grid-template-columns:232px 1fr;min-height:560px;overflow:hidden}.demo-aside{background:#25231f;color:#ddd5c6;padding:24px 18px}.demo-aside .logo{font:700 22px 'Outfit',sans-serif;margin-bottom:41px;color:#fff}.demo-aside .tagline{font:500 11px 'IBM Plex Mono',monospace;color:#bba88f;margin-bottom:13px}.demo-aside .client{font-size:15px;font-weight:700;color:#f7f1e7}.demo-aside .meta{font-size:12px;color:#b9aa94;margin:4px 0 32px}.demo-aside .navitem{border-radius:5px;padding:11px 12px;font-size:13px;color:#bfb6a7}.demo-aside .navitem.on{background:#34322b;color:#fff;font-weight:700}.demo-aside .navitem.done:before{content:'●';font-size:8px;color:#86bba5;margin-right:11px}.demo-aside .navitem.on:before{content:'◎';color:#86bba5;margin-right:9px}.demo-aside .navitem:not(.done):not(.on):before{content:'○';margin-right:11px}.demo-aside hr{border:0;border-top:1px solid #454039;margin:18px 0}.demo-content{padding:35px 38px 36px;overflow:hidden}.crumb{font-size:12px;color:#7b7e74;border-bottom:1px solid #e2e0d7;padding-bottom:23px;margin-bottom:29px}.crumb strong{color:#333b32}.stage-panel{display:none;animation:appear .2s ease}.stage-panel.active{display:block}.stage-panel h3{font-size:35px;margin-bottom:8px}.stage-panel .sub{font-size:14px;margin-bottom:25px;color:var(--forest-deep);font-weight:500}.statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}.stat{border:1px solid #e2dfd4;border-radius:7px;padding:14px 13px;background:#fffefa}.stat .lbl{font:500 9px 'IBM Plex Mono',monospace;letter-spacing:.055em;text-transform:uppercase;color:#867e6a;min-height:30px}.stat b{font:700 27px 'Outfit',sans-serif;display:block;margin-top:9px}.demo-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}.demo-card{border:1px solid #e1ded3;border-radius:8px;background:#fffefa;padding:21px;min-width:0}.demo-card h4{font-size:20px;margin-bottom:17px}.demo-list{list-style:none;padding:0;margin:0}.demo-list li{display:flex;justify-content:space-between;gap:9px;border-top:1px solid #ebe8db;padding:12px 0;font-size:13px}.demo-list small{color:var(--muted);display:block}.status{font:600 10px 'IBM Plex Mono',monospace;padding:4px 7px;border-radius:3px;white-space:nowrap;height:fit-content;background:#e3ece7;color:#33634f}.status.warn{background:#f1ded6;color:#973d29}.status.neutral{background:#eae8df;color:#787258}.escalation{background:#f6e7e1;border:1px solid #c98f7d;color:#923a28;border-radius:7px;padding:18px 20px;display:flex;justify-content:space-between;gap:20px;align-items:center;margin:0 0 20px}.escalation strong{font-size:13px}.escalation p{font-size:12px;color:#885b4e;margin:6px 0 0}.escalation button{border:0;background:#973e27;color:white;padding:10px 14px;border-radius:4px;font-weight:700;font-size:12px;white-space:nowrap}.evidence{background:#f1f0e9;border-left:3px solid #b6a48a;padding:12px;font-size:12px;margin:13px 0}.progress{height:7px;border-radius:7px;background:#e6e2d6;overflow:hidden;min-width:70px;margin-top:8px}.progress div{background:var(--forest);height:100%}.demo-table{width:100%;font-size:12px;border-collapse:collapse}.demo-table th{font:500 10px 'IBM Plex Mono',monospace;color:#8b826e;text-align:left;padding:12px 8px;border-bottom:1px solid #e2ded3}.demo-table td{padding:14px 8px;border-bottom:1px solid #e8e5d9}.demo-table tr:last-child td{border:0}.result-tag{border-radius:3px;background:#e3ede8;padding:4px 7px;color:#335e4e;font-size:10px;font-weight:700}.result-tag.bad{background:#f2dfd7;color:#9a442c}.sim-note{font-size:11px;color:#858273;margin-top:13px}.demo-meta{display:flex;align-items:center;justify-content:space-between;margin-top:16px;gap:12px;font-size:12px;color:var(--muted)}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.feature{padding:28px;background:var(--white);border:1px solid var(--line);border-radius:9px}.feature .num{font:600 12px 'IBM Plex Mono',monospace;color:var(--forest);margin-bottom:33px}.feature h3{font-size:24px}.feature p{font-size:14px}.ownership{display:grid;grid-template-columns:1fr 1fr;gap:16px}.ownership article{padding:30px;border:1px solid rgba(255,255,255,.18);border-radius:9px;background:#293a32}.ownership h3{font-size:23px;color:#fff}.ownership ul{padding-left:18px;color:#d3ddd4;line-height:2;font-size:14px}
+.channel{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:start}.channel-list{display:grid;gap:12px}.channel-list a{background:var(--white);border:1px solid var(--line);border-radius:9px;padding:20px 22px;display:flex;justify-content:space-between;gap:10px;align-items:center;font-weight:700}.channel-list small{display:block;color:var(--muted);font-weight:400;margin-top:4px}.channel-list a:hover{border-color:#5a9479}.cta-box{border-radius:12px;background:var(--forest);color:white;padding:42px;display:grid;grid-template-columns:1fr auto;gap:25px;align-items:center}.cta-box p{color:#d6e8db}.cta-box .btn{background:white;color:var(--forest);border-color:white}.cta-box .btn:hover{background:#eaf3ec}.foot{border-top:1px solid var(--line);padding:30px 0 50px}.footinner{display:flex;justify-content:space-between;gap:20px;align-items:center;color:#727970;font-size:12px}.foot a{text-decoration:underline;text-underline-offset:4px}.footlinks{display:flex;gap:20px;flex-wrap:wrap}
+@media(max-width:1050px){.links{gap:14px}.hero-grid{gap:35px}.demo-shell{grid-template-columns:190px 1fr}.demo-content{padding:30px 24px}.statgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.boxed{grid-column:1/-1;grid-template-columns:1fr}.container{width:min(100% - 34px,1210px)}nav{height:68px}.links a:not(.btn){display:none}.hero{padding:55px 0}.promise-grid,.hero-grid,.two,.three,.ownership,.channel,.cta-box{grid-template-columns:1fr}.hero-visual{max-width:550px;transform:none}.section{padding:65px 0}.sectionhead{display:block}.funnel{grid-template-columns:1fr 1fr}.funnel-step{min-height:125px}.funnel-step .n{margin-bottom:16px}.scope{display:none}.demo-shell{grid-template-columns:1fr}.demo-aside{display:none}.demo-content{padding:24px 16px}.demo-cols{grid-template-columns:1fr}.tabbar{width:100%;display:grid;grid-template-columns:repeat(4,1fr)}.tabbar button{padding:10px 4px;font-size:10px}.demo-top{display:block}.stepper{justify-items:stretch}.step-hint{flex-wrap:wrap}.demo-top>.pill{margin-bottom:12px}.statgrid{grid-template-columns:repeat(2,1fr)}.footinner{display:block}.footlinks{margin-top:16px}.cta-box{padding:28px}.audience-card{min-height:300px}.brand{font-size:21px}.hero .eyebrow{border-radius:14px}}
+@media(max-width:420px){h1{font-size:3rem}.funnel{grid-template-columns:1fr}.funnel-step{min-height:auto}.demo-table{font-size:10px}.demo-table th,.demo-table td{padding:8px 4px}.escalation{display:block}.escalation button{margin-top:10px}}
+
+
+.rtabs{margin:0 0 18px;display:flex;flex-wrap:wrap;gap:7px;padding:5px;border:1px solid #d4d8ce;background:#e9ece5;border-radius:9px;width:fit-content;max-width:100%}
+.rtabs button{border:0;background:transparent;border-radius:5px;padding:10px 16px;color:#6d766d;font:600 12px 'IBM Plex Mono',monospace}
+.rtabs button[aria-selected=true]{background:var(--white);color:var(--forest);box-shadow:0 2px 7px #1c291510}
+.reader{margin-top:56px;scroll-margin-top:96px}
+.frame{border:1px solid #d7d9ce;border-radius:13px;box-shadow:var(--shadow);background:#fbfaf7;overflow:hidden}
+.frame-bar{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:10px 20px;background:#eceee7;border-bottom:1px solid #d7d9ce;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#677067;text-transform:uppercase}
+.frame-bar b{color:var(--forest);font-weight:600}
+.frame-note{font-size:13px;margin:14px 2px 0}
+.audience-card .aud-label{background:#e6efe9;color:var(--forest-deep);border:1px solid #b9d1c5;box-shadow:none;font-size:11.5px;font-weight:600;letter-spacing:.09em;padding:7px 13px}
+.audience-card:nth-child(2) .aud-label{background:#f6ead6;color:#7a4a12;border-color:#e4c9a0;box-shadow:none}
+
+
+}
+@keyframes nudge{0%,100%{box-shadow:0 0 0 0 rgba(40,94,80,0)}50%{box-shadow:0 0 0 4px rgba(40,94,80,.22)}}
+@keyframes appear{from{opacity:.3;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@scope (#pane-overview){
+
+:scope{color-scheme:light;--bg:#fbfaf7;--ink:#1c1c1c;--muted:#66665f;--rule:#d9d7d0;--panel:#f2f0ea;--hi:#fff3b8;--tbc:#8a3b27;
 --serif:"STIX Two Text","Times New Roman",serif;--sans:"Public Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",monospace}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.55 var(--serif)}
+:scope{margin:0;background:var(--bg);color:var(--ink);font:18px/1.55 var(--serif)}
 a{color:inherit}
 .wrap{max-width:1020px;margin:0 auto;padding:0 20px}
 .ribbon{background:var(--ink);color:var(--bg);font:12px var(--mono);text-align:center;padding:6px}
@@ -38,7 +101,7 @@ h1 mark{background:linear-gradient(transparent 62%,var(--hi) 62%);color:inherit}
 .test{font:14px/1.5 var(--sans);background:var(--panel);border-left:3px solid var(--ink);padding:10px 16px;margin:10px 0 0}
 .lens{margin:40px 0 0}
 .lens h2{font:600 28px var(--serif);margin:0 0 10px}
-.choices{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.choices{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
 .choices button{text-align:left;font:500 15px/1.35 var(--sans);padding:14px 16px;border:1px solid var(--ink);background:none;color:var(--ink);cursor:pointer}
 .choices button small{display:block;font:400 12px var(--sans);color:var(--muted);margin-top:3px}
 .choices button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
@@ -99,10 +162,10 @@ form textarea{min-height:110px;resize:vertical}
 .sendrow .btn.p{background:var(--ink)}
 .sent{display:none;margin-top:12px;font:14px var(--sans);padding:10px 14px;background:var(--panel);border-left:3px solid var(--ink)}.sent.on{display:block}
 .mbar{display:none}
-@media(max-width:860px){.contact,.ipgrid{grid-template-columns:1fr}.mbar{display:block;position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:var(--bg);text-align:center;padding:14px;font:600 15px var(--sans);text-decoration:none;z-index:5}body{padding-bottom:50px}}
+@media(max-width:860px){.contact,.ipgrid{grid-template-columns:1fr}.mbar{display:block;position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:var(--bg);text-align:center;padding:14px;font:600 15px var(--sans);text-decoration:none;z-index:5}:scope{padding-bottom:50px}}
 .tw{overflow-x:auto}
 .panel>div,.pitch>div,.contact>*,.ipgrid>div{min-width:0}
-body{overflow-x:hidden}
+:scope{overflow-x:hidden}
 .hero h1{font-size:clamp(30px,4.2vw,46px)}
 .herogrid{display:grid;grid-template-columns:1.02fr 1fr;gap:36px;align-items:center}
 .quad{margin:0}.quad svg{width:100%;height:auto;display:block}
@@ -125,11 +188,113 @@ body{overflow-x:hidden}
 footer{border-top:1px solid var(--rule);font:13px/1.6 var(--sans);color:var(--muted);padding:24px 0 48px}
 @media(max-width:860px){nav .wrap{flex-wrap:wrap}.brand{flex:1 1 100%}.quad figcaption{min-height:0}.herogrid{grid-template-columns:1fr}.ribbon{white-space:normal}.tw table{min-width:560px}.pitch,.choices,.panel,.steps,.ip,.status{grid-template-columns:1fr}.pitch>div{border:0;border-bottom:1px solid var(--rule);margin:0}.q{flex-direction:column;align-items:flex-start}}
 .fl{margin-bottom:8px}.fl a{color:var(--ink)}
+
+}
+@scope (#pane-essay){
+
+:scope{color-scheme:light;--bg:#fbfaf7;--ink:#1c1c1c;--muted:#66665f;--rule:#d9d7d0;--panel:#f2f0ea;--ok:#2f5a4c;--serif:"STIX Two Text","Times New Roman",serif;--sans:"Public Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",monospace}
+*{box-sizing:border-box}
+:scope{margin:0;background:var(--bg);color:var(--ink);font:20px/1.65 var(--serif)}
+.ribbon{background:var(--ink);color:var(--bg);font:12px var(--mono);text-align:center;padding:6px}
+nav{font:14px var(--sans);border-bottom:1px solid var(--rule)}
+nav div{max-width:1040px;margin:0 auto;padding:14px 20px;display:flex;gap:22px;flex-wrap:wrap}
+nav b{font:600 19px var(--serif);margin-right:auto}nav a{color:var(--muted);text-decoration:none}
+.layout{max-width:1040px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:200px 1fr;gap:48px}
+aside{position:sticky;top:20px;align-self:start;padding-top:56px;font:13px/1.5 var(--sans)}
+aside a{display:block;color:var(--muted);text-decoration:none;padding:5px 0;border-left:2px solid var(--rule);padding-left:12px}
+aside a:hover{color:var(--ink);border-color:var(--ink)}
+article{max-width:660px;padding:50px 0 60px}
+.kick{font:12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font:600 clamp(32px,4.6vw,46px)/1.12 var(--serif);margin:.25em 0 .3em;letter-spacing:-.01em}
+.by{font:14px var(--sans);color:var(--muted);margin-bottom:28px}
+.tldr{background:var(--panel);border-left:3px solid var(--ink);padding:14px 20px;font:16px/1.55 var(--sans);margin:0 0 30px}
+h2{font:600 26px/1.2 var(--serif);margin:1.7em 0 .3em}
+p{margin:.7em 0}
+blockquote{margin:1.2em 0;padding-left:20px;border-left:3px solid var(--ink);font-size:24px;line-height:1.35;font-style:italic}
+.rec{border:1px solid var(--ink);margin:22px 0;font:14px/1.5 var(--sans)}
+.rec header{background:var(--ink);color:var(--bg);padding:7px 14px;font:12px var(--mono);display:flex;justify-content:space-between}
+.rec .row{padding:10px 14px;border-top:1px solid var(--rule);display:grid;grid-template-columns:120px 1fr;gap:10px}
+.rec .row:first-of-type{border-top:0}
+.rec label{font:11px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding-top:2px}
+.rec .act{padding:12px 14px;border-top:1px solid var(--rule);background:var(--panel);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.rec button{font:500 13px var(--sans);padding:7px 14px;border:1px solid var(--ink);background:none;color:var(--ink);cursor:pointer}
+.rec button.p{background:var(--ink);color:var(--bg)}
+.stamp{display:none;font:500 13px var(--mono);color:var(--ok)}.stamp.on{display:inline}
+.cta{margin-top:40px;border:1px solid var(--ink);padding:24px 26px;font:16px/1.55 var(--sans)}
+.cta h3{font:600 24px var(--serif);margin:0 0 .3em}
+.btn{display:inline-block;font:500 14px var(--sans);padding:10px 16px;border:1px solid var(--ink);text-decoration:none;color:var(--ink);margin:8px 8px 0 0}
+.btn.p{background:var(--ink);color:var(--bg)}
+.note{font:13px/1.5 var(--sans);color:var(--muted);margin-top:30px;border-top:1px solid var(--rule);padding-top:14px}
+@media(max-width:860px){.layout{grid-template-columns:1fr}aside{display:none}:scope{font-size:18px}}
+.draftbar-removed{background:#fff3b8;color:#1c1c1c;font:12px "IBM Plex Mono",monospace;text-align:center;padding:6px 10px}
+.moves{list-style:none;padding:0;margin:1.1em 0;display:grid;gap:10px;font:16px/1.5 var(--sans)}
+.moves li{border-left:3px solid var(--ink);padding:2px 0 2px 16px}
+.moves b{font:600 18px var(--serif)}
+
+}
+@scope (#pane-paper){
+:scope{color-scheme:light;--bg:#fbfaf7;--ink:#1c1c1c;--muted:#66665f;--rule:#d9d7d0;--panel:#f2f0ea;--serif:"STIX Two Text","Times New Roman",serif;--sans:"Public Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",monospace}*{box-sizing:border-box}:scope{margin:0;background:var(--bg);color:var(--ink);font:19px/1.6 var(--serif)}.wrap{max-width:720px;margin:0 auto;padding:0 20px}a{color:inherit}nav{font:14px var(--sans);border-bottom:1px solid var(--rule)}nav .wrap{display:flex;gap:22px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap}nav b{font:600 19px var(--serif);margin-right:auto}nav a{color:var(--muted);text-decoration:none}.kick{font:12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}h1{font:600 clamp(30px,4.6vw,42px)/1.15 var(--serif);margin:.25em 0 .3em}.by{font:14px var(--sans);color:var(--muted)}.abs{background:var(--panel);border-left:3px solid var(--ink);padding:16px 22px;font-size:17px}.btn{display:inline-block;font:500 14px var(--sans);padding:10px 16px;border:1px solid var(--ink);text-decoration:none;margin:8px 8px 0 0}.btn.p{background:var(--ink);color:var(--bg)}main.wrap{padding:48px 20px 64px}footer{border-top:1px solid var(--rule);font:13px/1.6 var(--sans);color:var(--muted);padding:24px 0 48px}.cite{background:var(--panel);border:1px solid var(--rule);padding:14px 16px;font:12.5px/1.5 var(--mono);overflow-x:auto;white-space:pre}h2{font:600 22px var(--serif);margin:1.4em 0 .4em}
+
+}
+@scope (#pane-investors){
+
+:scope{color-scheme:light;--bg:#fbfaf7;--ink:#1c1c1c;--muted:#66665f;--rule:#d9d7d0;--panel:#f2f0ea;--serif:"STIX Two Text","Times New Roman",serif;--sans:"Public Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",monospace}
+*{box-sizing:border-box}
+:scope{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 var(--serif)}
+.ribbon{background:var(--ink);color:var(--bg);font:12px var(--mono);text-align:center;padding:6px}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+nav .wrap{display:flex;gap:22px;padding-top:14px;padding-bottom:14px;font:14px var(--sans);flex-wrap:wrap;border-bottom:1px solid var(--rule)}
+nav b{font:600 19px var(--serif);margin-right:auto}nav a{color:var(--muted);text-decoration:none}
+.kick{font:12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font:600 clamp(30px,4.6vw,44px)/1.12 var(--serif);margin:.25em 0 .3em}
+.hero{padding:48px 0 18px}
+.one{font:600 22px/1.4 var(--serif);border-top:2px solid var(--ink);border-bottom:1px solid var(--rule);padding:18px 0;margin:20px 0}
+.honest{font:14px/1.5 var(--sans);background:var(--panel);border-left:3px solid var(--ink);padding:12px 18px}
+section{padding:30px 0;border-top:1px solid var(--rule)}
+h2{font:600 24px var(--serif);margin:0 0 .4em;display:flex;gap:12px;align-items:baseline}
+h2 span{font:12px var(--mono);color:var(--muted)}
+p{margin:.5em 0}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.box{border:1px solid var(--rule);padding:14px 16px;font:14px/1.5 var(--sans)}
+.box b{font:600 16px var(--serif);display:block;margin-bottom:3px}
+table{width:100%;border-collapse:collapse;font:14px var(--sans);margin-top:10px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font:11px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.chip{font:11px var(--mono);border:1px solid var(--ink);padding:1px 7px;white-space:nowrap}
+.chip.o{border-style:dashed;color:var(--muted);border-color:var(--muted)}
+.gate{border:1px dashed var(--ink);padding:16px 18px;font:14px/1.5 var(--sans);background:var(--panel)}
+.btn{display:inline-block;font:500 14px var(--sans);padding:10px 16px;border:1px solid var(--ink);text-decoration:none;color:var(--ink);margin:10px 8px 0 0}
+.btn.p{background:var(--ink);color:var(--bg)}
+details{border-top:1px solid var(--rule);padding:10px 0;font:15px/1.5 var(--sans)}
+summary{cursor:pointer;font:600 16px var(--serif)}
+footer{border-top:1px solid var(--rule);font:13px/1.6 var(--sans);color:var(--muted);padding:24px 0 48px;margin-top:20px}
+@media(max-width:780px){.g2,.g3{grid-template-columns:1fr}}
+
+}
+.sheet[hidden]{display:none}
 </style>
-<link rel="stylesheet" href="/assets/nav.css">
 </head>
 <body>
-<div class="sn"><div class="sn-in"><a class="sn-brand" href="/"><b>Tacit</b><span class="sn-def"><b>tacit knowledge</b> <i>noun</i>: what an expert knows and uses, but cannot easily put into words.</span></a><nav class="sn-links" aria-label="Main"><a href="/#check">Check your work</a><a href="/#partner">Design partners</a><a href="/paper/">Paper</a><a href="/essay/">Essay</a><a href="/investors/">Investor memo</a><a class="sn-cta" href="/#contact">Start a conversation</a></nav></div></div>
+<nav><div class="container navinner"><a class="brand" href="#top"><span class="brandmark">●</span>Tacit<span style="font-weight:400;color:#788078"> / Agentic Mission Rooms</span></a><div class="links"><a href="#audiences">Who it's for</a><a href="#chassis">How it works</a><a href="#mission">See a Mission Room</a><a href="#research">Research &amp; Open Source</a><a class="btn small" href="#contact" data-pick="providers">Want to Partner ↗</a></div></div></nav>
+<main id="top">
+<section class="hero"><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="4" fill="currentColor"/><path d="M4 21c0-5 3.4-8 8-8s8 3 8 8z" fill="currentColor"/></symbol><symbol id="i-agent" viewBox="0 0 24 24"><rect x="3.5" y="6" width="17" height="13" rx="3.5" fill="currentColor"/><circle cx="9" cy="12" r="1.6" fill="#fff"/><circle cx="15" cy="12" r="1.6" fill="#fff"/><rect x="11" y="2.5" width="2" height="3.5" fill="currentColor"/></symbol></svg><div class="container hero-grid"><div><div class="eyebrow"><span class="dot"></span><span>The infrastructure for AI-native expert services</span></div><h1>Turn discovery into <em>committed outcomes.</em></h1><p class="lede subtitle">One room to establish the facts, resolve the exceptions and commit to what happens next. Built for IT services firms and financial technology providers.</p><div class="hero-promise"><ul><li><b>Agents do the repeatable work.</b> Interviewing, assessing, scoring and drafting.</li><li><b>Your experts own every decision.</b> Clients and SMEs orchestrate, assess and override what agents produce.</li><li><b>Your data stays yours.</b> Client data stays with the client; expert judgment is codified as the work happens and feeds the agents.</li></ul></div></div>
+<div class="hero-side"><div class="flow" aria-label="Discovery today compared with discovery in a Mission Room"><div class="lane before"><div class="lane-tag instead">Instead of</div><div class="lane-title">Pyramids talking back and forth</div><div class="duo"><div class="team prov"><div class="pyr"><div class="prow"><svg class="ic" aria-hidden="true"><use href="#i-person"/></svg></div><div class="prow"><svg class="ic" aria-hidden="true"><use href="#i-person"/></svg><svg class="ic" aria-hidden="true"><use href="#i-person"/></svg></div><div class="prow"><svg class="ic" aria-hidden="true"><use href="#i-person"/></svg><svg class="ic" aria-hidden="true"><use href="#i-person"/></svg><svg class="ic" aria-hidden="true"><use href="#i-person"/></svg></div></div><div class="tl">Provider team</div></div><div class="link" aria-hidden="true"><span>↔</span><span>↔</span><span>↔</span></div><div class="team client"><div class="pyr"><div class="prow"><svg class="ic" aria-hidden="true"><use href="#i-person"/></svg></div><div class="prow"><svg class="ic" aria-hidden="true"><use href="#i-person"/></svg><svg class="ic" aria-hidden="true"><use href="#i-person"/></svg></div><div class="prow"><svg class="ic" aria-hidden="true"><use href="#i-person"/></svg><svg class="ic" aria-hidden="true"><use href="#i-person"/></svg><svg class="ic" aria-hidden="true"><use href="#i-person"/></svg></div></div><div class="tl">Client team</div></div></div><div class="chips"><span>Scheduling nightmare</span><span>No compounding</span><span>Inconsistent implementations</span><span>Eroding profit margins</span></div></div><div class="flow-arrow" aria-hidden="true">↓</div>
+<div class="lane after"><div class="lane-tag toward">Move toward</div><div class="lane-title">Agentic Mission Rooms</div><div class="duo"><div class="team prov small"><div class="lf"><div class="who"><svg class="ic" aria-hidden="true"><use href="#i-person"/></svg><small>Lead</small></div><div class="who"><svg class="ic" aria-hidden="true"><use href="#i-person"/></svg><small>FDE</small></div></div><div class="agrow"><svg class="ic" aria-hidden="true"><use href="#i-agent"/></svg><svg class="ic" aria-hidden="true"><use href="#i-agent"/></svg><svg class="ic" aria-hidden="true"><use href="#i-agent"/></svg><svg class="ic" aria-hidden="true"><use href="#i-agent"/></svg></div><div class="tl">Provider: Lead, FDE &amp; agents</div></div><div class="link par" aria-hidden="true"><span>⇄</span><span>⇄</span><span>⇄</span><span>⇄</span></div><div class="team client"><div class="pyr"><div class="prow"><svg class="ic" aria-hidden="true"><use href="#i-person"/></svg></div><div class="prow"><svg class="ic" aria-hidden="true"><use href="#i-person"/></svg><svg class="ic" aria-hidden="true"><use href="#i-person"/></svg></div><div class="prow"><svg class="ic" aria-hidden="true"><use href="#i-person"/></svg><svg class="ic" aria-hidden="true"><use href="#i-person"/></svg><svg class="ic" aria-hidden="true"><use href="#i-person"/></svg></div></div><div class="tl">Client team</div></div></div><div class="chips"><span>Parallel interviews</span><span>Evidence attached</span><span>Human-governed</span></div></div></div><div class="hero-cta"><a class="btn" href="#mission">Explore a Mission Room <span>↗</span></a></div></div></div></section>
+<section class="section altbg" id="audiences"><div class="container"><div class="sectionhead"><div><div class="eyebrow pilled"><span>Who it's for</span><span class="sep"></span><span class="focus">Current Focus</span></div><h2>When the promise is made,<br>the clock starts.</h2></div><p class="subtitle">Tacit focuses on the high-stakes work before delivery: finding what is true, defining what will change, and getting the right people to commit.</p></div><div class="two"><article class="audience-card"><span class="aud-label mono">01 / IT SERVICES &amp; CONSULTING</span><h3>From billable hours to accountable outcomes.</h3><p>Fixed-fee or outcome-led engagements break when scope, baseline and success measures live in scattered conversations. Put a reusable, AI-assisted discovery and commitment system under every engagement.</p><div class="pain"><div class="instead"><span class="tag">Instead of</span>More analysts, more interviews, more rework.</div><div class="toward"><span class="tag">Move toward</span>Expert-led missions, repeatable templates, evidence-backed scopes.</div></div></article><article class="audience-card"><span class="aud-label mono">02 / FINTECH · REGTECH · CORE BANKING</span><h3>From signed customer to go-live-ready, faster.</h3><p>Each new bank or credit union introduces policies, systems, people, exceptions and sign-offs. Use a purpose-built Mission Room to turn this complexity into confirmed configuration decisions and an implementation-ready package.</p><div class="pain"><div class="instead"><span class="tag">Instead of</span>Late surprises, senior staff in endless discovery calls.</div><div class="toward"><span class="tag">Move toward</span>Parallel agent interviews and human-governed commitments.</div></div></article></div></div></section>
+<section class="section" id="chassis"><div class="container"><div class="eyebrow">The product boundary</div><h2>Before the build, <br>get the truth right.</h2><p class="narrow subtitle">Every Mission Room follows the same spine. Tacit structures the work needed to reach a confirmed handoff. Your existing implementation, integration and verification teams remain accountable for delivery.</p><div class="funnel"><div class="boxed"><span class="box-label">Agentified Mission Rooms</span><div class="funnel-step"><span class="n">01 / INSIDE TACIT</span><h3>Discover</h3><p>Agents interview stakeholders and inspect source material.</p></div><div class="funnel-step"><span class="n">02 / INSIDE TACIT</span><h3>Baseline</h3><p>Draft registries, configuration inputs, evidence and gaps.</p></div><div class="funnel-step"><span class="n">03 / INSIDE TACIT</span><h3>Commit</h3><p>Leads resolve gates and confirm each critical decision.</p></div></div><div class="funnel-step out"><span class="n">04 / YOUR TEAM</span><h3>Deliver</h3><p>Configure, integrate, migrate and implement.</p></div><div class="funnel-step out"><span class="n">05 / YOUR TEAM</span><h3>Verify</h3><p>Measure results and run go-live assurance.</p></div></div><div class="scope"><div class="line"></div><div class="after"></div></div><p style="margin-top:47px;font-size:13px"><strong style="color:var(--forest)">The output:</strong> an implementation-ready package, including confirmed requirements, configuration parameters, evidence, open issues, accountable owners, and success criteria. Not a replacement for the system of record.</p></div></section>
+<section class="section altbg" id="mission"><div class="container"><div class="sectionhead"><div><div class="eyebrow">Illustrative Mission Room Forked for running Client Implementation</div><h2>Signed client in.<br>Implementation-ready out.</h2></div><div class="mission-note"><p><strong>Provider:</strong> a Third-Party Risk Management (TRM) SaaS vendor.</p><p><strong>Client:</strong> the credit union it is onboarding.</p><p><strong>Use case:</strong> the discovery phase of a TPRM SaaS rollout. Establish the client's real vendor landscape (who they depend on, how critical each is, what data is exposed), then confirm the decisions the platform will be configured with, so the client is implementation-ready.</p></div></div><div class="demo-top"><span class="pill"><span class="dot"></span> INTERACTIVE EXAMPLE / ILLUSTRATIVE DATA</span><div class="stepper"><div class="tabbar" role="tablist" aria-label="Mission stage"><button class="active" data-stage="setup" role="tab" aria-selected="true">01 Setup</button><button data-stage="discover" role="tab" aria-selected="false">02 Discover</button><button data-stage="baseline" role="tab" aria-selected="false">03 Baseline</button><button data-stage="commit" role="tab" aria-selected="false">04 Commit</button></div><div class="trail" aria-hidden="true"><div class="fill"></div></div><div class="trail-label" aria-hidden="true"><span>Discovery</span><span>Ready for implementation</span></div></div></div><div class="demo-shell"><aside class="demo-aside"><div class="logo"><span style="color:#80b59f">●</span> Tacit Studio</div><div class="tagline">ACTIVE CLIENT</div><div class="client">Harbor Point Credit Union</div><div class="meta">TRM SaaS · Discovery · day 18 of 21</div><div class="tagline">MISSION</div><div id="side-stages"><div class="navitem on" data-side="setup">Setup</div><div class="navitem" data-side="discover">Discover</div><div class="navitem" data-side="baseline">Baseline</div><div class="navitem" data-side="commit">Commit</div></div><hr><div class="tagline">EVIDENCE</div><div class="navitem">14 transcripts</div><div class="navitem">3 playbook sources</div><div class="navitem">Audit trail</div></aside><div class="demo-content"><div class="crumb">Tacit Studio &nbsp;/&nbsp; Harbor Point Credit Union &nbsp;/&nbsp; Discovery &nbsp;/&nbsp; <strong id="crumbstage">Setup</strong></div>
+<div class="stage-panel active" data-panel="setup"><h3>Setup</h3><p class="sub">The client's material seeds its playbook. The Lead defines gates before BATTUTA begins discovery.</p><div class="demo-cols"><div class="demo-card"><h4>Client playbook sources</h4><ul class="demo-list"><li><div>Accounts payable vendor export<small>CSV · 412 vendors · 24 months</small></div><span class="status">Imported</span></li><li><div>Third-Party Risk Management Policy v3.2<small>PDF · client-approved</small></div><span class="status">Imported</span></li><li><div>NCUA exam findings<small>PDF · 3 observations</small></div><span class="status">Imported</span></li><li><div>TRM control library<small>Template · selected controls</small></div><span class="status neutral">Template</span></li></ul></div><div class="demo-card"><h4>Gate thresholds</h4><ul class="demo-list"><li><div><b>Critical activity</b><small>Escalate critical activity or uncertainty</small></div><span class="status warn">Gate</span></li><li><div><b>Data exposure</b><small>Escalate sensitive data without agreement</small></div><span class="status warn">Gate</span></li><li><div><b>Concentration</b><small>Rank difficulty of substitution</small></div><span class="status neutral">Rank</span></li><li><div><b>Evidence quality</b><small>Rank consistency across sources</small></div><span class="status neutral">Rank</span></li></ul></div></div><div class="demo-meta"><span>Interview plan · 14 stakeholders across 6 business lines</span><button class="btn small" data-next="discover">Review discovery →</button></div></div>
+<div class="stage-panel" data-panel="discover"><h3>Discover</h3><p class="sub">BATTUTA interviews relationship owners, reveals shadow vendors, and escalates contradictory answers.</p><div class="escalation"><div><strong>MANDATORY ESCALATION — CRITICAL ACTIVITY UNCLEAR</strong><p>E-signature service used for lending; owners disagree on fallback processes.</p></div><button data-next="commit">Review gate →</button></div><div class="statgrid"><div class="stat"><div class="lbl">Interviews</div><b>14/14</b></div><div class="stat"><div class="lbl">Vendor relationships</div><b>168</b></div><div class="stat"><div class="lbl">Not in AP export</div><b>9</b></div><div class="stat"><div class="lbl">Escalations</div><b>1</b></div></div><div class="demo-cols"><div class="demo-card"><h4>Coverage by business line</h4><ul class="demo-list"><li>Consumer Lending <strong>4 / 4</strong></li><li>Member Services <strong>3 / 3</strong></li><li>IT &amp; InfoSec <strong>3 / 3</strong></li><li>Finance <strong>2 / 2</strong></li><li>Marketing <strong>1 / 1</strong></li></ul></div><div class="demo-card"><h4>BATTUTA / follow-up</h4><p style="font-size:14px;font-style:italic">“If the e-signature service were unavailable for a week, how would a loan close?”</p><div class="evidence"><strong>Shadow vendor</strong><br>E-signature service paid by card, not in AP export.</div><div class="evidence"><strong>Conflict</strong><br>Different owners identify different backup processes.</div></div></div></div>
+<div class="stage-panel" data-panel="baseline"><h3>Baseline</h3><p class="sub">Artifact agents assemble draft evidence and configuration inputs. The Lead reviews before commitment.</p><div class="demo-cols"><div class="demo-card"><span class="mono tiny" style="color:#898270">DRAFT / THIRD-PARTY REGISTER / v0.4</span><h4 style="margin-top:14px">168 vendor relationships</h4><ul class="demo-list"><li>Critical tier <strong>14</strong></li><li>High tier <strong>31</strong></li><li>Moderate tier <strong>58</strong></li><li>Low tier <strong>65</strong></li><li>Fourth parties identified <strong>22</strong></li><li>Not in AP export <strong>9</strong></li></ul></div><div class="demo-card"><span class="mono tiny" style="color:#898270">DRAFT / CONFIGURATION PACKAGE / v0.2</span><h4 style="margin-top:14px">What the TRM SaaS will load</h4><ul class="demo-list"><li>Tag taxonomy <strong>Criticality · data · access</strong></li><li>Intake questionnaire <strong>18 questions</strong></li><li>Tier thresholds <strong>80 / 60 / 35</strong></li><li>Control applicability <strong>SOC 2 · NIST</strong></li><li>Reassessment rules <strong>Risk-based</strong></li></ul></div></div><div class="demo-meta"><span>Draft, not committed · unresolved questions remain visible</span><button class="btn small" data-next="commit">Go to human review →</button></div></div>
+<div class="stage-panel" data-panel="commit"><h3>Commit</h3><p class="sub">The Lead confirms records or overrides BATTUTA's draft assessments. Exceptions cannot be silently approved.</p><div class="escalation"><div><strong>MANDATORY ESCALATION — CRITICAL ACTIVITY UNCLEAR</strong><p>Resolve the e-signature service's criticality with the supporting evidence in view.</p></div><button id="resolveDemo">Review decision</button></div><div class="statgrid"><div class="stat"><div class="lbl">Confirmed</div><b>131/168</b></div><div class="stat"><div class="lbl">Awaiting review</div><b>37</b></div><div class="stat"><div class="lbl">Critical tier</div><b>14</b></div><div class="stat"><div class="lbl">Scores overridden</div><b>11</b></div></div><div class="demo-cols"><div class="demo-card"><h4>Third-party register</h4><table class="demo-table"><thead><tr><th>Vendor</th><th>Tier</th><th>Status</th></tr></thead><tbody><tr><td>Core processor</td><td><span class="result-tag bad">Critical</span></td><td>Review</td></tr><tr><td>E-signature service</td><td><span class="result-tag bad">Pending</span></td><td>Escalated</td></tr><tr><td>Card processor</td><td><span class="result-tag bad">Critical</span></td><td>Confirmed</td></tr><tr><td>Payroll provider</td><td><span class="result-tag">High</span></td><td>Confirmed</td></tr></tbody></table></div><div class="demo-card"><span class="mono tiny">BATTUTA DRAFT / RECORD TP-0007</span><h4 style="margin-top:12px">Core banking processor</h4><ul class="demo-list"><li>Critical activity <strong>Deposits, loans</strong></li><li>Data exposure <strong>Member NPI</strong></li><li>Fourth parties <strong>Cloud host; support</strong></li><li>Concentration <strong>High</strong></li></ul><div class="evidence">Evidence: interviews agree; contract on file. Record awaits accountable Lead confirmation.</div><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn small" id="confirmDemo">Review confirmation</button><button class="btn alt small" id="overrideDemo">Review override</button></div></div></div></div>
+<p class="sim-note">Illustrative example only. Figures and client name are examples; no production workflow, decisions, or client records are changed.</p></div></div><div class="demo-meta"><span>Lead + engineering support + BATTUTA interview agent + artifact agents</span><span class="mono">AGENTS DRAFT · HUMANS COMMIT</span></div></div></section>
+<section class="section" id="value"><div class="container"><div class="eyebrow">The advantage</div><h2>Scale the work.<br>Not the analyst pyramid.</h2><p class="narrow subtitle">This is not a chatbot on top of project management. It is a reusable operating system for the first consequential decisions of an engagement.</p><div class="three" style="margin-top:32px"><div class="feature"><div class="num">01 / REPEATABLE</div><h3>Mission-specific templates</h3><p>Expertise, interview plans, decision gates, data models, integrations and artifacts designed for the work, not a blank workspace.</p></div><div class="feature"><div class="num">02 / ACCOUNTABLE</div><h3>Evidence before commitment</h3><p>Transcripts and source documents are attached to drafted findings. Critical decisions reach a named human, with overrides recorded.</p></div><div class="feature"><div class="num">03 / COMPOUNDING</div><h3>Teams get smarter with each mission</h3><p>Reusable methods and templates improve across engagements while confidential client material remains separated and controlled.</p></div></div></div></section>
+<section class="section dark" id="ownership"><div class="container"><div class="eyebrow">Trust and boundaries</div><div class="sectionhead"><h2>The expert keeps the judgment.<br>The client keeps its context.</h2><p class="subtitle">We're building for firms whose reputation depends on confidentiality, defensible decisions and human accountability.</p></div><div class="ownership"><article><h3>Provider method</h3><ul><li>Expert-led playbook and delivery know-how</li><li>Named human Lead sets decision thresholds</li><li>Reusable mission patterns</li><li>Firms retain their client relationship</li></ul></article><article><h3>Client context</h3><ul><li>Documents, interviews, records and evidence</li><li>Decision log and confirmed artifacts</li><li>Explicit review and permission boundaries</li><li>Export/deletion controls are still in development</li></ul></article></div><p style="margin-top:22px;font-size:13px">Tacit Chassis is described as Apache-2.0 open source in the current research materials; specific fork licensing and implementation availability should be verified before deployment.</p></div></section>
+<section class="section" id="research"><div class="container channel"><div><div class="eyebrow">For investors, builders and researchers</div><h2>A new category is being tested in the field.</h2><p class="subtitle">As services become more software-driven, the missing infrastructure is neither a personal copilot nor a fully autonomous services provider. It is the space between them: expert-led work on an agent-assisted, reusable mission chassis.</p><p>This is the thesis. The flagship TRM mission is a concrete way to test it. We distinguish early ideas and experiments from demonstrated production outcomes.</p><a class="btn alt" href="#reader">Read the research below ↓</a></div><div class="channel-list"><a href="#essay"><span>The essay<small>Category thesis, judgment work and the case for Mission Rooms</small></span>↓</a><a href="#paper"><span>Working paper v0.8<small>Hypotheses, theoretical foundation and research discussion</small></span>↓</a><a href="#overview"><span>Open-source Tacit Chassis<small>Apache-2.0 thesis, contributor inquiry and forks</small></span>↓</a><a href="mailto:research@theoremlabs.io?subject=Tacit%20Investor%20Conversation"><span>Investor conversation<small>Platform thesis, repeatability and validation milestones</small></span>↗</a></div></div><div class="container reader" id="reader">
+<div class="rtabs" role="tablist" aria-label="Research and Open Source"><button type="button" role="tab" data-tab="overview">Overview</button><button type="button" role="tab" data-tab="essay">Essay</button><button type="button" role="tab" data-tab="paper">Working paper</button><button type="button" role="tab" data-tab="investors">Investor memo</button></div>
+<div class="frame"><div class="sheet" id="pane-overview" data-pane="overview" hidden>
+
 
 <main class="wrap">
 <blockquote class="pq"><p>&ldquo;We can know more than we can tell.&rdquo;</p><cite>Michael Polanyi, <i>The Tacit Dimension</i> (1966), p.&nbsp;4</cite></blockquote>
@@ -139,7 +304,7 @@ footer{border-top:1px solid var(--rule);font:13px/1.6 var(--sans);color:var(--mu
       <div class="kick">Working paper · October 2026 · draft for comment</div>
       <h1>Give judgment work <mark>a&nbsp;workspace of&nbsp;its&nbsp;own.</mark></h1>
       <p class="lede">A bounded workspace for expert engagements between a provider and its client. Agents draft. One named person stands behind every finding.</p>
-      <div class="herocta"><a class="btn p" href="#check">Check if your work is indeed tacit</a><a class="btn" href="#contact" data-pick="providers">Become a design partner</a><a class="btn" href="/paper/">Read the paper</a></div>
+      <div class="herocta"><a class="btn p" href="#check">Check if your work is indeed tacit</a><a class="btn" href="#contact" data-pick="providers">Become a design partner</a><a class="btn" href="#paper">Read the paper</a></div>
     </div>
     <figure class="quad">
       <svg id="quadsvg" data-s="a" viewBox="0 0 480 400" role="img" aria-labelledby="qt qd">
@@ -209,7 +374,7 @@ footer{border-top:1px solid var(--rule);font:13px/1.6 var(--sans);color:var(--mu
   <div class="panel" id="panel" aria-live="polite"></div>
 </section>
 
-<section class="s" id="partner">
+<section class="s" id="r-partner">
   <h2>What working with us looks like</h2>
   <p style="font:15px var(--sans);color:var(--muted);margin:0">One real mission, one client. Not a pilot of software; a test of the idea.</p>
   <div class="steps">
@@ -258,27 +423,266 @@ footer{border-top:1px solid var(--rule);font:13px/1.6 var(--sans);color:var(--mu
 </section>
 </main>
 <a class="mbar" href="#contact">Start a conversation</a>
-<footer><div class="wrap"><div class="fl"><a href="/paper/">Paper</a> · <a href="/essay/">Essay (draft)</a> · <a href="/investors/">Investor memo</a> · <a href="mailto:research@theoremlabs.io">research@theoremlabs.io</a></div>Research supported by Theoremlabs.io, which also develops Tacit Chassis. Comments and enquiries: research@theoremlabs.io</div></footer>
+<footer><div class="wrap"><div class="fl"><a href="#paper">Paper</a> · <a href="#essay">Essay</a> · <a href="#investors">Investor memo</a> · <a href="mailto:research@theoremlabs.io">research@theoremlabs.io</a></div>Research supported by Theoremlabs.io, which also develops Tacit Chassis. Comments and enquiries: research@theoremlabs.io</div></footer>
 
+
+</div>
+<div class="sheet" id="pane-essay" data-pane="essay" hidden>
+
+
+<div class="layout">
+<aside aria-label="Contents"><a href="#a">The engagement you run</a><a href="#b">What agents change</a><a href="#c">Three client questions</a><a href="#d">The Judgment Work pattern</a><a href="#e">After the pyramid</a><a href="#f">What we don't know</a><a href="#g">Run one with us</a></aside>
+<article>
+  <div class="kick">Essay for practitioners · from the working paper</div>
+  <h1>Your judgment is the product. Where does it live?</h1>
+  <div class="by">P. Sarode and R. Nair · Future of Ways of Working, Theoremlabs.io · 5 min read</div>
+  <p class="tldr"><b>In short.</b> Expert engagements run on digital meetings, live or recorded, and on the slides, diagrams and chats that follow. None of these record who confirmed what. Agents now draft findings in minutes, so "who decided" gets blurrier. We propose a workspace per engagement that runs the Judgment Work pattern: agents draft and one named person confirms. We want to test whether you and your clients would trust it.</p>
+
+  <h2 id="a">The engagement you already run</h2>
+  <p>You interview a dozen people at a client, on calls and in meetings. You read what documentation exists. You form a view and write it up. Weeks later, someone asks which conversation a conclusion came from, which findings you examined yourself, and where the client's confidential material is now. Most firms can't answer quickly.</p>
+  <p>Even as offices refill, knowledge work stays digital: web and phone meetings, one-to-one or in groups, live or recorded, with chat and shared files in between. The whiteboard has become Figma or draw.io, and now an AI draws the diagram. The work is richer than ever, and the judgment inside it is no easier to trace.</p>
+  <blockquote>The most valuable part of the work is the part no tool records.</blockquote>
+
+  <h2 id="b">What agents change</h2>
+  <p>Agents can interview, transcribe and draft. In a field study of 758 consultants, access to a model improved speed and quality on tasks inside its ability, and made people less likely to get the right answer on a task just outside it. The edge of the model's ability isn't visible to the person using it.</p>
+  <p>That removes much of the junior work, and it raises a harder question than speed: when an agent drafts a finding and a person forwards it, who decided?</p>
+
+  <h2 id="c">Three questions your client will ask</h2>
+  <p><b>Who owns what?</b> What the client's people said belongs to the client. Your method belongs to you. <b>Where does it live, and who can reach it?</b> Including which model services see it. <b>How can you prove it?</b> In the language their security team already uses.</p>
+  <p>If a workspace can't answer these in the system itself, not just in a contract, a careful client won't let an agent interview its people.</p>
+
+  <h2 id="d">The &ldquo;Judgment Work&rdquo; pattern</h2>
+  <p>Judgment work is work where you are paid to draw out what other people know and then put your name to a verdict: a due-diligence finding, a readiness assessment, a migration plan. It has the same shape every time, and agents make that shape worth writing down. We call it the Judgment Work pattern. It has three moves, which the paper names Draft, Confirm and Commit.</p>
+  <ol class="moves">
+    <li><b>Draft.</b> Agents interview the client's people and draft each finding, with a proposed score and a link to the interview it came from.</li>
+    <li><b>Confirm.</b> You, as the named Lead, confirm or change every record. No one else can, and nothing is authoritative until you do.</li>
+    <li><b>Commit.</b> The mission closes. The client sees the result read-only, and every finding traces back to its source.</li>
+  </ol>
+  <p>Here is one record, with invented content, moving through the pattern:</p>
+  <div class="rec" id="rec">
+    <header><span>REC-014 · fictional example</span><span id="state">DRAFT</span></header>
+    <div class="row"><label>Finding</label><span>Contract reviews for AI vendors happen by email; no one owns the checklist.</span></div>
+    <div class="row"><label>Source</label><span>Interview 7, 00:14:32</span></div>
+    <div class="row"><label>Agent score</label><span>Risk 4 of 5</span></div>
+    <div class="row"><label>Lead score</label><span id="lead">not yet confirmed</span></div>
+    <div class="act"><button id="ov">Override to 3</button><button class="p" id="cf">Confirm</button><span class="stamp" id="st">Confirmed by the Lead, with source retained</span></div>
+  </div>
+  <p>The agent proposes; the person decides. No fork of the software can remove the Confirm step.</p>
+
+  <h2 id="e">After the pyramid</h2>
+  <p>If agents absorb the junior tasks, the staffing pyramid thins. We describe a smaller team: a Lead who is accountable and the only one who confirms, and an optional Operator who runs the room. The open worry is apprenticeship. Juniors used to learn judgment by doing the work the agents now do.</p>
+
+  <h2 id="f">What we don't know</h2>
+  <p>This is a position paper. We have no field data. We state eight hypotheses, for instance how often leads override an agent's score, and whether interviews change conclusions that documents alone would reach. If the answers are "rarely" and "no", the idea is weaker than we think, and we will say so.</p>
+
+  <div class="cta" id="g"><h3>Run one real mission with us</h3>
+    <p>We are looking for five to eight practitioners to run a single engagement in a Mission Room. In return: a co-authored case study and a say in what gets built. Writing a playbook needs your expertise, not code.</p>
+    <a class="btn p" href="mailto:research@theoremlabs.io?subject=[Design partner] My mission">Describe your mission</a><a class="btn" href="#paper">Read the full paper</a></div>
+  <p class="note">Research supported by Theoremlabs.io, which also develops the open-source Tacit Chassis (in development, not yet public).</p>
+</article></div>
+
+</div>
+<div class="sheet" id="pane-paper" data-pane="paper" hidden>
+
+<main class="wrap">
+<div class="kick">Working paper · version 0.8 · 11 October 2026 · draft for comment</div>
+<h1>Tacit Work Needs a Mission Room</h1>
+<p class="by">Accountability, Ownership and Data Sovereignty in Agent-Assisted Professional Services<br>P. Sarode · R. Nair · Adjunct Researchers-in-Residence, Future of Ways of Working, Theoremlabs.io</p>
+<p class="abs">Expertise engagements between a provider and its client depend on knowledge nobody has written down: expert judgment, and what the client's people know but have never documented. They run on chat, file shares and data rooms, which record neither who knows what, who owns what, where it resides, nor who decided. AI agents can now interview, draft and score at scale, which makes those gaps more costly. We propose the Mission Room: a bounded, staged workspace in which agents draft and a named person confirms, the client's context remains the client's, and the provider's expertise remains the provider's. We argue that such a workspace will not be taken seriously unless ownership is separated and enforced by the system, and unless its answers to data sovereignty, security and privacy can be demonstrated under assurance standards such as SOC 2. We specify the Mission Room through these preconditions, a governance pattern called Draft, Confirm, Commit, a consolidated set of invariants, and an operating model in which a Lead and an optional Operator work with an agent roster in place of the traditional pyramid. We describe an open-source reference implementation, Tacit Chassis, built to hold the invariants, and state eight testable hypotheses. The paper proposes a design and reports no field data.</p>
+<p><a class="btn p" href="/paper/v0.8/">Read online</a><a class="btn" href="/paper/v0.8/tacit-work-needs-a-mission-room-v0.8.pdf">Download PDF</a><a class="btn" href="mailto:research@theoremlabs.io?subject=%5BResearcher%5D%20Comments%20on%20the%20paper">Send comments</a></p>
+<h2>Cite this version</h2>
+<pre class="cite">@misc{sarode_nair_2026_tacitwork,
+  author = {Sarode, P. and Nair, R.},
+  title  = {Tacit Work Needs a Mission Room: Accountability, Ownership and
+            Data Sovereignty in Agent-Assisted Professional Services},
+  year   = {2026},
+  month  = oct,
+  note   = {Working paper, version 0.8},
+  url    = {https://tacit.theoremlabs.io/paper/v0.8/}
+}</pre>
+<p class="by">Comments, critique and collaboration are welcome at <a href="mailto:research@theoremlabs.io">research@theoremlabs.io</a>. Each posted version keeps its own address; this page links to the latest.</p>
+</main>
+<footer><div class="wrap">Research supported by Theoremlabs.io, which also develops Tacit Chassis. Comments: <a href="mailto:research@theoremlabs.io">research@theoremlabs.io</a></div></footer>
+</div>
+<div class="sheet" id="pane-investors" data-pane="investors" hidden>
+
+<main class="wrap">
+<header class="hero">
+  <div class="kick">Investor memo · knowledge management, reborn · October 2026</div>
+  <h1>We have systems of record for customers, money and code. We still have no system for judgment management.</h1>
+  <p class="one">Corporate knowledge management stored what people had written down. The part that matters most, what experts know and decide, was never managed. Agents can now interview, draft and score, and a named person can confirm. That makes a <b>system for judgment management</b> possible, and knowledge management ripe for rebirth.</p>
+  <p class="honest"><b>From paper to open source.</b> The Mission Room ideas in our working paper are being built as open-source software under Apache-2.0, free to fork for any kind of work. We are seeking design partners for the first missions, academic feedback and industry collaboration, and a few investors who see the category early.</p>
+</header>
+
+<section><h2><span>01</span>The missing system</h2>
+  <p>Every generation of enterprise software gave one kind of asset a system of record. Judgment, meaning who knows what, what an expert decided on what evidence, and who stood behind it, is still managed in meetings, chat, shared files and slides.</p>
+  <table><tr><th>Era</th><th>What it managed</th><th>The system of record</th></tr>
+  <tr><td>1990s, knowledge management</td><td>Documents and written-down know-how</td><td>Intranets, document and knowledge repositories</td></tr>
+  <tr><td>2000s to 2010s, enterprise software</td><td>Customers, money, people, work</td><td>CRM, ERP, HR systems, issue trackers</td></tr>
+  <tr><td>2020s, agents</td><td>Explicit traces and memory inside one enterprise</td><td>Knowledge bases, context graphs, decision logs</td></tr>
+  <tr><td><b>Next</b></td><td><b>Judgment across a provider and its client: who knows what, what was decided, on what evidence, confirmed by whom</b></td><td><b>A system for judgment management (the Mission Room, proposed)</b></td></tr></table>
+</section>
+
+<section><h2><span>02</span>Why knowledge management disappointed, and why it can be reborn</h2>
+  <div class="g3">
+    <div class="box"><b>It leaned on capture discipline</b>Keeping a knowledge base current meant busy experts writing things down. Content went stale, trust fell, contributions dropped.</div>
+    <div class="box"><b>It managed the easy layer</b>Davenport and Prusak (1998) argued that the human qualities of knowledge, experience and intuition among them, are the most valuable and the hardest to manage.</div>
+    <div class="box"><b>What changes now</b>Agents can interview experts and draft the record, so capture no longer depends on experts typing. A named person confirms each record, the Judgment Work pattern, which supplies the trust the old systems lacked.</div>
+  </div>
+  <p style="font:13px var(--sans);color:var(--muted)">Lineage: Polanyi (1966) on tacit knowing; Nonaka and Takeuchi (1995) on converting tacit knowledge; Davenport and Prusak (1998) on managing what organizations know. Full references are in the working paper.</p>
+</section>
+
+<section><h2><span>03</span>Why now</h2>
+  <div class="g3">
+    <div class="box"><b>The theme is hot</b>Accenture Research (March 2026), Gartner (July 2026) and Interloom ($16.5M raised, March 2026) all framed tacit knowledge as the key to agentic AI.</div>
+    <div class="box"><b>The shape of firms is changing</b>Consulting is moving from the junior-heavy pyramid to small senior teams augmented by agents, and boutiques are winning engagements the large firms can't staff profitably.</div>
+    <div class="box"><b>Our window is short</b>Most others capture knowledge inside one enterprise. The provider-and-client version is open for a few quarters, not years.</div>
+  </div>
+</section>
+
+<section><h2><span>04</span>The wedge: the boundary, not the memory layer</h2>
+  <p>A Mission Room runs the Judgment Work pattern (Draft, Confirm, Commit) in a governed, time-boxed engagement between two organisations: agents draft, a named Lead confirms, client context stays the client's, provider method stays the provider's. The output is a scored, confirmed decision record with provenance to the source interview. That is a system of record, not a knowledge base. Decision logs and context graphs record what an enterprise does inside its own walls; a Mission Room records expert judgment across the boundary between two organisations.</p>
+</section>
+
+<section><h2><span>05</span>Where it bends to financial services</h2>
+  <p>The same base serves any provider that must understand how a client really operates before delivering. Two shapes the paper sketches for financial institutions (illustrative, not built):</p>
+  <table><tr><th>Mission</th><th>Provider → client</th><th>What the Lead confirms</th><th></th></tr>
+  <tr><td>Customer onboarding discovery</td><td>Fintech implementation team → bank or credit union</td><td>Each process step or control gap, owner, severity, before go-live</td><td><span class="chip o">illustrative</span></td></tr>
+  <tr><td>Third-party risk go-live</td><td>RegTech vendor → regulated firm</td><td>Each vendor relationship, evidence, readiness</td><td><span class="chip o">illustrative</span></td></tr>
+  <tr><td>AI adoption assessment</td><td>Advisory firm → enterprise</td><td>Each AI use case, owner, controls, score</td><td><span class="chip">specified</span></td></tr></table>
+  <p style="font:14px var(--sans);color:var(--muted)">Implementation and onboarding are where B2B fintech vendors lose time. A Mission Room is a candidate for the discovery stage of that motion.</p>
+</section>
+
+<section><h2><span>06</span>Why open source</h2>
+  <p>Adoption first. Consulting firms and vendors will not put their method into a closed tool owned by a competitor. Apache-2.0, a published playbook format and a rule that no fork can remove the human confirmation gate make the Chassis a standard others can build on. Honest caveat: open-source users will be builders, not consultants, so the hosted route has to serve the rest.</p>
+</section>
+
+<section><h2><span>07</span>How it could earn</h2>
+  <div class="gate"><b>Business model.</b> Hosting for providers, run by an operating organisation that can meet SOC 2 criteria; premium Mission Room templates; and stewardship of the upstream. Detail is available on request in a conversation, not on the public page.
+  <br><a class="btn" href="mailto:research@theoremlabs.io?subject=[Investor] Request the business-model detail">Request detail</a></div>
+</section>
+
+<section><h2><span>08</span>What would change our mind</h2>
+  <p>Seven public hypotheses. Three that matter most to a buyer:</p>
+  <table><tr><th>ID</th><th>If this holds…</th><th>…the case strengthens; if not, it weakens</th></tr>
+  <tr><td>H1</td><td>Leads override a stable, measurable share of agent scores</td><td>Evidence that the human gate is real value, not ritual</td></tr>
+  <tr><td>H2</td><td>Missions reach Commit faster than comparable work on general tools, at no loss of quality</td><td>The efficiency case</td></tr>
+  <tr><td>H3</td><td>Interviews change conclusions that documents alone would reach</td><td>Why elicitation is the product</td></tr></table>
+</section>
+
+<section><h2><span>09</span>Milestones we'd be judged on</h2>
+  <div class="g3">
+    <div class="box"><b>Now to Q1 2027</b>Paper posted. Chassis v0.1 with a demo and one-command self-host. Five to eight design partners signed.</div>
+    <div class="box"><b>Through 2027</b>About ten completed missions with external clients across at least three partners.</div>
+    <div class="box"><b>Then</b>First annual study of tacit work, from consented, aggregated, metadata-only data.</div>
+  </div>
+</section>
+
+<section><h2><span>10</span>Risks we can name</h2>
+  <details><summary>The category is crowded and moving fast</summary>Analysts and funded startups are already in the space. Our difference is the provider-client boundary, which has to hold up in practice.</details>
+  <details><summary>The name</summary>Others use similar names in adjacent spaces. We are reviewing the name and our trademark position.</details>
+  <details><summary>Audience mismatch</summary>Consultants won't self-host. Builders adopt the code; the hosted route has to reach the rest.</details>
+  <details><summary>Claims ahead of the build</summary>No SOC 2 examination has been performed. State of each safeguard is published, including what is still in development.</details>
+</section>
+
+<section><h2><span>11</span>What we are asking for</h2>
+  <p>A 30-minute conversation to pressure-test the thesis. For investors with bank and vendor networks, we would value introductions to implementation teams and institutions that could run one real mission as design partners.</p>
+  <a class="btn p" href="mailto:research@theoremlabs.io?subject=[Investor] 30-minute conversation">Book 30 minutes</a><a class="btn" href="#paper">Read the paper</a>
+</section>
+</main>
+<footer><div class="wrap">Research supported by Theoremlabs.io, which also develops Tacit Chassis. Not an offer of securities. Comments: research@theoremlabs.io</div></footer>
+</div>
+</div>
+<p class="frame-note">Research pages keep the paper's own typography so a reader arriving from a citation sees the same document. Everything around them is the Tacit shell.</p>
+</div></section>
+<section class="section altbg" id="partner"><div class="container"><div class="cta-box"><div><div class="eyebrow" style="color:#b9dbcb">Design partners / Early collaboration</div><h2 style="margin-bottom:14px">Bring one real mission.<br>Help shape the chassis.</h2><p style="max-width:620px">For an IT services firm, bring an outcome-based engagement. For a fintech or RegTech vendor, bring a complex new-customer onboarding. We'll explore the process, evidence and human decisions that could become a reusable Mission Room.</p><p style="font-size:12px;margin-bottom:0">Initial contact by email; no customer data or confidential client names needed.</p></div><a class="btn" href="#contact" data-pick="providers">Discuss a mission ↗</a></div></div></section>
+</main><footer class="foot"><div class="container footinner"><div><strong style="font-family:Outfit;font-size:19px;color:#2c3b32">● Tacit</strong><br>Agentic Mission Rooms by Theoremlabs</div><div class="footlinks"><a href="https://tacit.theoremlabs.io/essay/">Essay</a><a href="https://tacit.theoremlabs.io/paper/v0.8/">Paper v0.8</a><a href="mailto:research@theoremlabs.io">Contact</a><a href="#top">Back to top ↑</a></div></div></footer>
 <script>
+(function(){
+const buttons=[...document.querySelectorAll('[data-stage]')],panels=[...document.querySelectorAll('[data-panel]')];
+function stage(name){buttons.forEach(b=>{const on=b.dataset.stage===name;b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false')});panels.forEach(p=>p.classList.toggle('active',p.dataset.panel===name));document.querySelectorAll('[data-side]').forEach(s=>{s.classList.toggle('on',s.dataset.side===name);s.classList.toggle('done',['setup','discover','baseline','commit'].indexOf(s.dataset.side)<['setup','discover','baseline','commit'].indexOf(name))});document.getElementById('crumbstage').textContent=name[0].toUpperCase()+name.slice(1);const order=['setup','discover','baseline','commit'],i=order.indexOf(name);buttons.forEach(b=>b.classList.toggle('next',order.indexOf(b.dataset.stage)===i+1));const f=document.querySelector('.trail .fill');if(f)f.style.width=((i+1)*25)+'%'}
+stage('setup');
+buttons.forEach(b=>b.addEventListener('click',()=>stage(b.dataset.stage)));document.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>stage(b.dataset.next)));['resolveDemo','confirmDemo','overrideDemo'].forEach(id=>document.getElementById(id).addEventListener('click',()=>alert('Illustrative only: in a production Mission Room this action would open the evidence-backed Lead review, require a recorded decision and preserve the audit trail. No data was changed.')));
+})();
+</script>
+<script>
+/* CTA routing: every call to action opens the Overview's "Start a conversation" form,
+   with the lens and message pre-selected from the link that was clicked. */
+(function () {
+  var TO = 'research@theoremlabs.io';
+  function lens(subj) {
+    if (/\[?investor/i.test(subj)) return 'investors';
+    if (/\[?researcher/i.test(subj)) return 'researchers';
+    if (/\[?builder/i.test(subj)) return 'builders';
+    if (/platform|fintech|regtech|bank/i.test(subj)) return 'platforms';
+    return 'providers';
+  }
+  function route(key, body) {
+    var t = document.createElement('a');           // the form script listens for [data-pick] clicks
+    t.dataset.pick = key; t.href = '#contact'; t.hidden = true;
+    document.body.appendChild(t); t.click(); t.remove();
+    var m = document.getElementById('msg'); if (m && body) m.value = body;
+    var el = document.getElementById('contact');
+    if (el) { var host = el.closest('[data-pane]'); if (host && host.hidden) host.dispatchEvent(new Event('x')); }
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a || e.defaultPrevented && !a.dataset.pick) return;
+    var h = a.getAttribute('href');
+    if (h.toLowerCase().indexOf('mailto:' + TO) === 0 && !a.closest('#contact')) {
+      e.preventDefault();
+      var q = {}, s = h.split('?')[1] || '';
+      s.split('&').forEach(function (kv) { var i = kv.indexOf('='); if (i > 0) try { q[kv.slice(0, i)] = decodeURIComponent(kv.slice(i + 1)); } catch (x) {} });
+      route(lens(q.subject || ''), q.body);
+      window.__goContact && window.__goContact();
+    } else if (a.dataset.pick || h === '#contact') {
+      window.__goContact && window.__goContact();
+    }
+  });
+})();
+
+</script>
+<script>
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('[data-tab]')),panes=[].slice.call(document.querySelectorAll('[data-pane]')),title=document.getElementById('frame-title');
+  function show(id){panes.forEach(function(p){p.hidden=p.dataset.pane!==id});tabs.forEach(function(t){t.setAttribute('aria-selected',t.dataset.tab===id)});
+    var t=tabs.filter(function(t){return t.dataset.tab===id})[0];if(title)title.textContent=t?t.textContent:''}
+  function go(hash,scroll){var id=(hash||'').replace('#','');if(!id)return;
+    if(document.querySelector('[data-pane="'+id+'"]')){show(id);if(scroll)document.getElementById('reader').scrollIntoView({behavior:'smooth'});return}
+    var el=document.getElementById(id),host=el&&el.closest('[data-pane]');if(host){show(host.dataset.pane);el.scrollIntoView({behavior:'smooth'})}}
+  tabs.forEach(function(t){t.addEventListener('click',function(){history.replaceState(null,'','#'+t.dataset.tab);show(t.dataset.tab)})});
+  window.addEventListener('hashchange',function(){go(location.hash,true)});
+  window.__goContact=function(){go('#contact',true)};
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a&&a.getAttribute('href').length>1&&a.getAttribute('href')===location.hash)go(a.getAttribute('href'),true)});
+  show('overview');go(location.hash,false);
+})();
+</script>
+<script>
+(function(){
+
 const M=(s,b)=>'mailto:research@theoremlabs.io?subject='+encodeURIComponent(s)+(b?'&body='+encodeURIComponent(b):'');
 const L={
-providers:{k:'I run a services firm',s:'Advisory, integration, implementation',
+providers:{k:'IT services / consulting',s:'Advisory, integration, implementation',
  h:'Make the part of your work nobody records into something you can stand behind.',
  b:['Your method stays yours: the client\'s details never enter your playbook.','Every finding traces to its source interview and your confirmation, so a client\'s leadership can read it.','A repeatable Judgment Work pattern: Draft, Confirm, Commit. We hypothesise it reaches Commit faster than chat and slides (H2, untested).'],
  mission:'AI adoption assessment (specified) · IT services migration discovery (illustrative)',
- hook:()=>svc(),cta:['Explore a pilot mission','[Design partner] Services firm'],ext:['Read the practitioner essay (draft)','/essay/']},
-platforms:{k:'I sell a platform to banks',s:'Fintech, RegTech, vendors with implementations',
+ hook:()=>svc(),cta:['Explore a pilot mission','[Design partner] Services firm'],ext:['Read the practitioner essay','#essay']},
+platforms:{k:'Fintech / RegTech / core banking SaaS',s:'Vendors with implementations',
  h:'Discovery is where implementations lose time. Give it a record.',
  b:['The first weeks of an implementation depend on how the client really operates, including exceptions nobody documented.','A Mission Room records that, scored and confirmed, before go-live.','Apache-2.0: you can fork it, shape the stages and the playbook, and keep your own method.'],
  mission:'Customer onboarding discovery · Third-party risk go-live (both illustrative, not built)',
- hook:()=>'',cta:['Talk about an implementation','[Design partner] Platform vendor'],ext:['Read the practitioner essay (draft)','/essay/']},
-tools:{k:'I build process or knowledge AI',s:'Context graphs, process intelligence, capture tools',
- h:'We think we are complementary. Tell us where we are wrong.',
- b:['A graph shows what work does. A Mission Room records what an expert decides, who confirmed it, and what the client owns.','One could feed the other: observed traces as input to a Baseline; confirmed records as input to a graph.','H3 asks what share of confirmed records have no documentary source. Your data could test it.'],
- mission:'Research collaboration on H3 · open record format',
- hook:()=>'',cta:['Critique the landscape','[Researcher] Peer review: landscape and H3'],ext:['Read the paper','/paper/']},
-investors:{k:'I invest',s:'Early-stage, B2B, infrastructure',
+ hook:()=>'',cta:['Talk about an implementation','[Design partner] Platform vendor'],ext:['Read the practitioner essay','#essay']},
+builders:{k:'Open-source builder or contributor',s:'Build agents, adapters, forks, playbooks',
+ h:'Build on an open base, not a blank page.',
+ b:['The Chassis is the open-source base (Apache-2.0) that Mission Room forks are built from. Agents, adapters and playbooks plug into defined extension points.','It is in development and v0.1 is not yet public. Early conversations shape what ships first.','A good first contribution can be a playbook: it needs domain expertise, not code.'],
+ mission:'',
+ hook:()=>'',cta:['Talk to us about building','[Builder] Early access and contribution'],ext:['Read the paper','/paper/']},
+researchers:{k:'Researcher',s:'Peer review, study design, co-authoring',
+ h:'Seven hypotheses, none tested yet. Help us break them.',
+ b:['The paper sets out seven public hypotheses (H1 to H7), each with what would change our mind.','We are looking for reviewers, study designers and co-authors, not endorsement.','H3 asks what share of confirmed records have no documentary source. Your data or methods could test it.'],
+ mission:'Peer review · study design · co-authorship',
+ hook:()=>'',cta:['Review the paper','[Researcher] Peer review'],ext:['Read the paper','/paper/']},
+investors:{k:'Investor in a new product category',s:'A category not yet established',
  h:'Knowledge management stored documents. Nobody built a system for judgment management.',
  b:['The missing system: we have systems of record for customers, money and code, and no system for managing what experts know, decide and stand behind: judgment management.','Why now: agents can interview, draft and score, and a named person can confirm. Most others capture knowledge inside one enterprise; the provider-and-client version is open for a few quarters.','The plan: an open-source Chassis (Apache-2.0, in development), five to eight design partners, about ten completed missions. Seven public hypotheses show what would change our mind.'],
  mission:'',
@@ -303,9 +707,9 @@ function show(key){const d=L[key];currentKey=key;const fw=document.getElementByI
 Object.entries(L).forEach(([k,d])=>{const b=document.createElement('button');b.dataset.k=k;b.setAttribute('aria-pressed','false');b.innerHTML=d.k+'<small>'+d.s+'</small>';b.onclick=()=>show(k);$('choices').appendChild(b)});
 let currentKey=L[location.hash.slice(1)]?location.hash.slice(1):'providers';
 show(currentKey);
-const WANT={providers:['Explore a pilot mission','Ask a question','Get the essay'],platforms:['Talk about an implementation','Ask a question','Get early access'],tools:['Critique the landscape','Test H3 together','Ask a question'],investors:['Book 30 minutes','Request the business-model detail','Ask a question']};
-const TAG={providers:'[Design partner]',platforms:'[Design partner]',tools:'[Researcher]',investors:'[Investor]'};
-const PROMPT={providers:'The engagement you run, in a few lines (no client names)',platforms:'Where discovery loses time in your implementations',tools:'What you build, and where we overlap or you think we are wrong',investors:'What you would like to pressure-test'};
+const WANT={providers:['Explore a pilot mission','Ask a question','Get the essay'],platforms:['Talk about an implementation','Ask a question','Get early access'],builders:['Get early access before v0.1','Contribute a playbook or adapter','Ask a question'],researchers:['Review or comment on the paper','Test a hypothesis together','Ask a question'],investors:['Book 30 minutes','Request the business-model detail','Ask a question']};
+const TAG={providers:'[Design partner]',platforms:'[Design partner]',builders:'[Builder]',researchers:'[Researcher]',investors:'[Investor]'};
+const PROMPT={providers:'The engagement you run, in a few lines (no client names)',platforms:'Where discovery loses time in your implementations',builders:'What you would like to build, evaluate or contribute',researchers:'Which section or hypothesis, and what you would like to do',investors:'The product category you are looking at, and what you would like to pressure-test'};
 const ENDPOINT=null; // set to a form-backend URL later; null keeps the form mailto-only
 const sel=$('who');Object.entries(L).forEach(([k,d])=>{const o=document.createElement('option');o.value=k;o.textContent=d.k;sel.appendChild(o)});
 function pick(k){sel.value=k;const w=$('want');w.innerHTML='';WANT[k].forEach((t,i)=>{const l=document.createElement('label');l.innerHTML='<input type="radio" name="w" value="'+t+'"'+(i===0?' checked':'')+'><span>'+t+'</span>';w.appendChild(l)});$('msglab').textContent=PROMPT[k]}
@@ -330,6 +734,16 @@ initCheck();
  if(!matchMedia('(prefers-reduced-motion: reduce)').matches)timer=setTimeout(()=>{if(!touched)set('b')},3500);
 })();
 
+
+})();
+(function(){
+
+const $=id=>document.getElementById(id);
+$('ov').onclick=()=>{$('lead').textContent='Risk 3 of 5 (overrode agent)';$('state').textContent='LEAD EDITED'};
+$('cf').onclick=()=>{if($('lead').textContent.startsWith('not'))$('lead').textContent='Risk 4 of 5 (agreed)';$('state').textContent='COMMITTED';$('st').classList.add('on');$('ov').disabled=$('cf').disabled=true};
+
+})();
+
+
 </script>
-</body>
-</html>
+</body></html>
