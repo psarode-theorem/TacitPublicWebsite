@@ -693,10 +693,10 @@ function initCheck(){const Q=['You work with and on behalf of a client, and both
 function show(key){const d=L[key];currentKey=key;const fw=document.getElementById('who');if(fw&&fw.options.length&&fw.value!==key)pick(key);
  [...$('choices').children].forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===key));
  const hk=d.hook();$('panel').className='panel'+(hk?'':' one');$('panel').innerHTML='<div><h3>'+d.h+'</h3><ul>'+d.b.map(x=>'<li>'+x+'</li>').join('')+'</ul>'+(d.mission?'<p style="font:13px var(--sans);color:var(--muted)">Relevant missions: '+d.mission+'</p>':'')+'<a class="btn p" href="#contact" data-pick="'+key+'">'+d.cta[0]+'</a><a class="btn" href="'+d.ext[1]+'">'+d.ext[0]+'</a></div>'+(hk?'<div>'+hk+'</div>':'');
- if(location.hash!=='#'+key&&!location.hash.startsWith('#contact'))history.replaceState(null,'','#'+key)}
+ if(location.hash!=='#'+key&&!location.hash.startsWith('#contact')&&!(!window.__lensInit&&document.getElementById(location.hash.slice(1))))history.replaceState(null,'','#'+key)}
 Object.entries(L).forEach(([k,d])=>{const b=document.createElement('button');b.dataset.k=k;b.setAttribute('aria-pressed','false');b.innerHTML=d.k+'<small>'+d.s+'</small>';b.onclick=()=>show(k);$('choices').appendChild(b)});
 let currentKey=L[location.hash.slice(1)]?location.hash.slice(1):'providers';
-show(currentKey);
+show(currentKey);window.__lensInit=1;
 const WANT={providers:['Explore a pilot mission','Ask a question','Get the essay'],platforms:['Talk about an implementation','Ask a question','Get early access'],builders:['Get early access before v0.1','Contribute a playbook or adapter','Fork or deploy the Chassis','Ask a question'],researchers:['Review or comment on the paper','Test a hypothesis together','Ask a question'],investors:['Book 30 minutes','Request the business-model detail','Ask a question']};
 const TAG={providers:'[Design partner]',platforms:'[Design partner]',builders:'[Builder]',researchers:'[Researcher]',investors:'[Investor]'};
 const PROMPT={providers:'The engagement you run, in a few lines (no client names)',platforms:'Where discovery loses time in your implementations',builders:'What you would like to build, evaluate or contribute',researchers:'Which section or hypothesis, and what you would like to do',investors:'The product category you are looking at, and what you would like to pressure-test'};
