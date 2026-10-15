@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Tacit Chassis / Open Source: one governed chassis, plug-in capability ports with third-party adapters, industry forks, and two deployment models.">
+<link rel="canonical" href="https://tacit.theoremlabs.io/open-source/ports-and-adapters/">
+<meta property="og:title" content="Understanding Tacit-Chassis / Open Source">
+<meta property="og:description" content="How capability ports and third-party adapters make industry-specific Mission Room forks possible, and how to deploy them.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tacit.theoremlabs.io/open-source/ports-and-adapters/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20fill%3D%27%231c1c1c%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2723%27%20font-size%3D%2720%27%20text-anchor%3D%27middle%27%20fill%3D%27%23fbfaf7%27%20font-family%3D%27Georgia%2Cserif%27%20font-weight%3D%27600%27%3ET%3C/text%3E%3C/svg%3E">
+<title>Understanding Tacit-Chassis / Open Source | Tacit</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@500;600;700;800&family=Public+Sans:wght@400;500;600&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/nav.css">
+<style>
+:root{color-scheme:light;--bg:#f5f3ed;--ink:#212521;--muted:#676c64;--rule:#dcded6;--white:#fffefa;--forest:#285e50;--deep:#194436;--mint:#d8e9df;--warm:#f4ead2;--line:#dcded6;--mono:"IBM Plex Mono",monospace;--head:"Outfit",system-ui,sans-serif;--body:"DM Sans",system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 var(--body)}
+a{color:inherit}
+.w{width:min(100% - 40px,1080px);margin:0 auto}
+.eyebrow{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--forest)}
+h1{font:700 clamp(28px,4.4vw,46px)/1.12 var(--head);letter-spacing:-.015em;margin:.25em 0 .35em}
+h2{font:700 clamp(26px,3.4vw,36px)/1.15 var(--head);letter-spacing:-.01em;margin:0 0 .3em}
+h3{font:600 19px/1.25 var(--head);margin:0 0 6px}
+.lede{font-size:clamp(18px,2vw,21px);color:#454b44;max-width:720px;margin:0 0 20px}
+section{padding:56px 0}
+.hero{padding:52px 0 28px}
+.sub{color:var(--muted);max-width:640px;margin:0 0 28px}
+/* status chips */
+.k{display:inline-block;font:500 11px var(--mono);letter-spacing:.02em;padding:3px 8px;border-radius:99px;border:1px solid var(--deep);white-space:nowrap}
+.k.code{background:var(--deep);color:#fff}
+.k.scope{background:var(--mint)}
+.k.prop{border-style:dashed;background:transparent}
+.legend{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13px;color:var(--muted);margin:14px 0 0}
+/* marketecture */
+.mkt{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 25px 60px rgba(26,36,30,.08);display:grid;gap:14px}
+.tier{border-radius:12px;padding:14px 16px}
+.tier>.t{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;opacity:.75}
+.forks{background:var(--warm)}
+.row{display:grid;gap:10px}
+.r4{grid-template-columns:repeat(4,1fr)}
+.r7{grid-template-columns:repeat(7,1fr)}
+.r5{grid-template-columns:repeat(5,1fr)}
+.card{background:var(--white);border:1px solid var(--line);border-radius:9px;padding:11px 12px;font-size:14px;line-height:1.35}
+.card b{display:block;font:600 15px var(--head);margin-bottom:2px}
+.card.dash{border-style:dashed;background:transparent;color:var(--muted)}
+.core{background:var(--deep);color:#fff}
+.core .card{background:#ffffff14;border-color:#ffffff30;color:#fff}
+.core .card b{color:#fff}
+.core .k.code{background:#fff;color:var(--deep);border-color:#fff}
+.core .big{font:700 clamp(20px,3vw,30px)/1.15 var(--head);margin:2px 0 12px}
+.ports{background:var(--mint)}
+.port{background:var(--white);border:1px solid #9dbcae;border-radius:9px;padding:10px 10px 11px;font-size:13px;line-height:1.3;text-align:center}
+.port b{display:block;font:600 14px var(--head);margin-bottom:6px}
+.port i{display:block;font-style:normal;font-size:12px;margin-top:3px}
+.port i.s{color:var(--deep);font-weight:600}
+.port i.p{color:var(--muted);border-top:1px dashed #b7c9be;padding-top:3px}
+.infra{background:#e9ece5}
+.infra .card{text-align:center;font:600 14px var(--head)}
+.deploy{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.deploy .card{background:var(--forest);color:#fff;border:0;text-align:center;font-size:14px}
+.deploy .card b{color:#fff}
+.arrow{text-align:center;font:500 12px var(--mono);color:var(--muted);margin:-6px 0}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.step{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:22px}
+.step .n{font:500 12px var(--mono);color:var(--forest);margin-bottom:22px}
+.step p{margin:0;color:#454b44;font-size:15.5px}
+/* flow */
+.flow{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}
+.fl{flex:1 1 130px;background:var(--white);border:1px solid var(--line);border-radius:10px;padding:14px 12px;font-size:14px;position:relative;min-height:112px}
+.fl .who{font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.fl b{font:600 16px var(--head);display:block}
+.fl small{display:block;color:var(--muted);margin-top:4px;font-size:12.5px}
+.fl.lead{background:var(--deep);color:#fff;border-color:var(--deep)}
+.fl.lead .who,.fl.lead small{color:#c9dcd2}
+.fl.port2{background:var(--mint);border-color:#9dbcae}
+/* why */
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.why div{border-top:3px solid var(--forest);padding-top:12px}
+.why p{margin:0;color:#454b44;font-size:15.5px}
+/* deployment */
+.dep{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.dcard{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px}
+.dcard .bx{border:2px dashed var(--forest);border-radius:10px;padding:12px;margin:12px 0 14px;display:grid;gap:8px;background:#fbfaf6}
+.dcard .bx div{background:var(--mint);border-radius:7px;padding:8px 10px;font-size:13.5px;text-align:center;font-weight:500}
+.dcard .bx div.t2{background:var(--warm)}
+.dcard ul{margin:0;padding-left:1.1em;font-size:15px;color:#454b44}
+.dcard li{margin:0 0 5px}
+.dcard .tag{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+/* status */
+.real{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:6px 20px;margin-top:20px}
+.real div{display:flex;gap:14px;align-items:baseline;justify-content:space-between;padding:12px 0;border-top:1px solid var(--line);font-size:15px}
+.real div:first-child{border-top:0}
+.cta{background:var(--deep);color:#fff;border-radius:16px;padding:34px;margin-top:10px}
+.cta h2{color:#fff}
+.btn{display:inline-block;font:600 14px var(--body);padding:12px 18px;border-radius:7px;text-decoration:none;margin:8px 10px 0 0}
+.btn.p{background:#fff;color:var(--deep)}
+.btn.o{border:1px solid #ffffff80;color:#fff}
+.fine{font-size:12.5px;color:var(--muted);line-height:1.5;padding:26px 0 56px}
+.fine a{text-decoration:underline}
+.chev{display:grid;grid-template-columns:repeat(3,1fr);margin:2px 0 10px}
+.chev div{padding:14px 26px 14px 30px;margin-right:-10px;background:#ffffff1c;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 50%,calc(100% - 20px) 100%,0 100%,20px 50%);font-size:13.5px;line-height:1.35}
+.chev div:first-child{clip-path:polygon(0 0,calc(100% - 20px) 0,100% 50%,calc(100% - 20px) 100%,0 100%);padding-left:18px}
+.chev b{display:block;font:700 20px var(--head);margin-bottom:2px}
+.chev .conf{background:#fff;color:var(--deep)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chips span{font:500 12px var(--mono);border:1px solid #ffffff40;border-radius:99px;padding:3px 9px}
+.sub2{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;opacity:.7;margin:14px 0 8px}
+.capc{background:var(--white);color:var(--ink);border-radius:10px;padding:13px 13px 12px;font-size:13px;line-height:1.35}
+.capc b{display:block;font:700 16px/1.2 var(--head);margin-bottom:8px}
+.m{display:inline-block;font:500 12px var(--body);border:1px solid #cfd3ca;border-radius:99px;padding:2px 9px;margin:0 4px 5px 0;background:#f2f1ea}
+.capc .st{color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:7px;margin-top:5px}
+.kb{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch}
+.kb .plus{align-self:center;font:700 24px var(--head);opacity:.6}
+.kb .card b{font-size:16px}
+.pcol{display:grid;gap:8px;align-content:start}
+.ct{font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--deep);opacity:.8}
+.pcol .ct{padding:0 2px}
+.vsep{height:1px;background:#9dbcae;margin:14px 0 12px}
+.core .k.code{background:#fff;color:var(--deep);border-color:#fff}
+.icard{text-align:center;font:600 14px var(--head)}
+.dbi{width:16px;height:16px;vertical-align:-2px;margin-right:6px;fill:none;stroke:var(--deep);stroke-width:1.8}
+.kband{display:grid;grid-template-columns:auto 1fr auto 1fr;gap:12px;align-items:center;background:var(--white);color:var(--ink);border-radius:10px;padding:12px 16px;margin-top:10px;font-size:13px;line-height:1.35}
+.kband .kh b{font:700 16px var(--head)}
+.kband .kc b{display:block;font:600 14px var(--head)}
+.kband .kplus{font:700 22px var(--head);color:var(--muted)}
+.kband .kst{font-size:12px;color:var(--muted);border-left:1px solid var(--line);padding-left:12px}
+.wf{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.wfc{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:20px}
+.wfc .n{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.wfc p{margin:0;font-size:15px;color:#454b44}
+.wfc.lead{background:var(--deep);border-color:var(--deep);color:#fff}
+.wfc.lead .n{color:#c9dcd2}.wfc.lead p{color:#e3eee8}
+.fnote{font-size:13.5px;color:var(--muted);margin:14px 0 0}
+.keyline{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0 4px}
+.keyline .kt{font-size:13px;color:var(--muted);margin-left:6px}
+.captable{display:grid;gap:8px;margin-top:14px}
+.cr{display:grid;grid-template-columns:200px 1.1fr 1.4fr;gap:16px;align-items:center;background:var(--white);border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+.cn b{font:600 16px var(--head);display:block}
+.cn small{font:500 11px var(--mono);color:var(--muted)}
+.cr .m{margin:0 4px 4px 0}
+.ca{font-size:14px;color:#454b44}
+.uses{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.uses .ul{font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.uses .m{margin:0;font-size:11.5px;padding:1px 8px}
+.fx{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.fxc{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:20px}
+.fxc h3{font-size:18px}
+.fxc p{margin:0;color:#454b44;font-size:15px}
+@media(max-width:900px){.wf,.fx{grid-template-columns:1fr}.cr{grid-template-columns:1fr;gap:8px}}
+@media(max-width:900px){.lanes{grid-template-columns:repeat(2,1fr)}.kband{grid-template-columns:1fr}.kband .kplus{display:none}.kband .kst{border:0;padding:0}}
+.split{align-items:stretch}
+.pcap,.pinf{display:flex;flex-direction:column}
+.lanes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;flex:1}
+.lane{display:flex;flex-direction:column;gap:8px;background:#ffffff70;border-radius:10px;padding:10px}
+.ln{font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--deep)}
+.pt{background:var(--white);border:1px solid #9dbcae;border-radius:8px;padding:10px;display:flex;flex-direction:column;gap:7px;flex:1;justify-content:center}
+.pn{font:600 14px var(--head)}
+.ad{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--deep)}
+.ad.alt{font-weight:400;color:var(--muted)}
+.lg{flex:none;width:26px;height:26px;border-radius:50%;background:var(--deep);color:#fff;display:inline-flex;align-items:center;justify-content:center;font:600 10.5px var(--mono);letter-spacing:-.02em}
+.ad.alt .lg{background:transparent;color:var(--muted);border:1px dashed #8a948c}
+.pt.yo{border-style:dashed;background:transparent;color:var(--muted);font-size:13px;align-items:center}
+.irows{display:grid;gap:8px;flex:1}
+.ir{display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid #a9bccd;border-radius:8px;padding:9px 11px}
+.ir b{display:block;font:600 14px var(--head)}
+.ir span:not(.lg){display:block;font-size:12.5px;color:#27415a}
+.lg.i{background:#27415a}
+.m.c{background:var(--deep);color:#fff;border-color:var(--deep)}
+.m.s{background:var(--mint);border-color:#9dbcae}
+.m.p{background:transparent;border-style:dashed;color:var(--muted)}
+.keyrow{opacity:1;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px}
+.keyrow>span:first-child{opacity:.7}
+.key{display:flex;gap:6px;text-transform:none;letter-spacing:0}
+.key .m{font:500 11px var(--mono);margin:0;font-style:normal;color:inherit}
+.key .m.c{color:#fff}.core .key .m.c{background:#fff;color:var(--deep);border-color:#fff}
+.core .key .m.s{color:var(--ink)}.core .key .m.p{color:#c9dcd2;border-color:#ffffff70}
+.capc{padding-bottom:8px}
+.bt{font:500 11px var(--mono);letter-spacing:0;color:var(--muted);text-transform:none;margin-left:4px;white-space:nowrap}
+.plugs{display:grid;grid-template-columns:2.5fr 1fr;gap:12px;margin:0 0 -2px;position:relative;z-index:1}
+.plugs .pcell{display:flex;flex-direction:column;align-items:center}
+.plugs .pv{width:2px;height:30px;background:var(--forest)}
+.plugs .pb{display:flex;align-items:center;justify-content:center}
+.plugs .pcell:last-child .pv{background:#27415a}
+.plugs .pcell:last-child svg,.plugs .pcell:last-child svg *{stroke:#27415a!important}
+.plugs .pcell:last-child svg rect:first-of-type{fill:#27415a!important}
+.forks .card{padding:20px 18px;min-height:112px;font-size:14.5px}
+.forks .card b{font-size:17px;margin-bottom:6px}
+.mkt-title{text-align:center;font:600 13px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--forest);margin:-2px 0 0}
+.tier3{border-radius:12px;margin-top:-14px}
+.lab3{position:absolute;left:2px;bottom:6px;margin:0;white-space:nowrap}
+.t3{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;margin:0 2px 4px;opacity:.75}
+.split{display:grid;grid-template-columns:2.5fr 1fr;gap:12px}
+.pcap{background:var(--mint);border-radius:12px;padding:14px 16px}
+.pinf{background:#dfe6ee;border-radius:12px;padding:14px 16px}
+.pinf .port{border-color:#a9bccd}
+.pinf .port i.s{color:#27415a}
+.pcap>.t,.pinf>.t{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;opacity:.75}
+@media(max-width:900px){.split{grid-template-columns:1fr}.plugs{grid-template-columns:1fr}.chev{grid-template-columns:1fr}.chev div,.chev div:first-child{clip-path:none;margin:0 0 6px;padding:12px 16px}.kb{grid-template-columns:1fr}.kb .plus{display:none}.r7{grid-template-columns:repeat(4,1fr)}.r4{grid-template-columns:repeat(2,1fr)}.r5{grid-template-columns:repeat(3,1fr)}.steps,.why,.dep{grid-template-columns:1fr}}
+@media(max-width:560px){.r7{grid-template-columns:repeat(2,1fr)}.deploy{grid-template-columns:1fr}}
+@media print{.sn{display:none}}
+</style>
+</head>
+<body>
+<div class="sn"><div class="sn-in"><a class="sn-brand" href="/"><b>Tacit</b><span class="sn-def"><b>tacit knowledge</b> <i>noun</i>: what an expert knows and uses, but cannot easily put into words.</span></a><nav class="sn-links" aria-label="Main"><a href="/#check">Check your work</a><a href="/#partner">Design partners</a><a href="/paper/">Paper</a><a href="/essay/">Essay</a><a href="/investors/">Investor memo</a><a href="/open-source/" aria-current="page">Open Source</a><a class="sn-cta" href="/#contact">Start a conversation</a></nav></div></div>
+
+<main>
+<section class="hero"><div class="w">
+  <div class="eyebrow">Tacit Chassis / Open Source · Draft for comment</div>
+  <h1>Understanding Tacit-Chassis / Open Source</h1>
+  <p class="lede"><b>Philosophy:</b> The Open Source Chassis will provide the core capabilities and base automation to orchestrate the Discovery to Outcome workflow needed to realize a base Agentic Mission Room, which Providers can fork and implement. Industry forks customize it by implementing or integrating third-party adapters to new tools.</p>
+  <p class="sub">Voice interviews, diagrams, e-signature, risk engines: each plugs into a <b>capability port</b>, so a fork gets the tool without giving up the rules.</p>
+</div></section>
+
+<section style="padding-top:12px"><div class="w">
+  <div class="mkt" role="img" aria-label="Marketecture: industry forks sit on the Tacit Chassis core, which connects through capability ports and infrastructure ports to third-party adapters, and deploys either self-hosted or managed hosting.">
+    <div class="mkt-title">Conceptual Architecture</div>
+    <div class="tier forks"><div class="t">1 · Industry forks · your playbook, stages and roles</div>
+      <div class="row r4">
+        <div class="card"><b>AI Advisory &amp; Consulting</b>AI adoption assessment</div>
+        <div class="card"><b>Fintech / RegTech / Core Banking SaaS</b>Discover to Implementation Ready</div>
+        <div class="card"><b>IT Consulting Services</b>Legacy Platform Study &amp; Reengineering Assessment</div>
+        <div class="card dash"><b>Your industry</b>Fork it</div>
+      </div>
+      
+    </div>
+    <div class="arrow">▲ built on</div>
+    <div class="tier core"><div class="t">2 · Tacit Chassis core · the same in every fork</div>
+      <div class="sub2" style="margin-top:0">2.1 · Mission workflow</div>
+      <div class="chev">
+        <div><b>Draft</b></div>
+        <div class="conf"><b>Confirm</b></div>
+        <div><b>Commit</b></div>
+      </div>
+      <div class="chips"><span>Setup</span><span>Discover</span><span>Baseline</span><span>Commit</span><span>tenant isolation</span><span>audit log: size, never content</span></div>
+      <div class="sub2 keyrow"><span>2.2 · Core capabilities</span><span class="key"><i class="m s">in current build scope</i><i class="m p">proposed</i></span></div>
+      <div class="row r4">
+        <div class="capc"><b>Adaptive Interviews <small class="bt">[BATTUTA]</small></b><span class="m s">Voice</span><span class="m c">Chat</span><span class="m p">Video</span></div>
+        <div class="capc"><b>Artifact Generation</b><span class="m s">Diagrams</span><span class="m s">Documents</span><span class="m p">Podcast</span><span class="m p">Video</span></div>
+        <div class="capc"><b>Assessment Engine</b><span class="m c">Risk</span><span class="m c">Value</span><span class="m c">Size</span><span class="m c">$$</span></div>
+        <div class="capc"><b>3rd-Party Tools</b><span class="m s">eSignature</span><span class="m s">Questionnaires</span><span class="m s">Scheduling</span><span class="m s">Scanning</span><span class="m p">Data rooms</span></div>
+      </div><div class="kband"><div class="kh"><svg class="dbi" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg><b>Knowledge Base</b></div>
+        <div class="kc"><b>Provider playbooks</b>Expertise: versioned, in an open format, owned by the provider</div>
+        <div class="kplus">+</div>
+        <div class="kc"><b>Client context</b>Documents, interviews and records, owned by the client</div>
+        </div>
+    </div>
+    
+    <div class="tier3"><div class="plugs" title="Reaches the outside world only through ports"><div class="pcell" style="position:relative"><span class="t3 lab3">3 · Ports and adapters</span><span class="pv"></span><span class="pb"><svg viewBox="0 0 32 46" width="36" height="52" aria-hidden="true" style="display:block;fill:none;stroke:var(--forest);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><path d="M16 0v7"/><rect x="8" y="7" width="16" height="10" rx="2.5" style="fill:var(--forest)"/><rect x="4" y="27" width="24" height="18" rx="3" style="fill:var(--white)"/><path d="M12 17v17M20 17v17" style="stroke-width:2.6"/></svg></span></div><div class="pcell"><span class="pv"></span><span class="pb"><svg viewBox="0 0 32 46" width="36" height="52" aria-hidden="true" style="display:block;fill:none;stroke:var(--forest);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><path d="M16 0v7"/><rect x="8" y="7" width="16" height="10" rx="2.5" style="fill:var(--forest)"/><rect x="4" y="27" width="24" height="18" rx="3" style="fill:var(--white)"/><path d="M12 17v17M20 17v17" style="stroke-width:2.6"/></svg></span></div></div>
+    <div class="split">
+      <div class="pcap"><div class="t">Capability ports</div>
+        <div class="lanes">
+          <div class="lane"><div class="ln">Adaptive Interviews <small class="bt">[BATTUTA]</small></div>
+            <div class="pt"><div class="pn">Voice interviewing</div>
+              <div class="ad"><span class="lg">11</span><span>ElevenLabs</span></div>
+              <div class="ad alt"><span class="lg">F</span><span>Fin AI</span></div></div>
+            <div class="pt"><div class="pn">Adaptive Chat</div>
+              <div class="ad"><span class="lg">TL</span><span>Theoremlabs</span></div></div></div>
+          <div class="lane"><div class="ln">Artifact generation</div>
+            <div class="pt"><div class="pn">Diagrams</div>
+              <div class="ad"><span class="lg">A</span><span>Archify</span></div>
+              <div class="ad alt"><span class="lg">D</span><span>Draw.io</span></div></div>
+            <div class="pt"><div class="pn">Podcasts</div>
+              <div class="ad alt"><span class="lg">N</span><span>Google NotebookLM</span></div>
+              <div class="ad alt"><span class="lg">?</span><span>to be identified</span></div></div></div>
+          <div class="lane"><div class="ln">Assessment</div>
+            <div class="pt"><div class="pn">Risk engine</div>
+              <div class="ad"><span class="lg">TL</span><span>Theoremlabs</span></div></div>
+            <div class="pt"><div class="pn">Benefit scoring</div>
+              <div class="ad"><span class="lg">TL</span><span>Theoremlabs</span></div></div>
+            <div class="pt yo">+ Your adapter</div></div>
+          <div class="lane"><div class="ln">3rd-party tools</div>
+            <div class="pt"><div class="pn">eSignature</div>
+              <div class="ad"><span class="lg">DS</span><span>DocuSign</span></div></div>
+            <div class="pt"><div class="pn">Risk questionnaire</div>
+              <div class="ad"><span class="lg">T</span><span>a TPRM platform</span></div></div>
+            <div class="pt"><div class="pn">Scan review</div>
+              <div class="ad"><span class="lg">A1</span><span>Armor1</span></div></div></div>
+        </div>
+      </div>
+      <div class="pinf"><div class="t">Infrastructure ports</div>
+        <div class="irows">
+          <div class="ir"><span class="lg i">Pg</span><div><b>Database</b><span>PostgreSQL</span></div></div>
+          <div class="ir"><span class="lg i">LM</span><div><b>Language model (BYOK)</b><span>Anthropic, OpenAI, or Model Router</span></div></div>
+          <div class="ir"><span class="lg i">ID</span><div><b>Identity</b><span>fake identity, for local runs</span></div></div>
+          <div class="ir"><span class="lg i">S3</span><div><b>Storage</b><span>S3-compatible</span></div></div>
+          <div class="ir"><span class="lg i">J</span><div><b>Jobs</b><span>runs inline, no queue yet</span></div></div>
+        </div>
+      </div>
+    </div></div>
+<div class="arrow">▼ deployed your way</div>
+    <div class="deploy"><div class="card"><b>Self-host</b>Your data center, or your client's</div><div class="card"><b>Managed Hosting</b>We operate it · SOC 2-aligned design · US region planned</div></div>
+  </div>
+</div></section>
+
+<section style="padding-top:20px"><div class="w">
+  <div class="eyebrow">How a fork comes together</div>
+  <h2>Three decisions, no rewrite.</h2>
+  <div class="steps">
+    <div class="step"><div class="n">01</div><h3>Start from an industry fork</h3><p>Take the Open Source Chassis and add your playbook, stages, roles and record fields. Or start from one of ours.</p></div>
+    <div class="step"><div class="n">02</div><h3>Integrate your tools</h3><p>For each core capability, choose or build the adapter that does the job: voice, diagrams, e-signature, scoring, your model with your own key. Swap later without touching the mission.</p></div>
+    <div class="step"><div class="n">03</div><h3>Deploy your way</h3><p>Self-host it in your data center or your client's, or let us run it as Managed Hosting. The same code runs both ways.</p></div>
+  </div>
+</div></section>
+
+<section style="background:#eceee7"><div class="w">
+  <div class="eyebrow">Mission workflow</div>
+  <h2>Draft. Confirm. Commit.</h2>
+  <p class="lede" style="margin-bottom:0">Every capability and every adapter feeds the same three steps. Agents draft, a named person confirms, and each party keeps what is theirs.</p>
+  <div class="wf">
+    <div class="wfc"><div class="n">Step 1</div><h3>Draft</h3><p>Agents and adapters propose: interview transcripts, records, scores, diagrams. Every output is marked pending and carries its source.</p></div>
+    <div class="wfc lead"><div class="n">Step 2 · the Lead</div><h3>Confirm</h3><p>The named Lead alone decides what becomes a record. No agent or adapter can confirm, set a threshold or close a mission.</p></div>
+    <div class="wfc"><div class="n">Step 3</div><h3>Commit</h3><p>The mission closes with a full audit trail. Documents and signatures act only on what the Lead confirmed.</p></div>
+  </div>
+  <div class="eyebrow" style="margin-top:30px">One pass through a mission</div>
+  <div class="flow">
+    <div class="fl port2"><div class="who">Adaptive Interviews</div><b>Interview</b><small>Chat or voice, one to one</small></div>
+    <div class="fl"><div class="who">Language model</div><b>Draft</b><small>Records, each with its source</small></div>
+    <div class="fl lead"><div class="who">Lead</div><b>Confirm</b><small>The only act that makes a record true</small></div>
+    <div class="fl port2"><div class="who">Assessment Engine</div><b>Score</b><small>A proposal the Lead can override</small></div>
+    <div class="fl port2"><div class="who">Artifact Generation</div><b>Visualize</b><small>From confirmed records only</small></div>
+    <div class="fl lead"><div class="who">Lead</div><b>Commit</b><small>The mission is closed</small></div>
+    <div class="fl port2"><div class="who">3rd-Party Tools</div><b>Sign</b><small>A signature never replaces the Lead</small></div>
+  </div>
+  <p class="fnote">Reference mission stages: Setup, Discover, Baseline, Commit. A fork may rename or add stages, never remove Commit.</p>
+</div></section>
+
+<section><div class="w">
+  <div class="eyebrow">Core capabilities and their status</div>
+  <h2>What each capability covers today.</h2>
+  <div class="keyline"><span class="m c">in the code today</span><span class="m s">in current build scope</span><span class="m p">proposed</span><span class="kt">None of these is a release. The repository is not yet public.</span></div>
+  <div class="captable">
+    <div class="cr"><div class="cn"><b>Adaptive Interviews</b><small>BATTUTA</small></div>
+      <div class="cm"><span class="m s">Voice</span><span class="m c">Chat</span><span class="m p">Video</span></div>
+      <div class="ca">Adaptive Chat, Theoremlabs · Voice, ElevenLabs, alternate Fin AI</div></div>
+    <div class="cr"><div class="cn"><b>Artifact Generation</b></div>
+      <div class="cm"><span class="m s">Documents</span><span class="m s">Diagrams</span><span class="m p">Podcast</span><span class="m p">Video</span></div>
+      <div class="ca">Diagrams, Archify, alternate Draw.io · Podcasts, Google NotebookLM, proposed</div></div>
+    <div class="cr"><div class="cn"><b>Assessment Engine</b></div>
+      <div class="cm"><span class="m c">Risk</span><span class="m c">Value</span><span class="m c">Size</span><span class="m c">$$</span></div>
+      <div class="ca">Risk engine and Benefit scoring, Theoremlabs · each fork sets its own dimensions</div></div>
+    <div class="cr"><div class="cn"><b>3rd-Party Tools</b></div>
+      <div class="cm"><span class="m s">eSignature</span><span class="m s">Questionnaires</span><span class="m s">Scheduling</span><span class="m s">Scanning</span><span class="m p">Data rooms</span></div>
+      <div class="ca">eSignature, DocuSign · Risk questionnaire, a TPRM platform · Scan review, Armor1. The base ships none except storage today.</div></div>
+    <div class="cr"><div class="cn"><b>Knowledge Base</b></div>
+      <div class="cm"><span class="m c">Provider playbooks</span><span class="m c">Client context</span></div>
+      <div class="ca">Expertise stays with the provider, context with the client, each exportable by its owner.</div></div>
+    <div class="cr"><div class="cn"><b>Language model</b><small>BYOK</small></div>
+      <div class="cm"><span class="m c">Anthropic</span><span class="m p">OpenAI</span><span class="m p">Model Router</span></div>
+      <div class="ca">Bring your own key. Only Anthropic exists in the code today; OpenAI, Model Router and bring-your-own-key are proposed.</div></div>
+  </div>
+</div></section>
+
+<section style="background:#eceee7"><div class="w">
+  <div class="eyebrow">Industry forks</div>
+  <h2>Same chassis, different tools.</h2>
+  <p class="lede" style="margin-bottom:0">A fork adds a playbook and chooses adapters. Three illustrative examples; none of these forks is released.</p>
+  <div class="fx">
+    <div class="fxc"><h3>AI Advisory &amp; Consulting</h3><p>AI adoption assessment</p><div class="uses"><span class="ul">Uses</span><span class="m">Adaptive chat</span><span class="m">Voice</span><span class="m">Diagrams</span><span class="m">eSignature</span></div></div>
+    <div class="fxc"><h3>Fintech / RegTech / Core Banking SaaS</h3><p>Discover to Implementation Ready</p><div class="uses"><span class="ul">Uses</span><span class="m">Voice</span><span class="m">Questionnaires</span><span class="m">Risk engine</span><span class="m">Diagrams</span><span class="m">eSignature</span></div></div>
+    <div class="fxc"><h3>IT Consulting Services</h3><p>Legacy Platform Study &amp; Reengineering Assessment</p><div class="uses"><span class="ul">Uses</span><span class="m">Adaptive chat</span><span class="m">Documents</span><span class="m">Diagrams</span><span class="m">Benefit scoring</span></div></div>
+  </div>
+</div></section>
+
+<section><div class="w">
+  <div class="eyebrow">Why ports</div>
+  <h2>Governance travels with every adapter.</h2>
+  <div class="why">
+    <div><h3>Swap, don't rebuild</h3><p>A mission does not know which vendor served it. Change the adapter and the records and audit trail stay the same.</p></div>
+    <div><h3>Every adapter keeps the rules</h3><p>It declares who it is and where it processes. The tenant's Lead approves it. Its output is a draft. Calls are logged by size, never content. It fails closed, and ships with a fake for local runs.</p></div>
+    <div><h3>A route for vendors and builders</h3><p>A good adapter reaches every fork that needs the capability. It enters the base through a specified change, never a side door.</p></div>
+  </div>
+</div></section>
+
+<section style="background:#eceee7"><div class="w">
+  <div class="eyebrow">Deployment models</div>
+  <h2>Run it yourself, or let us run it.</h2>
+  <div class="dep">
+    <div class="dcard"><div class="tag">Model A</div><h3>Self-host</h3>
+      <div class="bx"><div class="t2">Your data center, or your client's</div><div>Studio + Mission Room · PostgreSQL · Storage · Identity</div><div>Adapters you approve, with your own keys</div></div>
+      <ul><li>We help you implement or fork from the open-source code.</li><li>You manage and operate it.</li><li>Data stays where you put it.</li></ul>
+      <p style="margin:12px 0 0"><span class="k scope">in current build scope</span></p></div>
+    <div class="dcard"><div class="tag">Model B</div><h3>Managed Hosting</h3>
+      <div class="bx"><div class="t2">Operated by Theoremlabs.io · US region planned</div><div>One app · pooled database · tenants isolated by the database</div><div>Services approved per tenant</div></div>
+      <ul><li>We help you implement or fork, then we own and operate it.</li><li>Multi-tenant, with a dedicated database as an enterprise option.</li><li>SOC 2-aligned design. No examination has been performed.</li></ul>
+      <p style="margin:12px 0 0"><span class="k scope">in current build scope</span></p></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="w"><div class="cta">
+  <h2>Build an adapter. Fork the Chassis. Tell us what breaks.</h2>
+  <p class="lede" style="color:#c9dcd2;margin-bottom:0">The ports, the first forks and the first adapters are being shaped now.</p>
+  <a class="btn p" href="/?pick=builders&amp;want=Contribute%20a%20playbook%20or%20adapter#contact">Build or review an adapter</a>
+  <a class="btn o" href="/?pick=builders&amp;want=Fork%20or%20deploy%20the%20Chassis#contact">Fork or deploy it</a>
+  <a class="btn o" href="/open-source/ports-and-adapters/technical/">Read the technical annex</a>
+</div>
+<p class="fine"><b>Disclosure.</b> Supported by Theoremlabs.io, which also develops Tacit Chassis. Third-party products are named to show where an adapter would connect; naming one is not a statement that its maker endorses or has agreed to this work. Tacit Chassis is in development and is not yet public. Part of the <a href="/open-source/">Open Source</a> series; the research behind it is in the <a href="/paper/">working paper</a>. Comments: <a href="mailto:research@theoremlabs.io">research@theoremlabs.io</a>.</p>
+</div></section>
+</main>
+</body>
+</html>

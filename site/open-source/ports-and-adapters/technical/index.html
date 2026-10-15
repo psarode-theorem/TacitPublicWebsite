@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Technical annex for Tacit Chassis (open source): how capability ports and third-party adapters turn the Mission Room idea into industry-specific forks, and how a fork is deployed, self-hosted or hosted.">
+<link rel="canonical" href="https://tacit.theoremlabs.io/open-source/ports-and-adapters/technical/">
+<meta property="og:title" content="From Mission Room to Fork: Capability Ports and Adapters in Tacit Chassis">
+<meta property="og:description" content="Technical annex for Tacit Chassis (open source): capability ports, third-party adapters, forks and deployment models.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tacit.theoremlabs.io/open-source/ports-and-adapters/technical/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20fill%3D%27%231c1c1c%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2723%27%20font-size%3D%2720%27%20text-anchor%3D%27middle%27%20fill%3D%27%23fbfaf7%27%20font-family%3D%27Georgia%2Cserif%27%20font-weight%3D%27600%27%3ET%3C/text%3E%3C/svg%3E">
+<title>From Mission Room to Fork: Capability Ports and Adapters in Tacit Chassis | Tacit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Courier+Prime&family=Lora:wght@600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="/assets/nav.css">
+<style>
+/* Same look as the working paper: one printed-page column, greyscale figures, light only. Figure vocabulary: filled = in the code today, tinted = in current build scope, dashed outline = proposed. */
+:root{
+  --desk:#efefed; --paper:#ffffff; --ink:#111111; --ink-2:#4a4a4a; --mute:#7a7a7a; --rule:#111111; --tint:#e6e6e6; --shadow:rgba(0,0,0,.08);
+  --bg:#fbfaf7; --muted:#66665f;
+  --serif:"STIX Two Text","Times New Roman",Times,serif;
+  --tw:"Courier Prime","Courier New",Courier,monospace;
+  --fsans:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --fmono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --fserif:"Lora",Georgia,serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.55;padding-inline:16px;padding-block:0 64px}
+.sn{margin-inline:-16px;margin-bottom:32px}
+.page{max-width:840px;margin:0 auto;background:var(--paper);padding:72px clamp(20px,7vw,92px) 80px;box-shadow:0 1px 3px var(--shadow)}
+p{margin:0 0 .9em;text-align:justify;hyphens:auto}
+a{color:var(--ink)}
+.title{text-align:center;margin:0 0 28px}
+.kick{font:12px var(--fmono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:0 0 18px;text-align:center}
+h1{font-size:clamp(1.65rem,4vw,2.05rem);font-weight:700;line-height:1.2;margin:0 0 8px;text-wrap:balance}
+.subtitle{font-size:clamp(1.12rem,2.6vw,1.32rem);font-weight:600;margin:0 0 26px;text-wrap:balance;text-align:center}
+.au{text-align:center;margin:0 0 4px;font-size:15px;hyphens:manual}
+.aff{text-align:center;margin:6px 0 18px;font-size:13px;color:var(--ink-2);hyphens:manual}
+.date{text-align:center;margin:0 0 6px}
+.contact{text-align:center;font-family:var(--tw);font-size:15px;margin:0 0 24px}
+.epigraph{max-width:610px;margin:0 auto;font-style:italic;font-size:15.5px;line-height:1.5;padding-bottom:18px;border-bottom:1px solid var(--rule)}
+.epigraph p{text-align:center;hyphens:manual;margin:0}
+.abstract{margin:26px clamp(0px,4vw,36px) 34px;font-size:16px}
+.abstract p{margin:0}
+.abstract p.kw{margin-top:10px;font-size:14.5px;text-align:left;hyphens:manual}
+.notice{font-size:12.5px;line-height:1.45;font-style:italic;margin:0 0 30px}
+h2{font-size:1.13rem;font-weight:700;margin:2.1em 0 .7em}
+h3{font-size:1rem;font-weight:700;margin:1.6em 0 .5em}
+ol.plain,ul.plain{margin:0 0 1em;padding-left:1.6em}
+ol.plain li,ul.plain li{margin:0 0 .45em;text-align:justify;hyphens:auto}
+.def{margin:1em clamp(0px,4vw,32px);font-size:16.5px}
+.def p{margin:0}
+.tw{overflow-x:auto;margin:1.4em 0 1.6em}
+.tcap{text-align:center;font-size:14.5px;margin:0 0 8px}
+table{border-collapse:collapse;width:100%;min-width:580px;font-size:14px;line-height:1.35}
+th,td{border:1px solid var(--rule);padding:5px 7px;text-align:left;vertical-align:top}
+th{font-weight:700;text-align:center}
+td.c{text-align:center}
+tr.grp td{font-weight:700;background:var(--tint)}
+.k{display:inline-block;font:500 11px var(--fmono);letter-spacing:.04em;padding:1px 6px;border:1px solid var(--ink);white-space:nowrap}
+.k.code{background:var(--ink);color:var(--paper)}
+.k.scope{background:var(--tint)}
+.k.prop{border-style:dashed}
+pre{font:13px/1.45 var(--tw);background:var(--tint);border:1px solid var(--rule);padding:12px 14px;overflow-x:auto;margin:1.2em 0}
+figure{margin:1.8em 0 1.9em}
+figure .fw{overflow-x:auto}
+figure svg{display:block;width:100%;height:auto;min-width:580px;margin:0 auto}
+figcaption{font-size:14.5px;margin-top:12px}
+figcaption i{font-style:italic}
+svg .lbl{font-family:var(--fsans);font-weight:600;font-size:14px;fill:var(--ink)}
+svg .sub{font-family:var(--fsans);font-weight:400;font-size:12px;fill:var(--ink-2)}
+svg .cap{font-family:var(--fmono);font-weight:500;font-size:10.5px;letter-spacing:.12em;fill:var(--mute)}
+svg .inv{fill:var(--paper)}
+svg .box{fill:var(--paper);stroke:var(--ink);stroke-width:1.3}
+svg .tbox{fill:var(--tint);stroke:var(--ink);stroke-width:1.3}
+svg .fbox{fill:var(--ink);stroke:var(--ink);stroke-width:1.3}
+svg .dbox{fill:var(--paper);stroke:var(--ink);stroke-width:1.3;stroke-dasharray:4 3}
+svg .line{fill:none;stroke:var(--ink);stroke-width:1.5}
+svg .heavy{fill:none;stroke:var(--ink);stroke-width:2.6}
+svg .dline{fill:none;stroke:var(--ink);stroke-width:1.4;stroke-dasharray:4 3}
+svg .life{fill:none;stroke:var(--mute);stroke-width:1;stroke-dasharray:3 5}
+svg .thin{fill:none;stroke:var(--ink);stroke-width:1}
+svg .lab{font-family:var(--fsans);font-size:12px;fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:5px;stroke-linejoin:round}
+.refs{font-size:14.5px}
+.refs p{text-align:left;padding-left:1.8em;text-indent:-1.8em;margin:0 0 .5em;hyphens:manual}
+.hr{border:0;border-top:1px solid var(--rule);margin:2.2em 0 1.4em}
+@page{size:Letter;margin:0.85in 0.9in 0.9in;@bottom-center{content:counter(page);font-family:"STIX Two Text","Times New Roman",serif;font-size:10pt;color:#444}}
+@media print{
+  body{background:#fff;padding:0;font-size:10.5pt;line-height:1.45}
+  .page{max-width:none;padding:0;box-shadow:none}
+  figure,.tw,table,thead,tbody,tr,td,.def,.epigraph,.refs p,ol.plain li,ul.plain li,pre{break-inside:avoid;page-break-inside:avoid}
+  figure,.tw{margin:12pt 0 14pt}
+  h2,h3,.tcap{break-after:avoid;page-break-after:avoid}
+  p{orphans:3;widows:3}
+  figure .fw,.tw{overflow:visible}
+  .tw.long,.tw.long table,.tw.long tbody{break-inside:auto;page-break-inside:auto}
+  .tw.long thead{display:table-header-group}
+  figure svg,table{min-width:0}
+  table{font-size:8.6pt;line-height:1.3}
+  th,td{padding:3px 5px}
+  figcaption,.tcap{font-size:9.5pt}
+  a{text-decoration:none}
+}
+*{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+</style>
+</head>
+<body>
+<div class="sn"><div class="sn-in"><a class="sn-brand" href="/"><b>Tacit</b><span class="sn-def"><b>tacit knowledge</b> <i>noun</i>: what an expert knows and uses, but cannot easily put into words.</span></a><nav class="sn-links" aria-label="Main"><a href="/#check">Check your work</a><a href="/#partner">Design partners</a><a href="/paper/">Paper</a><a href="/essay/">Essay</a><a href="/investors/">Investor memo</a><a href="/open-source/" aria-current="page">Open Source</a><a class="sn-cta" href="/#contact">Start a conversation</a></nav></div></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--ink)"/></marker>
+  </defs>
+</svg>
+
+<article class="page">
+
+<header class="title">
+  <p class="kick">Tacit Chassis | Open Source · Technical annex · <a href="/open-source/ports-and-adapters/">Overview</a></p>
+  <h1>From Mission Room to Fork</h1>
+  <p class="subtitle">Capability Ports and Third-Party Adapters in Tacit Chassis, and How a Fork Is Deployed</p>
+  <p class="au">Tacit Chassis project</p>
+  <p class="aff"><i>Future of Ways of Working | Theoremlabs.io</i></p>
+  <p class="date">15 October 2026 · Draft for comment</p>
+  <p class="contact"><a href="https://tacit.theoremlabs.io/open-source/">tacit.theoremlabs.io/open-source</a> · Comments: research@theoremlabs.io</p>
+  <div class="epigraph"><p>One chassis holds the rules. Adapters bring the tools. A fork chooses both for one kind of work.</p></div>
+</header>
+
+<div class="abstract">
+  <p><b>Abstract.</b> The working paper <i>Tacit Work Needs a Mission Room</i> argues for a bounded, staged workspace in which agents draft and a named person confirms. It describes the open-source Tacit Chassis in one section and says that every vendor sits behind a port. This paper makes that sentence concrete for engineers and for the people who would build an industry-specific fork. We distinguish infrastructure ports (database, storage, identity, language model, jobs) from capability ports, which name a job a mission needs done: run a voice interview, draw a diagram, collect a signature, send a risk questionnaire. We set out the contract an adapter for a capability port must keep so that a third-party service can be used without weakening the Chassis invariants, give a catalogue of seven capability ports with the first adapters in our current build scope, and show how a fork composes them. We then describe two deployment models, self-hosted and managed hosting, and what each leaves with the operator. The paper describes a design. It reports no field data, and most of the adapters it names are not yet released.</p>
+  <p class="kw"><b>Keywords:</b> ports and adapters; hexagonal architecture; agentic AI; open source; multi-tenancy; deployment models; professional services</p>
+</div>
+
+<p class="notice"><b>Disclosure.</b> This paper and the open-source reference implementation it describes are supported by Theoremlabs.io, which also develops Tacit Chassis. Third-party products are named to show where an adapter would connect. Naming a product is not a statement that its maker endorses, supports or has agreed to this work. Tacit Chassis is in development and version 0.1 is not yet public.</p>
+
+<h2>1. Why this paper, and how to read its status labels</h2>
+
+<p>The Mission Room idea is easy to state and easy to doubt: a workspace where agents draft, a named person confirms, and each party keeps what is theirs. Readers who accept it ask a second question: how does this become a product for my kind of work? Our answer is the fork. A fork is a specialization of Tacit Chassis for one industry or one engagement type. It supplies a playbook, stages, roles and record fields, and it supplies the tools the work needs.</p>
+
+<p>That last part decides whether a fork is useful. A third-party risk engagement needs questionnaires and a risk engine. An advisory engagement needs interviews and diagrams. A security-operations review needs a reviewer for scan output. None of these belong in the base. All of them have to enter it without breaking its rules. The mechanism is the port, and this paper is about how far the idea reaches.</p>
+
+<p>The market around this idea is still forming. Several companies and voices are building variants, and no single offering with a settled model has emerged. We read that as a reason to make the base small and the connection points explicit, so that a fork can follow a market without rebuilding the core. This is an evolution of the vision in the working paper, not a change of direction.</p>
+
+<p>Because the paper mixes what exists with what is planned, every statement about a component carries one of three labels.</p>
+
+<div class="tw"><p class="tcap"><b>Table 1:</b> <i>Status labels used in this paper.</i></p>
+<table>
+<tr><th style="width:22%">Label</th><th>Meaning</th></tr>
+<tr><td><span class="k code">In the code today</span></td><td>The component exists in the Tacit Chassis repository as of 15 October 2026. The repository is not yet public, and no release has been tagged.</td></tr>
+<tr><td><span class="k scope">In current build scope</span></td><td>We intend to build it in the work now under way. It is not released, it is not in the repository, and nothing here promises a date or a form.</td></tr>
+<tr><td><span class="k prop">Proposed</span></td><td>A candidate we have identified. Not started. It may change or be dropped.</td></tr>
+</table></div>
+
+<h2>2. The Chassis in one page</h2>
+
+<p>Tacit Chassis is a TypeScript modular monolith: a web application that serves the Studio and the Mission Room, and a set of workspace packages under it. Four rules shape everything else in this paper.</p>
+
+<ol class="plain">
+<li><b>The core is pure.</b> The domain package holds the mission and stage state machine, the Register, scoring and the confirmation rules. It performs no input or output and imports no framework, so the governance invariants can be tested in isolation and forks inherit them unchanged.</li>
+<li><b>Every vendor sits behind a port.</b> Only the adapters package may import a vendor SDK. A build check enforces this. A port describes what the Chassis needs, never a vendor's interface.</li>
+<li><b>Every data access carries a tenant.</b> One tenant is one provider and client pair. A repository or storage call cannot be written without a tenant context, and the database enforces isolation a second time.</li>
+<li><b>Agents draft; the Lead confirms.</b> Nothing an agent or an adapter returns becomes a committed record without an explicit decision by the named Lead.</li>
+</ol>
+
+<figure>
+  <div class="fw">
+<svg viewBox="0 0 720 548" role="img" aria-labelledby="f1t f1d">
+  <title id="f1t">Figure 1: Layers of Tacit Chassis</title>
+  <desc id="f1d">Five stacked layers, top to bottom: a fork, the Studio and Mission Room application, the core packages (domain, agents, conformance), the ports (five infrastructure ports and seven capability ports), and the adapters, in three groups by status. Below the adapters sit third-party services and the host's own infrastructure. A vertical line on the left marks that a tenant context is carried on every call from the application down to the adapters.</desc>
+  <line class="thin" x1="12" y1="86" x2="12" y2="486"/>
+  <line class="thin" x1="8" y1="86" x2="16" y2="86"/><line class="thin" x1="8" y1="486" x2="16" y2="486"/>
+  <text class="cap" transform="translate(7 286) rotate(-90)" text-anchor="middle">TENANT CONTEXT ON EVERY CALL</text>
+
+  <rect class="dbox" x="30" y="10" width="670" height="58"/>
+  <text class="cap" x="44" y="28">FORK · YOUR CODE</text>
+  <text class="sub" x="365" y="53" text-anchor="middle">Playbook · stages · roles · Register fields · adapter selection</text>
+  <path class="line" d="M365 68V82" marker-end="url(#arw)"/>
+
+  <rect class="box" x="30" y="84" width="670" height="56"/>
+  <text class="cap" x="44" y="102">STUDIO AND MISSION ROOM · REFERENCE APPLICATION</text>
+  <text class="sub" x="365" y="127" text-anchor="middle">Lead, Operator and Client views · backend-for-frontend routes</text>
+  <path class="line" d="M365 140V154" marker-end="url(#arw)"/>
+
+  <rect class="tbox" x="30" y="156" width="670" height="98"/>
+  <text class="cap" x="44" y="174">CORE PACKAGES</text>
+  <rect class="box" x="44" y="184" width="204" height="60"/>
+  <text class="lbl" x="146" y="203" text-anchor="middle">domain</text>
+  <text class="sub" x="146" y="220" text-anchor="middle">state machine, Register, scoring,</text><text class="sub" x="146" y="234" text-anchor="middle">confirmation rules · no I/O</text>
+  <rect class="box" x="260" y="184" width="204" height="60"/>
+  <text class="lbl" x="362" y="203" text-anchor="middle">agents</text>
+  <text class="sub" x="362" y="220" text-anchor="middle">interviewer, drafters,</text><text class="sub" x="362" y="234" text-anchor="middle">artifact agents</text>
+  <rect class="box" x="476" y="184" width="210" height="60"/>
+  <text class="lbl" x="581" y="203" text-anchor="middle">conformance</text>
+  <text class="sub" x="581" y="220" text-anchor="middle">checks that a fork keeps</text><text class="sub" x="581" y="234" text-anchor="middle">the invariants</text>
+  <path class="line" d="M365 254V268" marker-end="url(#arw)"/>
+
+  <rect class="box" x="30" y="270" width="670" height="132"/>
+  <text class="cap" x="44" y="288">PORTS · WHAT THE CHASSIS NEEDS, NEVER A VENDOR'S INTERFACE</text>
+  <text class="cap" x="44" y="311">INFRASTRUCTURE</text>
+  <g class="lbl" text-anchor="middle">
+    <rect class="box" x="44" y="316" width="120" height="26"/><text x="104" y="334">Db</text>
+    <rect class="box" x="174" y="316" width="120" height="26"/><text x="234" y="334">Blob</text>
+    <rect class="box" x="304" y="316" width="120" height="26"/><text x="364" y="334">Identity</text>
+    <rect class="box" x="434" y="316" width="120" height="26"/><text x="494" y="334">LLM</text>
+    <rect class="box" x="564" y="316" width="120" height="26"/><text x="624" y="334">Jobs</text>
+  </g>
+  <text class="cap" x="44" y="360">CAPABILITY · PROPOSED CONTRACT, SEE SECTION 4</text>
+  <g class="lbl" text-anchor="middle" style="font-size:11.5px">
+    <rect class="dbox" x="44" y="366" width="88" height="26"/><text x="88" y="383">Voice</text>
+    <rect class="dbox" x="137" y="366" width="88" height="26"/><text x="181" y="383">Diagram</text>
+    <rect class="dbox" x="230" y="366" width="88" height="26"/><text x="274" y="383">Podcast</text>
+    <rect class="dbox" x="323" y="366" width="88" height="26"/><text x="367" y="383">eSignature</text>
+    <rect class="dbox" x="416" y="366" width="88" height="26"/><text x="460" y="383">Questionnaire</text>
+    <rect class="dbox" x="509" y="366" width="88" height="26"/><text x="553" y="383">Risk engine</text>
+    <rect class="dbox" x="602" y="366" width="88" height="26"/><text x="646" y="383">Scan review</text>
+  </g>
+  <path class="line" d="M365 402V416" marker-end="url(#arw)"/>
+
+  <rect class="box" x="30" y="418" width="670" height="76"/>
+  <text class="cap" x="44" y="436">ADAPTERS · ONE FOLDER PER VENDOR, PLUS A FAKE FOR LOCAL RUNS</text>
+  <rect class="fbox" x="44" y="446" width="208" height="38"/>
+  <text class="lbl inv" x="148" y="462" text-anchor="middle" style="font-size:12.5px">In the code today</text><text class="sub inv" x="148" y="477" text-anchor="middle" style="font-size:11px">Postgres, Anthropic, fake identity</text>
+  <rect class="tbox" x="264" y="446" width="208" height="38"/>
+  <text class="lbl" x="368" y="462" text-anchor="middle" style="font-size:12.5px">In current build scope</text><text class="sub" x="368" y="477" text-anchor="middle" style="font-size:11px">first adapter per capability port</text>
+  <rect class="dbox" x="484" y="446" width="202" height="38"/>
+  <text class="lbl" x="585" y="462" text-anchor="middle" style="font-size:12.5px">Proposed</text><text class="sub" x="585" y="477" text-anchor="middle" style="font-size:11px">alternates and later adapters</text>
+  <path class="line" d="M365 494V506" marker-end="url(#arw)"/>
+
+  <rect class="dbox" x="30" y="508" width="670" height="32"/>
+  <text class="sub" x="365" y="529" text-anchor="middle">Third-party services and the host's own infrastructure: models, voice, e-signature, database, storage</text>
+</svg>
+  </div>
+  <figcaption><b>Figure 1:</b> <i>Layers of Tacit Chassis. A fork writes only the top layer and the choice of adapters. The core and the tenant rule are the same in every fork.</i></figcaption>
+</figure>
+
+<p>Today the repository contains the five infrastructure ports and the following adapters: a Postgres adapter with row-level isolation, an adapter for the Anthropic API behind the language-model port, and a fake identity adapter for local runs. The blob port enforces a tenant-prefixed key rule; its storage adapter is still to come. No adapter for a capability port exists in the repository. The current Chassis specification also names storage as the only third-party integration in the base, so everything in Section 4 either lives in forks or enters the base through a specification change (Section 7).</p>
+
+<h2>3. Two kinds of port</h2>
+
+<p><b>Infrastructure ports</b> serve the Chassis itself. The database, blob storage, identity, language model and job runner are needed by every mission, whatever the industry. Their adapters are chosen by the host, as in Section 8.</p>
+
+<p><b>Capability ports</b> serve the work. A capability port names a job a mission needs done and hides who does it. A fork that needs a voice interview calls the Voice Interviewing port; whether a given deployment uses one speech vendor or another is an adapter choice, made per tenant, and does not change the mission, its records or its audit trail.</p>
+
+<p>The distinction matters because the two fail differently and are governed differently. Losing the database stops the product. Losing the diagram service stops a diagram. A capability port also sends mission content to a service the tenant may never have heard of, which is the point at which the ownership and sovereignty invariants of the working paper (O1 to O4, V2) are tested.</p>
+
+<h2>4. Capability ports</h2>
+
+<h3>4.1 Anatomy of a capability port</h3>
+
+<p>A capability port is a small typed interface plus a contract. The interface carries a request and returns a result in the port's own vocabulary, for example "interview this subject with this guide" or "render these records as a flow diagram". It never exposes a vendor's parameters. The contract is what lets a service we do not control sit inside a system whose promises we do control.</p>
+
+<figure>
+  <div class="fw">
+<svg viewBox="0 0 720 292" role="img" aria-labelledby="f2t f2d">
+  <title id="f2t">Figure 2: Anatomy of a capability port</title>
+  <desc id="f2d">A mission stage or agent sends a typed request with a tenant context to the capability port. A governance gate checks that the processor is declared and approved by the tenant's Lead; if not, the call is refused and logged. If approved, the adapter calls the vendor. The result returns through the adapter as a typed result, is held as a Draft, pending, and only the Lead's confirmation turns it into a record in the Register. A strip along the bottom shows that an event log records which tenant, port and processor were used and how many bytes, never the content.</desc>
+  <rect class="box" x="20" y="16" width="118" height="72"/>
+  <text class="lbl" x="79" y="48" text-anchor="middle">Mission stage</text><text class="sub" x="79" y="65" text-anchor="middle">or agent</text>
+  <rect class="box" x="168" y="16" width="140" height="72"/>
+  <text class="lbl" x="238" y="44" text-anchor="middle">Capability port</text><text class="sub" x="238" y="62" text-anchor="middle">typed request +</text><text class="sub" x="238" y="76" text-anchor="middle">tenant context</text>
+  <rect class="tbox" x="338" y="16" width="150" height="72"/>
+  <text class="lbl" x="413" y="34" text-anchor="middle">Governance gate</text><text class="sub" x="413" y="51" text-anchor="middle">processor declared?</text><text class="sub" x="413" y="65" text-anchor="middle">approved by this</text><text class="sub" x="413" y="79" text-anchor="middle">tenant's Lead?</text>
+  <rect class="box" x="518" y="16" width="80" height="72"/>
+  <text class="lbl" x="558" y="48" text-anchor="middle">Adapter</text><text class="sub" x="558" y="65" text-anchor="middle">translates</text>
+  <rect class="dbox" x="626" y="16" width="84" height="72"/>
+  <text class="lbl" x="668" y="48" text-anchor="middle">Vendor</text><text class="sub" x="668" y="65" text-anchor="middle">service</text>
+  <path class="line" d="M138 52H166" marker-end="url(#arw)"/>
+  <path class="line" d="M308 52H336" marker-end="url(#arw)"/>
+  <path class="line" d="M488 52H516" marker-end="url(#arw)"/>
+  <path class="line" d="M598 52H624" marker-end="url(#arw)"/>
+  <path class="dline" d="M413 88V116" marker-end="url(#arw)"/>
+  <rect class="dbox" x="338" y="118" width="150" height="34"/>
+  <text class="sub" x="413" y="139" text-anchor="middle">If not: refuse and log</text>
+
+  <path class="line" d="M558 88V170" marker-end="url(#arw)"/>
+  <rect class="box" x="506" y="172" width="104" height="56"/>
+  <text class="lbl" x="558" y="196" text-anchor="middle">Typed result</text><text class="sub" x="558" y="212" text-anchor="middle">port vocabulary</text>
+  <rect class="tbox" x="338" y="172" width="150" height="56"/>
+  <text class="lbl" x="413" y="196" text-anchor="middle">Held as Draft</text><text class="sub" x="413" y="212" text-anchor="middle">pending, with its source</text>
+  <rect class="box" x="168" y="172" width="140" height="56"/>
+  <text class="lbl" x="238" y="196" text-anchor="middle">Lead decides</text><text class="sub" x="238" y="212" text-anchor="middle">confirm or reject</text>
+  <rect class="fbox" x="20" y="172" width="118" height="56"/>
+  <text class="lbl inv" x="79" y="196" text-anchor="middle">Register</text><text class="sub inv" x="79" y="212" text-anchor="middle">confirmed record</text>
+  <path class="line" d="M506 200H490" marker-end="url(#arw)"/>
+  <path class="line" d="M338 200H310" marker-end="url(#arw)"/>
+  <path class="heavy" d="M168 200H140" marker-end="url(#arw)"/>
+
+  <rect class="tbox" x="20" y="248" width="690" height="32" style="stroke-dasharray:none"/>
+  <text class="sub" x="365" y="268" text-anchor="middle">Event log on every call: which tenant, which port, which processor, how many bytes. Never the content.</text>
+</svg>
+  </div>
+  <figcaption><b>Figure 2:</b> <i>One call through a capability port. The heavy arrow is the only step that creates a record, and only the Lead takes it.</i></figcaption>
+</figure>
+
+<h3>4.2 The adapter contract</h3>
+
+<p>An adapter for a capability port is accepted, in a fork or in the base, only if it keeps the following rules. They restate the invariants of the working paper for third-party code. Rules 2 to 5 are in the code today for the language-model port: a model that declares no identity receives no mission content, a service the tenant's Lead has not approved is refused, each call is logged by size and never by content, and the model's output enters as a draft. The same rules, and the rest of the table, are proposed as the contract for the capability ports.</p>
+
+<div class="tw"><p class="tcap"><b>Table 2:</b> <i>The adapter contract.</i></p>
+<table>
+<tr><th style="width:5%">#</th><th style="width:27%">Rule</th><th>What it means in practice</th><th style="width:14%">Serves</th></tr>
+<tr><td class="c">1</td><td>Tenant first</td><td>Every call takes a tenant context. The adapter builds no request, storage key or vendor account reference without it. Two tenants never share a vendor session.</td><td>S1, O1</td></tr>
+<tr><td class="c">2</td><td>Declare the processor</td><td>The adapter states who it is, where it processes, and how long the vendor retains content. An adapter that declares nothing receives nothing.</td><td>V2, O4</td></tr>
+<tr><td class="c">3</td><td>Output is a Draft</td><td>Whatever a vendor returns is marked pending, linked to its source, and carries the vendor's identity. An adapter has no way to confirm a record, set a threshold or commit a stage.</td><td>G2, G3, G4</td></tr>
+<tr><td class="c">4</td><td>The Lead approves, per tenant</td><td>A tenant's Lead decides which services may receive its content. Approving a service for one tenant approves it for no other.</td><td>V2, O6</td></tr>
+<tr><td class="c">5</td><td>Log size, not content</td><td>The event log records the call, the processor and the volume. Mission content never enters the log, an error message or a metric.</td><td>O4, S3</td></tr>
+<tr><td class="c">6</td><td>Credentials stay with their owner</td><td>A credential belongs to the party that holds the vendor contract. How credentials are stored and rotated is a decision still to be recorded.</td><td>S2, O1</td></tr>
+<tr><td class="c">7</td><td>Fail closed</td><td>If the vendor is down or the tenant has not approved it, the mission waits and says so. There is no silent fallback to another vendor.</td><td>V2, A1</td></tr>
+<tr><td class="c">8</td><td>Ship a fake</td><td>Every port has a deterministic fake adapter, so the whole mission runs locally and in CI without vendor accounts or customer data.</td><td>Testing</td></tr>
+<tr><td class="c">9</td><td>Pass the port's conformance checks</td><td>The conformance package grows port-level checks, run from the adapter's own build: tenant scoping, no confirmation, no content in logs, fail-closed behaviour.</td><td>All</td></tr>
+</table></div>
+
+<p>Two limits deserve plain statement. A rule is only as strong as its check, and rules 5 and 9 can be tested by construction only for what the Chassis observes; what a vendor does with content after it arrives is a matter of the vendor's terms and of the tenant's approval, not of our code. And a port is an abstraction: the narrower the port, the more of a vendor's value it hides, and the wider the port, the harder it is to swap. We expect to revise ports as the first adapters meet real missions.</p>
+
+<h3>4.3 The first catalogue</h3>
+
+<p>Table 3 lists seven capability ports. The "first adapter" column names the product at the head of our current build scope; the "alternate" column names a proposed second adapter where we have one in mind, to test that the port is not shaped around its first vendor. Each port is placed in a stage of Draft, Confirm, Commit, because the stage tells us what the output may become.</p>
+
+<div class="tw long"><p class="tcap"><b>Table 3:</b> <i>Capability ports, first adapters and alternates. Every first adapter is in current build scope; every alternate is proposed. None is released.</i></p>
+<table>
+<tr><th style="width:14%">Port</th><th style="width:25%">Job in a mission</th><th style="width:10%">Stage</th><th style="width:15%">First adapter <span class="k scope">in current build scope</span></th><th style="width:12%">Alternate <span class="k prop">proposed</span></th><th>Output lands as</th></tr>
+<tr class="grp"><td colspan="6">Discovery</td></tr>
+<tr><td>Voice Interviewing</td><td>Run a one-to-one spoken interview from the interview guide and return a transcript and audio.</td><td>Discover</td><td>ElevenLabs</td><td>Fin AI</td><td>A transcript owned by the client; records drafted from it carry spans of it as evidence.</td></tr>
+<tr><td>Risk Questionnaire <i>(third-party risk)</i></td><td>Send, collect and read structured risk questionnaires from a vendor's counterparties.</td><td>Discover, Baseline</td><td>A third-party-risk questionnaire platform</td><td>None identified</td><td>Answers as evidence, each linked to its source and pending review.</td></tr>
+<tr class="grp"><td colspan="6">Assessment</td></tr>
+<tr><td>Risk Engine <i>(third-party risk)</i></td><td>Turn questionnaire evidence into a proposed risk rating.</td><td>Baseline</td><td>AIRACloud</td><td>None identified</td><td>A proposed score. The Lead may override it, and the override is recorded.</td></tr>
+<tr><td>Scan Review <i>(security operations)</i></td><td>Have an agent review the output of vulnerability and posture scans and propose findings.</td><td>Baseline</td><td>Armor1</td><td>None identified</td><td>Proposed findings with the scan lines they rest on.</td></tr>
+<tr class="grp"><td colspan="6">Artifacts</td></tr>
+<tr><td>Diagram Generation</td><td>Render confirmed records as architecture, flow or sequence diagrams.</td><td>Baseline</td><td>Archify</td><td>Draw.io</td><td>A diagram built only from confirmed records, marked as generated.</td></tr>
+<tr><td>Podcast Generation</td><td>Produce an audio brief of a mission's confirmed content for a sponsor who will not read the document.</td><td>Baseline, Commit</td><td>Google NotebookLM</td><td>To be identified</td><td>An audio artifact, marked as generated, with its source records listed.</td></tr>
+<tr class="grp"><td colspan="6">Commitment</td></tr>
+<tr><td>eSignature</td><td>Collect signatures on the document the Lead has committed.</td><td>Commit</td><td>DocuSign</td><td>None identified</td><td>Signature evidence attached to the Commit record. A signature never substitutes for the Lead's confirmation.</td></tr>
+</table></div>
+
+<p>Three patterns recur, and they are what a fork author should take from the table. <b>Discovery ports</b> bring evidence in; their output is always a draft with a source. <b>Assessment ports</b> propose a judgment, a score or a finding; the working paper's rule that the Lead may override any proposed score applies unchanged. <b>Artifact and commitment ports</b> act on what the Lead has already confirmed, so they can add presentation and signatures but no new claims.</p>
+
+<h2>5. A mission, end to end</h2>
+
+<p>Figure 3 follows one pass through a mission in a fork that uses the Voice, Diagram and eSignature ports. It is illustrative, and the Voice, Diagram and eSignature adapters are in current build scope, not released. Read it for who is allowed to cause what: every arrow into the Chassis core from a port brings a draft, and the only arrows that change a record's standing come from the Lead.</p>
+
+<figure>
+  <div class="fw">
+<svg viewBox="0 0 720 484" role="img" aria-labelledby="f3t f3d">
+  <title id="f3t">Figure 3: One mission pass across ports</title>
+  <desc id="f3d">Six lanes: Interviewee, Voice port, Chassis core, LLM port, Lead, and Artifact and e-signature ports. Eleven numbered messages. 1: the interviewee speaks with the interviewer agent through the voice port. 2: the voice port returns a transcript and audio to the core. 3: the core asks the LLM port to draft records. 4: the LLM port returns records, pending, with sources. 5: the core sends a review queue to the Lead. 6: the Lead confirms records. 7: the core sends confirmed records to the artifact port to make a diagram. 8: the diagram returns marked as generated. 9: the Lead commits the mission. 10: the core sends the committed document to the e-signature port. 11: signature evidence returns to the core.</desc>
+  <g class="lbl" text-anchor="middle" style="font-size:12px">
+    <rect class="box" x="12" y="6" width="96" height="40"/><text x="60" y="31">Interviewee</text>
+    <rect class="box" x="122" y="6" width="96" height="40"/><text x="170" y="31">Voice port</text>
+    <rect class="tbox" x="242" y="6" width="96" height="40"/><text x="290" y="31">Chassis core</text>
+    <rect class="box" x="372" y="6" width="96" height="40"/><text x="420" y="31">LLM port</text>
+    <rect class="fbox" x="492" y="6" width="96" height="40"/><text class="inv" x="540" y="31">Lead</text>
+    <rect class="box" x="602" y="6" width="106" height="40"/><text x="655" y="23">Artifact and</text><text x="655" y="38">e-sign ports</text>
+  </g>
+  <g class="life"><path d="M60 46V470"/><path d="M170 46V470"/><path d="M290 46V470"/><path d="M420 46V470"/><path d="M540 46V470"/><path d="M655 46V470"/></g>
+
+  <path class="line" d="M60 84H168" marker-end="url(#arw)"/><text class="lab" x="115" y="78" text-anchor="middle">1 interview</text>
+  <path class="dline" d="M170 118H288" marker-end="url(#arw)"/><text class="lab" x="230" y="112" text-anchor="middle">2 transcript, audio</text>
+  <path class="line" d="M290 152H418" marker-end="url(#arw)"/><text class="lab" x="355" y="146" text-anchor="middle">3 draft records</text>
+  <path class="dline" d="M420 186H292" marker-end="url(#arw)"/><text class="lab" x="356" y="180" text-anchor="middle">4 pending drafts</text>
+  <path class="line" d="M290 220H538" marker-end="url(#arw)"/><text class="lab" x="414" y="214" text-anchor="middle">5 review queue, escalations</text>
+  <path class="heavy" d="M540 254H292" marker-end="url(#arw)"/><text class="lab" x="414" y="248" text-anchor="middle">6 Lead confirms records</text>
+  <path class="line" d="M290 288H653" marker-end="url(#arw)"/><text class="lab" x="472" y="282" text-anchor="middle">7 confirmed records to diagram</text>
+  <path class="dline" d="M655 322H292" marker-end="url(#arw)"/><text class="lab" x="472" y="316" text-anchor="middle">8 diagram, marked as generated</text>
+  <path class="heavy" d="M540 356H292" marker-end="url(#arw)"/><text class="lab" x="414" y="350" text-anchor="middle">9 Lead commits</text>
+  <path class="line" d="M290 390H653" marker-end="url(#arw)"/><text class="lab" x="472" y="384" text-anchor="middle">10 committed document to sign</text>
+  <path class="dline" d="M655 424H292" marker-end="url(#arw)"/><text class="lab" x="472" y="418" text-anchor="middle">11 signature evidence</text>
+  <text class="cap" x="12" y="478">SOLID: REQUEST · DASHED: RETURN · HEAVY: ONLY THE LEAD</text>
+</svg>
+  </div>
+  <figcaption><b>Figure 3:</b> <i>One mission pass across ports. The interviewee, the Lead and the Chassis core are the same in every fork. The ports and their adapters are the part a fork chooses.</i></figcaption>
+</figure>
+
+<h2>6. From ports to a fork</h2>
+
+<h3>6.1 The composition root</h3>
+
+<p>A fork consumes the Chassis in one of two ways, decided in ADR 0006: it imports the pinned Chassis packages and writes only its extension points, or it hard-forks the reference application and merges upstream at each re-pin. In both cases a fork is assembled in one typed place. The sketch below is illustrative. The shape of <code>createChassis</code> is part of the contract of ADR 0006; the capability-port keys are proposed.</p>
+
+<pre>// Illustrative. Capability-port keys are proposed, not released.
+const chassis = createChassis({
+  playbook: thirdPartyRiskPlaybook,
+  stages:   ["Setup", "Discover", "Baseline", "Commit"],
+  roles:    { lead: "Engagement Lead", operator: "Analyst" },
+  adapters: {
+    db: postgres(env), blob: s3(env), identity: sso(env), llm: anthropic(env),
+    voice:      elevenlabs(env),   // Voice Interviewing port
+    riskEngine: airacloud(env),    // Risk Engine port
+    eSignature: docusign(env),     // eSignature port
+  },
+});
+// Startup validation rejects a configuration with no Commit stage,
+// or one that lets anyone but the Lead confirm a record.</pre>
+
+<p>What a fork may not change is fixed by the extension-point table of the working paper (its Table 9): it may rename stages and roles, define record fields, replace scoring dimensions, add agents and supply playbooks, and it may not remove the Commit stage, let an agent or any role but the Lead confirm, weaken isolation, or disable audit logging. Adapters are one more extension point under the same rule: a fork may choose them freely, and may not choose one that breaks the contract in Table 2.</p>
+
+<h3>6.2 One chassis, different adapter sets</h3>
+
+<p>Table 4 shows how three illustrative forks would draw on the ports. None is built or released. They are here to show that the same core serves different work by changing the playbook and the adapter set, and that the shared core stays small.</p>
+
+<div class="tw"><p class="tcap"><b>Table 4:</b> <i>Illustrative adapter sets for three forks. ● used, ○ optional, – not used.</i></p>
+<table>
+<tr><th>Capability port</th><th>Advisory: AI adoption assessment</th><th>Third-party risk: onboarding to go-live</th><th>Security operations review</th></tr>
+<tr><td>Voice Interviewing</td><td class="c">●</td><td class="c">●</td><td class="c">○</td></tr>
+<tr><td>Risk Questionnaire</td><td class="c">–</td><td class="c">●</td><td class="c">–</td></tr>
+<tr><td>Risk Engine</td><td class="c">–</td><td class="c">●</td><td class="c">–</td></tr>
+<tr><td>Scan Review</td><td class="c">–</td><td class="c">–</td><td class="c">●</td></tr>
+<tr><td>Diagram Generation</td><td class="c">●</td><td class="c">●</td><td class="c">●</td></tr>
+<tr><td>Podcast Generation</td><td class="c">○</td><td class="c">○</td><td class="c">–</td></tr>
+<tr><td>eSignature</td><td class="c">●</td><td class="c">●</td><td class="c">–</td></tr>
+<tr class="grp"><td colspan="4">Every fork also uses the infrastructure ports: Db, Blob, Identity, LLM and Jobs.</td></tr>
+</table></div>
+
+<p>The business consequence is the reason for the exercise. A vendor with a good product in one of these categories gains a distribution path: every fork that needs the capability can use its adapter, and the tenant's Lead decides whether to approve it. A fork author gains the other side: a capable, governed tool without writing an integration or a compliance story for it. Whether that proves attractive to either is a hypothesis we intend to test with design partners, not a result.</p>
+
+<h2>7. How an adapter reaches the base</h2>
+
+<p>An adapter written for one fork should not stay trapped there if others can use it. The route follows the rule that anything reusable returns to the Chassis as a specified change and never as a direct merge from a fork.</p>
+
+<figure>
+  <div class="fw">
+<svg viewBox="0 0 720 150" role="img" aria-labelledby="f6t f6d">
+  <title id="f6t">Figure 4: The path of an adapter into the base</title>
+  <desc id="f6d">Five steps from left to right: a fork writes an adapter; it passes the port's conformance checks; it is proposed as a specified change; it is reviewed against the specification and the invariants; it ships in a tagged Chassis release.</desc>
+  <g class="lbl" text-anchor="middle" style="font-size:12.5px">
+    <rect class="dbox" x="8" y="30" width="124" height="70"/><text x="70" y="58">A fork writes</text><text x="70" y="75">the adapter</text>
+    <rect class="dbox" x="154" y="30" width="124" height="70"/><text x="216" y="52">It passes the</text><text x="216" y="68">port's conformance</text><text x="216" y="84">checks</text>
+    <rect class="tbox" x="300" y="30" width="124" height="70"/><text x="362" y="52">Proposed as a</text><text x="362" y="68">specified change,</text><text x="362" y="84">with an ADR</text>
+    <rect class="tbox" x="446" y="30" width="124" height="70"/><text x="508" y="52">Reviewed against</text><text x="508" y="68">the spec and the</text><text x="508" y="84">invariants</text>
+    <rect class="fbox" x="592" y="30" width="120" height="70"/><text class="inv" x="652" y="52">Ships in a</text><text class="inv" x="652" y="68">tagged release</text><text class="inv" x="652" y="84">chassis-vX.Y</text>
+  </g>
+  <path class="line" d="M132 65H152" marker-end="url(#arw)"/><path class="line" d="M278 65H298" marker-end="url(#arw)"/><path class="line" d="M424 65H444" marker-end="url(#arw)"/><path class="line" d="M570 65H590" marker-end="url(#arw)"/>
+  <text class="cap" x="8" y="126">FORK SIDE</text><text class="cap" x="300" y="126">CHASSIS SIDE · A SPEC CHANGE COMES FIRST</text>
+</svg>
+  </div>
+  <figcaption><b>Figure 4:</b> <i>The path of an adapter into the base. Shapes follow the status vocabulary of Figure 1.</i></figcaption>
+</figure>
+
+<p>Two things follow. Until a capability port and its first adapter pass this route, they belong to a fork or to our current build scope and not to the Chassis release. And a vendor, a consultancy or a researcher who wants an adapter included has a defined way to ask: build it against the port, pass the checks, propose the change.</p>
+
+<h2>8. Deployment models</h2>
+
+<p>The same code runs in two deployment models. They differ in who operates it, where the data lives, and who carries the operating obligations. The Apache License 2.0 intended for the Chassis allows both, and the choice can be made per provider, per client or per mission.</p>
+
+<h3>8.1 Self-hosted</h3>
+
+<p>The organization runs the Chassis in its own environment, or in its client's data center or cloud account. Theoremlabs.io can help implement or fork it from the open-source code; the organization manages and operates the result. The application is built to run as a container, with Postgres and S3-compatible storage behind the database and blob ports, and the identity port connected to the organization's own sign-in. The adapters are configured by the operator and reach only the services the operator approves.</p>
+
+<figure>
+  <div class="fw">
+<svg viewBox="0 0 720 332" role="img" aria-labelledby="f4t f4d">
+  <title id="f4t">Figure 5: Self-hosted deployment</title>
+  <desc id="f4d">Users (Lead, Operator, Client read-only) connect into a boundary that is the operator's own environment or the client's. Inside are the Studio and Mission Room application, then Postgres with row-level security, object storage, the identity service and the adapters. The adapters reach only third-party services the operator approves, outside the boundary. A strip notes that a control plane is optional and metadata-only, and that backups, patching, upgrades and audit evidence are the operator's, which here means the organization itself.</desc>
+  <g class="lbl" text-anchor="middle" style="font-size:12px">
+    <rect class="fbox" x="8" y="64" width="88" height="36"/><text class="inv" x="52" y="87">Lead</text>
+    <rect class="box" x="8" y="114" width="88" height="36"/><text x="52" y="137">Operator</text>
+    <rect class="box" x="8" y="164" width="88" height="36"/><text x="52" y="182">Client</text><text class="sub" x="52" y="196" style="font-size:10.5px">read-only</text>
+  </g>
+  <path class="line" d="M96 82H118" marker-end="url(#arw)"/><path class="line" d="M96 132H118" marker-end="url(#arw)"/><path class="line" d="M96 182H118" marker-end="url(#arw)"/>
+  <rect class="dbox" x="120" y="12" width="440" height="312"/>
+  <text class="cap" x="134" y="32">YOUR ENVIRONMENT OR YOUR CLIENT'S · YOU OPERATE</text>
+  <rect class="tbox" x="134" y="46" width="418" height="48"/>
+  <text class="lbl" x="343" y="68" text-anchor="middle">Studio and Mission Room</text><text class="sub" x="343" y="84" text-anchor="middle">Chassis packages + your fork, one container image</text>
+  <path class="line" d="M343 94V114" marker-end="url(#arw)"/>
+  <g text-anchor="middle">
+    <rect class="box" x="134" y="116" width="100" height="62"/><text class="lbl" x="184" y="140">Postgres</text><text class="sub" x="184" y="157">row-level</text><text class="sub" x="184" y="171">security</text>
+    <rect class="box" x="240" y="116" width="100" height="62"/><text class="lbl" x="290" y="140">Storage</text><text class="sub" x="290" y="157">S3-compatible,</text><text class="sub" x="290" y="171">tenant prefix</text>
+    <rect class="box" x="346" y="116" width="100" height="62"/><text class="lbl" x="396" y="140">Identity</text><text class="sub" x="396" y="157">your sign-in,</text><text class="sub" x="396" y="171">MFA</text>
+    <rect class="tbox" x="452" y="116" width="100" height="62"/><text class="lbl" x="502" y="140">Adapters</text><text class="sub" x="502" y="157">you configure</text><text class="sub" x="502" y="171">and approve</text>
+  </g>
+  <path class="line" d="M552 147H588" marker-end="url(#arw)"/>
+  <rect class="dbox" x="590" y="92" width="122" height="110"/>
+  <g text-anchor="middle"><text class="lbl" x="651" y="116">Services you</text><text class="lbl" x="651" y="132">approve</text><text class="sub" x="651" y="154">model provider</text><text class="sub" x="651" y="170">voice, diagrams</text><text class="sub" x="651" y="186">e-signature ...</text></g>
+  <rect class="tbox" x="134" y="204" width="418" height="104" style="stroke-dasharray:none"/>
+  <text class="lbl" x="146" y="226">The operator, here you, carries:</text>
+  <text class="sub" x="146" y="246">· backups, restores and the recovery drill</text>
+  <text class="sub" x="146" y="262">· patching, upgrades and re-pinning to a Chassis tag</text>
+  <text class="sub" x="146" y="278">· vendor contracts and credentials for each adapter</text>
+  <text class="sub" x="146" y="294">· audit evidence; a control plane is optional, metadata only</text>
+</svg>
+  </div>
+  <figcaption><b>Figure 5:</b> <i>Self-hosted deployment. All mission content stays inside the boundary except what an approved adapter sends out.</i></figcaption>
+</figure>
+
+<p>Self-hosting suits an organization whose clients require data to stay in a named place, one that already runs production software, and one that wants to keep its playbooks and its client records entirely in its own hands. It also lets a provider run missions in the client's own environment. The cost is operational: the operator keeps the system available, patched and recoverable, and gathers its own audit evidence.</p>
+
+<h3>8.2 Managed hosting</h3>
+
+<p>Theoremlabs.io runs the Chassis for the provider, and also helps implement or fork it. The provider's fork is deployed to a multi-tenant environment, with tenant isolation as the primary control and a United States region planned. The isolation design is that of ADR 0002: one pooled Postgres with a tenant identifier on every content row and row-level security enforced by the database, storage keys prefixed by tenant, and a control plane that can read only metadata such as tenant records and usage counts.</p>
+
+<figure>
+  <div class="fw">
+<svg viewBox="0 0 720 384" role="img" aria-labelledby="f5t f5d">
+  <title id="f5t">Figure 6: Managed hosting deployment</title>
+  <desc id="f5d">Users connect into an environment operated by Theoremlabs.io, with a United States region planned. A shared Studio and Mission Room application sits over one pooled Postgres in which three tenants are separated by tenant identifier and row-level security, with an object storage prefix per tenant. A control plane that reads metadata only sits beside an enterprise upgrade path from pooled to a dedicated database and then a per-tenant key. A strip lists duties of the operator. To the right, services are approved per tenant by that tenant's Lead.</desc>
+  <g class="lbl" text-anchor="middle" style="font-size:12px">
+    <rect class="fbox" x="8" y="72" width="88" height="36"/><text class="inv" x="52" y="95">Lead</text>
+    <rect class="box" x="8" y="122" width="88" height="36"/><text x="52" y="145">Operator</text>
+    <rect class="box" x="8" y="172" width="88" height="36"/><text x="52" y="190">Client</text><text class="sub" x="52" y="204" style="font-size:10.5px">read-only</text>
+  </g>
+  <path class="line" d="M96 90H118" marker-end="url(#arw)"/><path class="line" d="M96 140H118" marker-end="url(#arw)"/><path class="line" d="M96 190H118" marker-end="url(#arw)"/>
+  <rect class="box" x="120" y="12" width="440" height="362"/>
+  <text class="cap" x="134" y="32">OPERATED BY THEOREMLABS.IO · US REGION PLANNED</text>
+  <rect class="tbox" x="134" y="44" width="418" height="44"/>
+  <text class="lbl" x="343" y="64" text-anchor="middle">Studio and Mission Room</text><text class="sub" x="343" y="80" text-anchor="middle">one shared application, your fork's configuration per provider</text>
+  <path class="line" d="M343 88V104" marker-end="url(#arw)"/>
+  <rect class="box" x="134" y="106" width="418" height="136"/>
+  <text class="lbl" x="146" y="126">One pooled Postgres</text><text class="sub" x="146" y="141">tenant identifier on every content row; the database enforces isolation</text>
+  <g text-anchor="middle">
+    <rect class="tbox" x="146" y="152" width="124" height="56"/><text class="lbl" x="208" y="174" style="font-size:12.5px">Tenant A</text><text class="sub" x="208" y="192" style="font-size:11px">Provider P × Client X</text>
+    <rect class="tbox" x="282" y="152" width="124" height="56"/><text class="lbl" x="344" y="174" style="font-size:12.5px">Tenant B</text><text class="sub" x="344" y="192" style="font-size:11px">Provider P × Client Y</text>
+    <rect class="tbox" x="418" y="152" width="124" height="56"/><text class="lbl" x="480" y="174" style="font-size:12.5px">Tenant C</text><text class="sub" x="480" y="192" style="font-size:11px">Provider Q × Client Z</text>
+    <text class="sub" x="343" y="230" style="font-size:11px">Object storage: one key prefix per tenant, built by the port, never by the caller</text>
+  </g>
+  <rect class="box" x="134" y="254" width="200" height="62"/>
+  <text class="lbl" x="146" y="276">Control plane</text><text class="sub" x="146" y="293">metadata only: tenants, usage;</text><text class="sub" x="146" y="307">never reads content tables</text>
+  <rect class="dbox" x="346" y="254" width="206" height="62"/>
+  <text class="lbl" x="358" y="276">Enterprise upgrade path</text><text class="sub" x="358" y="293">pooled, then dedicated database,</text><text class="sub" x="358" y="307">then a per-tenant encryption key</text>
+  <rect class="tbox" x="134" y="328" width="418" height="38" style="stroke-dasharray:none"/>
+  <text class="sub" x="343" y="345" text-anchor="middle">Operator duties, ours: availability, backups and drills, patching,</text><text class="sub" x="343" y="359" text-anchor="middle">monitoring, vendor contracts for hosted adapters, audit evidence</text>
+  <path class="line" d="M552 180H588" marker-end="url(#arw)"/>
+  <rect class="dbox" x="590" y="112" width="122" height="136"/>
+  <g text-anchor="middle"><text class="lbl" x="651" y="138" style="font-size:12.5px">Approved services</text><text class="lbl" x="651" y="154" style="font-size:12.5px">per tenant</text><text class="sub" x="651" y="178" style="font-size:11px">by that tenant's Lead;</text><text class="sub" x="651" y="192" style="font-size:11px">approving for one</text><text class="sub" x="651" y="206" style="font-size:11px">tenant approves it</text><text class="sub" x="651" y="220" style="font-size:11px">for no other</text></g>
+</svg>
+  </div>
+  <figcaption><b>Figure 6:</b> <i>Managed hosting deployment. Tenants share one application and one database; isolation is enforced twice, by the types in the code and by the database.</i></figcaption>
+</figure>
+
+<p>Hosting suits a provider that wants to start without running infrastructure, a provider whose clients accept a vendor-operated service under suitable terms, and the early missions of a fork whose design is still moving. The provider keeps its playbooks and exports, and the same open-source code stays available if it later wants to move to self-hosting. The Chassis is designed so that an organization operating it can meet the SOC 2 Trust Services Criteria and produce the evidence an examination needs. That examination is of the operating organization, not of the software; we have not undergone one and make no SOC 2 claim in this paper.</p>
+
+<h3>8.3 Choosing</h3>
+
+<div class="tw"><p class="tcap"><b>Table 5:</b> <i>The two deployment models compared.</i></p>
+<table>
+<tr><th style="width:22%"></th><th>Self-hosted</th><th>Managed hosting</th></tr>
+<tr><td>Who operates it</td><td>You, or your client</td><td>Theoremlabs.io</td></tr>
+<tr><td>What we offer</td><td>Help to implement or fork the open-source code</td><td>Help to implement or fork, then we run it</td></tr>
+<tr><td>Where data lives</td><td>Your data center or cloud account, or your client's</td><td>A hosted multi-tenant environment, United States region planned</td></tr>
+<tr><td>Isolation</td><td>Your own deployment; one tenant per provider and client pair still applies</td><td>Pooled database with row-level security; a dedicated database or per-tenant key for an enterprise tenant</td></tr>
+<tr><td>Adapter vendors and credentials</td><td>Chosen, contracted and approved by you</td><td>Chosen per tenant by its Lead from the services we host adapters for</td></tr>
+<tr><td>Upgrades</td><td>You re-pin to a Chassis tag when you choose</td><td>We upgrade the hosted environment</td></tr>
+<tr><td>Audit evidence</td><td>Yours to produce</td><td>Ours to produce; examination status as stated in 8.2</td></tr>
+<tr><td>Best for</td><td>Data-residency rules, existing platform teams, client-side deployment</td><td>Fast start, no infrastructure team, early missions</td></tr>
+<tr><td>Status</td><td><span class="k scope">in current build scope</span>; the repository includes a container build and a local stack</td><td><span class="k scope">in current build scope</span>; not yet offered</td></tr>
+</table></div>
+
+<p>The models are not exclusive. A provider can host its early missions and self-host a mission for a client with strict residency rules, with the same fork and the same playbook. A hybrid in which self-hosted tenants report only metadata to a hosted control plane follows from the control-plane design but is not specified here.</p>
+
+<h2>9. What is real today</h2>
+
+<div class="tw"><p class="tcap"><b>Table 6:</b> <i>Status of the components in this paper, as of 15 October 2026.</i></p>
+<table>
+<tr><th>Component</th><th>Status</th></tr>
+<tr><td>Domain core, Register, scoring, confirmation rules, tenant isolation, processing log, conformance package</td><td><span class="k code">in the code today</span></td></tr>
+<tr><td>Infrastructure ports: Db, Blob (key rule), Identity, LLM; Postgres, Anthropic and fake-identity adapters</td><td><span class="k code">in the code today</span></td></tr>
+<tr><td>Blob storage adapter; managed identity adapter</td><td><span class="k scope">in current build scope</span></td></tr>
+<tr><td>Capability ports and the adapter contract of Table 2</td><td><span class="k prop">proposed</span>; need a specification change and a decision record</td></tr>
+<tr><td>First adapters in Table 3</td><td><span class="k scope">in current build scope</span></td></tr>
+<tr><td>Alternates in Table 3</td><td><span class="k prop">proposed</span></td></tr>
+<tr><td>Public release of the repository, version 0.1</td><td>Not released. No date is promised here.</td></tr>
+<tr><td>Managed hosting offering, United States region</td><td><span class="k scope">in current build scope</span>; no SOC 2 examination performed</td></tr>
+</table></div>
+
+<h2>10. Limitations and open questions</h2>
+
+<ul class="plain">
+<li><b>No evidence yet.</b> This is a design paper. We have not measured whether capability ports make forks cheaper to build, or whether tenants will approve third-party services.</li>
+<li><b>Port shape.</b> Ports designed around a first vendor tend to leak that vendor. The alternates in Table 3 exist to test this, and we expect to change the ports.</li>
+<li><b>Vendor terms.</b> The contract governs what the Chassis does. It cannot govern what a vendor does with content after receipt, nor guarantee that vendors will keep the retention and location they declare. The tenant's approval is the control.</li>
+<li><b>Specification gap.</b> The current Chassis specification names storage as the only built-in integration. Adding capability ports to the base needs a specification change and a decision record covering credentials, per-tenant approval and the conformance checks.</li>
+<li><b>Commercial neutrality.</b> A catalogue of named adapters can look like a marketplace. We have not decided whether, or how, adapters from outside parties are listed, and how we would handle a vendor that competes with an adapter we ship.</li>
+<li><b>Agent-to-agent vendors.</b> Some capability vendors are themselves agents. The rule that an adapter cannot confirm assumes the Chassis can see what crosses the port; an agent that calls other services behind the port weakens that assumption.</li>
+</ul>
+
+<p>Comments, critiques and offers to build or review an adapter are welcome at <a href="mailto:research@theoremlabs.io?subject=%5BBuilder%5D%20Comments%20on%20concept%20paper%2001">research@theoremlabs.io</a>.</p>
+
+<hr class="hr">
+<h2 style="margin-top:0">References</h2>
+<div class="refs">
+<p>Cockburn, A. (2005). Hexagonal architecture (ports and adapters). alistair.cockburn.us.</p>
+<p>American Institute of Certified Public Accountants (2022). <i>2017 Trust Services Criteria for Security, Availability, Processing Integrity, Confidentiality, and Privacy</i> (with revised points of focus, 2022).</p>
+<p>Sarode, P., and Nair, R. (2026). <i>Tacit Work Needs a Mission Room: Accountability, Ownership and Data Sovereignty in Agent-Assisted Professional Services.</i> Working paper, version 0.8. <a href="/paper/">tacit.theoremlabs.io/paper</a>.</p>
+<p>Tacit Chassis architecture decision records 0001 (tech stack), 0002 (tenant isolation) and 0006 (fork contract and consumption). The repository is not yet public; the decisions are summarized in this paper.</p>
+</div>
+
+</article>
+</body>
+</html>
