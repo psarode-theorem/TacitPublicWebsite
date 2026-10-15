@@ -201,21 +201,41 @@ section{padding:56px 0}
 .pcap>.t,.pinf>.t{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;opacity:.75}
 @media(max-width:900px){.split{grid-template-columns:1fr}.plugs{grid-template-columns:1fr}.chev{grid-template-columns:1fr}.chev div,.chev div:first-child{clip-path:none;margin:0 0 6px;padding:12px 16px}.kb{grid-template-columns:1fr}.kb .plus{display:none}.r7{grid-template-columns:repeat(4,1fr)}.r4{grid-template-columns:repeat(2,1fr)}.r5{grid-template-columns:repeat(3,1fr)}.steps,.why,.dep{grid-template-columns:1fr}}
 @media(max-width:560px){.r7{grid-template-columns:repeat(2,1fr)}.deploy{grid-template-columns:1fr}}
-@media print{.sn{display:none}}
+.hn{height:80px;position:sticky;top:0;background:rgba(245,243,237,.96);backdrop-filter:blur(16px);z-index:50;border-bottom:1px solid var(--line)}
+.hn .in{width:min(1210px,calc(100% - 56px));margin:auto;height:100%;display:flex;align-items:center;gap:30px}
+.hn .brand{font-family:'Outfit',sans-serif;font-size:26px;font-weight:700;letter-spacing:-.055em;margin-right:auto;text-decoration:none;color:var(--ink)}
+.hn .bm{color:var(--forest);margin-right:8px}
+.hn .links{display:flex;gap:26px;align-items:center;font-size:13px;font-weight:600;color:#556159}
+.hn .links a{text-decoration:none;color:inherit}
+.hn .links a:hover,.hn .links a[aria-current]{color:var(--forest)}
+.hn .links a.go{background:var(--forest);color:#fff;border-radius:7px;padding:10px 14px;font-weight:700}
+@media(max-width:760px){.hn{height:68px}.hn .in{width:calc(100% - 34px)}.hn .brand{font-size:21px}.hn .links{gap:14px}.hn .links a:not(.go){display:none}}
+html{scroll-behavior:smooth}
+section[id]{scroll-margin-top:96px}
+.layout{display:grid;grid-template-columns:200px minmax(0,1fr);gap:28px;max-width:1380px;margin:0 auto;padding:0 20px}
+.layout .w{width:100%}
+.sidenav{position:sticky;top:100px;align-self:start;padding-top:58px;display:flex;flex-direction:column}
+.sidenav .sn-t{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 10px 14px}
+.sidenav a{font:500 13.5px/1.35 var(--body);color:var(--muted);text-decoration:none;padding:7px 0 7px 12px;border-left:2px solid var(--line)}
+.sidenav a:hover{color:var(--ink);border-left-color:#9aa39c}
+.sidenav a.on{color:var(--forest);font-weight:700;border-left-color:var(--forest)}
+.layout main section[style*="background"]{border-radius:18px;padding:48px 28px}
+@media(max-width:1020px){.layout{display:block}.sidenav{display:none}.layout main section[style*="background"]{border-radius:0;padding:56px 0}}
+@media print{.hn,.sidenav{display:none}.layout{display:block}}
 </style>
 </head>
 <body>
-<div class="sn"><div class="sn-in"><a class="sn-brand" href="/"><b>Tacit</b><span class="sn-def"><b>tacit knowledge</b> <i>noun</i>: what an expert knows and uses, but cannot easily put into words.</span></a><nav class="sn-links" aria-label="Main"><a href="/#check">Check your work</a><a href="/#partner">Design partners</a><a href="/paper/">Paper</a><a href="/essay/">Essay</a><a href="/investors/">Investor memo</a><a href="/open-source/UnderstandingChassis.html" aria-current="page">Open Source</a><a class="sn-cta" href="/#contact">Start a conversation</a></nav></div></div>
+<nav class="hn"><div class="in"><a class="brand" href="/"><span class="bm">●</span>Tacit<span style="font-weight:400;color:#788078"> / Agentic Mission Rooms</span></a><div class="links"><a href="/#audiences">Who it's for</a><a href="/#chassis">How it works</a><a href="/#mission">See a Mission Room</a><a href="/#research">Research</a><a href="/open-source/UnderstandingChassis.html" aria-current="page">Open Source</a><a class="go" href="/#contact">Want to Partner ↗</a></div></div></nav>
 
-<main>
-<section class="hero"><div class="w">
+<div class="layout"><aside class="sidenav" aria-label="On this page"><div class="sn-t">On this page</div><a href="#philosophy">Philosophy</a><a href="#architecture">Architecture</a><a href="#fork">How a fork comes together</a><a href="#workflow">Mission workflow</a><a href="#capabilities">Core capabilities</a><a href="#forks">Industry forks</a><a href="#ports">Why ports</a><a href="#deployment">Deployment models</a><a href="#involved">Get involved</a></aside><main>
+<section class="hero" id="philosophy"><div class="w">
   <div class="eyebrow">Tacit Chassis / Open Source · Draft for comment</div>
   <h1>Understanding Tacit-Chassis / Open Source</h1>
   <p class="lede"><b>Philosophy:</b> The Open Source Chassis will provide the core capabilities and base automation to orchestrate the Discovery to Outcome workflow needed to realize a base Agentic Mission Room, which Providers can fork and implement. Industry forks customize it by implementing or integrating third-party adapters to new tools.</p>
   <p class="sub">Voice interviews, diagrams, e-signature, risk engines: each plugs into a <b>capability port</b>, so a fork gets the tool without giving up the rules.</p>
 </div></section>
 
-<section style="padding-top:12px"><div class="w">
+<section style="padding-top:12px" id="architecture"><div class="w">
   <div class="mkt" role="img" aria-label="Marketecture: industry forks sit on the Tacit Chassis core, which connects through capability ports and infrastructure ports to third-party adapters, and deploys either self-hosted or managed hosting.">
     <div class="mkt-title">Conceptual Architecture</div>
     <div class="tier forks"><div class="t">1 · Industry forks · your playbook, stages and roles</div>
@@ -296,7 +316,7 @@ section{padding:56px 0}
   </div>
 </div></section>
 
-<section style="padding-top:20px"><div class="w">
+<section style="padding-top:20px" id="fork"><div class="w">
   <div class="eyebrow">How a fork comes together</div>
   <h2>Three decisions, no rewrite.</h2>
   <div class="steps">
@@ -306,7 +326,7 @@ section{padding:56px 0}
   </div>
 </div></section>
 
-<section style="background:#eceee7"><div class="w">
+<section style="background:#eceee7" id="workflow"><div class="w">
   <div class="eyebrow">Mission workflow</div>
   <h2>Draft. Confirm. Commit.</h2>
   <p class="lede" style="margin-bottom:0">Every capability and every adapter feeds the same three steps. Agents draft, a named person confirms, and each party keeps what is theirs.</p>
@@ -328,7 +348,7 @@ section{padding:56px 0}
   <p class="fnote">Reference mission stages: Setup, Discover, Baseline, Commit. A fork may rename or add stages, never remove Commit.</p>
 </div></section>
 
-<section><div class="w">
+<section id="capabilities"><div class="w">
   <div class="eyebrow">Core capabilities and their status</div>
   <h2>What each capability covers today.</h2>
   <div class="keyline"><span class="m c">in the code today</span><span class="m s">in current build scope</span><span class="m p">proposed</span><span class="kt">None of these is a release. The repository is not yet public.</span></div>
@@ -354,7 +374,7 @@ section{padding:56px 0}
   </div>
 </div></section>
 
-<section style="background:#eceee7"><div class="w">
+<section style="background:#eceee7" id="forks"><div class="w">
   <div class="eyebrow">Industry forks</div>
   <h2>Same chassis, different tools.</h2>
   <p class="lede" style="margin-bottom:0">A fork adds a playbook and chooses adapters. Three illustrative examples; none of these forks is released.</p>
@@ -365,7 +385,7 @@ section{padding:56px 0}
   </div>
 </div></section>
 
-<section><div class="w">
+<section id="ports"><div class="w">
   <div class="eyebrow">Why ports</div>
   <h2>Governance travels with every adapter.</h2>
   <div class="why">
@@ -375,7 +395,7 @@ section{padding:56px 0}
   </div>
 </div></section>
 
-<section style="background:#eceee7"><div class="w">
+<section style="background:#eceee7" id="deployment"><div class="w">
   <div class="eyebrow">Deployment models</div>
   <h2>Run it yourself, or let us run it.</h2>
   <div class="dep">
@@ -390,7 +410,7 @@ section{padding:56px 0}
   </div>
 </div></section>
 
-<section style="padding-top:0"><div class="w"><div class="cta">
+<section style="padding-top:0" id="involved"><div class="w"><div class="cta">
   <h2>Build an adapter. Fork the Chassis. Tell us what breaks.</h2>
   <p class="lede" style="color:#c9dcd2;margin-bottom:0">The ports, the first forks and the first adapters are being shaped now.</p>
   <a class="btn p" href="/?pick=builders&amp;want=Contribute%20a%20playbook%20or%20adapter#contact">Build or review an adapter</a>
@@ -398,6 +418,7 @@ section{padding:56px 0}
 </div>
 <p class="fine"><b>Disclosure.</b> Supported by Theoremlabs.io, which also develops Tacit Chassis. Third-party products are named to show where an adapter would connect; naming one is not a statement that its maker endorses or has agreed to this work. Tacit Chassis is in development and is not yet public. The research behind it is in the <a href="/paper/">working paper</a>. Comments: <a href="mailto:research@theoremlabs.io">research@theoremlabs.io</a>.</p>
 </div></section>
-</main>
+</main></div>
+<script>(function(){var links=[].slice.call(document.querySelectorAll('.sidenav a'));if(!links.length||!('IntersectionObserver' in window))return;var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a});var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.remove('on')});var a=map[e.target.id];if(a)a.classList.add('on')}})},{rootMargin:'-25% 0px -65% 0px'});Object.keys(map).forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el)})})();</script>
 </body>
 </html>
